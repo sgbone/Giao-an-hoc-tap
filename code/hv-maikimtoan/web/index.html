@@ -44,7 +44,8 @@
     <a href="#b2-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
 
     <p class="nav-label">Ôn tập</p>
-    <a href="#quiz" class="nav-link">Câu hỏi nhanh</a>
+    <a href="on-tap-buoi-1.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 1</a>
+    <a href="on-tap-buoi-2.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 2</a>
   </nav>
 
   <div class="sidebar-footer">
@@ -231,27 +232,54 @@
     <div class="hw-head">
       <span class="hw-badge">🏠 Bài tập về nhà</span>
       <h3>Buổi 1 — Làm quen &amp; Hello World</h3>
-      <p class="muted">Làm đủ <b>3 bài</b> để luyện tay. Nhớ: viết code ra giấy trước, rồi mới gõ máy nhé!</p>
+      <p class="muted">3 bài theo độ khó tăng dần. Mỗi bài có <b>kết quả in ra mẫu</b> — bạn làm sao cho chương trình in ra <b>giống y như mẫu</b> là đạt!</p>
     </div>
     <div class="hw-grid">
+
       <article class="hw-card">
-        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag easy">Dễ</span></div>
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
         <p class="hw-title">Giới thiệu bản thân</p>
-        <p class="hw-desc">Viết chương trình in ra <b>5 dòng</b>: họ tên, năm sinh, lớp, sở thích, ước mơ.</p>
-        <p class="hw-hint">💡 Gợi ý: dùng 5 lệnh <code>printf</code>, mỗi dòng kết thúc bằng <code>\n</code>.</p>
+        <p class="hw-desc">In ra <b>4 dòng</b>: họ tên, năm sinh, lớp và sở thích của em.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Ho ten: Tran Hoang Duc Anh
+Nam sinh: 2010
+Lop: 10A1
+So thich: Choi game</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: dùng 4 lệnh <code>printf</code>, mỗi dòng kết thúc bằng <code>\n</code>.</p>
       </article>
+
       <article class="hw-card">
-        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag mid">Trung bình</span></div>
-        <p class="hw-title">Vẽ ngôi sao</p>
-        <p class="hw-desc">In ra hình một ngôi sao bằng ký tự <code>*</code> (5 dòng).</p>
-        <p class="hw-hint">💡 Gợi ý: mỗi dòng in thêm một số dấu <code>*</code> khác nhau.</p>
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Vẽ tam giác sao</p>
+        <p class="hw-desc">In ra hình tam giác bằng ký tự <code>*</code>, mỗi dòng nhiều hơn dòng trên 1 sao (5 dòng).</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>*
+**
+***
+****
+*****</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: chưa học vòng lặp nên cứ viết 5 lệnh <code>printf</code>, mỗi dòng thêm 1 dấu <code>*</code>.</p>
       </article>
+
       <article class="hw-card">
-        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag easy">Thao tác</span></div>
-        <p class="hw-title">Luyện lưu &amp; chạy file</p>
-        <p class="hw-desc">Tạo file <code>baitap.c</code>, lưu đúng đuôi <code>.c</code> và chạy thử bằng <kbd>F11</kbd>.</p>
-        <p class="hw-hint">💡 Gợi ý: kiểm tra tên file kết thúc bằng <code>.c</code> trước khi chạy.</p>
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Vẽ cây thông của riêng em</p>
+        <p class="hw-desc">Dùng <code>printf</code> vẽ một <b>cây thông</b> (hoặc hình tự sáng tạo) bằng ký tự. Chỉ cần dùng <code>printf</code> và <code>\n</code>.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu (gợi ý)</div>
+          <pre>   *
+  ***
+ *****
+*******
+   |</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: thêm khoảng trắng đầu dòng để căn giữa. Em có thể vẽ mặt cười, ngôi nhà… tùy thích!</p>
       </article>
+
     </div>
   </section>
 
@@ -376,58 +404,69 @@
     <div class="hw-head">
       <span class="hw-badge">🏠 Bài tập về nhà</span>
       <h3>Buổi 2 — Biến và kiểu dữ liệu</h3>
-      <p class="muted">Làm đủ <b>3 bài</b>. Chú ý chọn đúng kiểu dữ liệu và đúng ký hiệu định dạng (<code>%d</code>, <code>%f</code>, <code>%c</code>).</p>
+      <p class="muted">3 bài theo độ khó tăng dần. Mỗi bài có <b>kết quả in ra mẫu</b> — hãy chọn đúng kiểu dữ liệu và đúng ký hiệu (<code>%d</code>, <code>%f</code>, <code>%c</code>) để in ra giống mẫu.</p>
     </div>
     <div class="hw-grid">
+
       <article class="hw-card">
-        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag easy">Dễ</span></div>
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
         <p class="hw-title">Bảng điểm 3 môn</p>
-        <p class="hw-desc">Khai báo 3 biến lưu điểm Toán, Văn, Anh rồi in ra cả 3.</p>
-        <p class="hw-hint">💡 Gợi ý: điểm có thể lẻ nên dùng <code>float</code> + <code>%.2f</code>.</p>
+        <p class="hw-desc">Khai báo 3 biến <code>float</code> lưu điểm Toán, Văn, Anh rồi in ra mỗi môn một dòng.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Toan: 8.50
+Van: 7.00
+Anh: 9.25</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: điểm có thể lẻ nên dùng <code>float</code> và in bằng <code>%.2f</code>.</p>
       </article>
+
       <article class="hw-card">
-        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag easy">Dễ</span></div>
-        <p class="hw-title">Giá trà sữa</p>
-        <p class="hw-desc">Khai báo biến lưu giá 1 ly trà sữa (45000), in ra đúng dòng:
-          <code>Gia 1 ly tra sua la 45000 VND</code></p>
-        <p class="hw-hint">💡 Gợi ý: giá là số nguyên → dùng <code>int</code> và <code>%d</code>.</p>
-      </article>
-      <article class="hw-card">
-        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag mid">Trung bình</span></div>
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
         <p class="hw-title">Hồ sơ học sinh</p>
-        <p class="hw-desc">Khai báo đủ thông tin một học sinh: tên viết tắt (<code>char</code>), tuổi (<code>int</code>),
-          điểm trung bình (<code>float</code>) và in ra từng dòng.</p>
-        <p class="hw-hint">💡 Gợi ý: mỗi kiểu một ký hiệu — <code>%c</code>, <code>%d</code>, <code>%.2f</code>.</p>
+        <p class="hw-desc">Khai báo đủ thông tin: hạng (1 ký tự <code>char</code>), tuổi (<code>int</code>), điểm trung bình (<code>float</code>) rồi in ra.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Hang: A
+Tuoi: 15
+Diem trung binh: 8.75</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: mỗi kiểu một ký hiệu — <code>%c</code> cho hạng, <code>%d</code> cho tuổi, <code>%.2f</code> cho điểm.</p>
       </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Thẻ nhân vật game</p>
+        <p class="hw-desc">Tự sáng tạo một <b>thẻ nhân vật</b>: khai báo các biến (cấp độ <code>int</code>, máu <code>float</code>, hạng <code>char</code>…) rồi in ra dạng khung đẹp bằng <code>printf</code>.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu (gợi ý)</div>
+          <pre>=== THE NHAN VAT ===
+Ten hang: S
+Cap do: 12
+Mau: 100.50
+====================</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: chỉ dùng biến + <code>printf</code> (chưa cần nhập liệu). Tự thiết kế khung viền bằng <code>=</code> cho đẹp!</p>
+      </article>
+
     </div>
   </section>
 
-  <!-- QUIZ -->
-  <section id="quiz" class="card reveal">
-    <h3>🧠 Câu hỏi nhanh — Tự kiểm tra</h3>
-    <div class="quiz" data-answer="1">
-      <p class="quiz-q">1. Đuôi file đúng để lưu chương trình C là gì?</p>
-      <button class="quiz-opt">.cpp</button>
-      <button class="quiz-opt" data-correct>.c</button>
-      <button class="quiz-opt">.txt</button>
-    </div>
-    <div class="quiz" data-answer="2">
-      <p class="quiz-q">2. Phím tắt "Biên dịch &amp; chạy" trong Dev-C++?</p>
-      <button class="quiz-opt">F9</button>
-      <button class="quiz-opt" data-correct>F11</button>
-      <button class="quiz-opt">Ctrl+S</button>
-    </div>
-    <div class="quiz" data-answer="3">
-      <p class="quiz-q">3. Ký hiệu định dạng nào dùng cho kiểu <code>float</code>?</p>
-      <button class="quiz-opt">%d</button>
-      <button class="quiz-opt">%c</button>
-      <button class="quiz-opt" data-correct>%f</button>
-    </div>
-    <div class="quiz" data-answer="4">
-      <p class="quiz-q">4. Cuối mỗi câu lệnh trong C phải có ký tự gì?</p>
-      <button class="quiz-opt" data-correct>Dấu chấm phẩy ;</button>
-      <button class="quiz-opt">Dấu phẩy ,</button>
-      <button class="quiz-opt">Dấu chấm .</button>
+  <!-- ÔN TẬP — dẫn sang trang riêng -->
+  <section id="review-cta" class="card reveal">
+    <h3>🧠 Ôn tập nhanh</h3>
+    <p>Mỗi buổi có một trang ôn tập riêng với bộ câu hỏi trắc nghiệm <b>tự chấm điểm</b>. Làm xong để biết mình nắm chắc tới đâu nhé!</p>
+    <div class="review-links">
+      <a class="review-link" href="on-tap-buoi-1.html">
+        <span class="rl-icon">📘</span>
+        <span class="rl-text"><b>Ôn tập Buổi 1</b><small>15 câu · Làm quen &amp; Hello World</small></span>
+        <span class="rl-go">→</span>
+      </a>
+      <a class="review-link" href="on-tap-buoi-2.html">
+        <span class="rl-icon">📗</span>
+        <span class="rl-text"><b>Ôn tập Buổi 2</b><small>15 câu · Biến &amp; kiểu dữ liệu</small></span>
+        <span class="rl-go">→</span>
+      </a>
     </div>
   </section>
 

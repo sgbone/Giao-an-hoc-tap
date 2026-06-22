@@ -229,7 +229,9 @@ window.addEventListener("scroll", () => {
 
 /* ---------- Highlight nav theo section ---------- */
 const navLinks = document.querySelectorAll(".nav-link");
-const sections = [...navLinks].map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+const sections = [...navLinks]
+  .filter(a => a.getAttribute("href").startsWith("#"))
+  .map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
 const navIO = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting){

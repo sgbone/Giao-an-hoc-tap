@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 2 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 2 — Biến và kiểu dữ liệu. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="index.html" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 2 — Biến và kiểu dữ liệu</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📗 Ôn tập Buổi 2 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 2,
+  questions: [
+    { q: "Biến trong lập trình giống với hình ảnh nào nhất?", options: [
+        "Một cái hộp có dán nhãn để chứa giá trị",
+        "Một sợi dây điện",
+        "Một cái màn hình" ],
+      answer: 0, explain: "Biến như cái hộp có nhãn (tên) chứa giá trị bên trong." },
+
+    { q: "Một biến gồm những thành phần nào?", options: [
+        "Chỉ có tên",
+        "Tên, kiểu dữ liệu và giá trị",
+        "Chỉ có giá trị" ],
+      answer: 1, explain: "Mỗi biến có 3 phần: tên · kiểu dữ liệu · giá trị." },
+
+    { q: "Kiểu <code>int</code> dùng để lưu gì?", options: [
+        "Số nguyên (vd 5, -10, 100)",
+        "Số thực có phần thập phân",
+        "Một ký tự" ],
+      answer: 0, explain: "<code>int</code> lưu số nguyên, không có phần thập phân." },
+
+    { q: "Kiểu nào dùng để lưu số thực như 3.14?", options: [
+        "<code>char</code>", "<code>int</code>", "<code>float</code>" ],
+      answer: 2, explain: "<code>float</code> lưu số thực (có phần thập phân)." },
+
+    { q: "Kiểu <code>char</code> lưu được gì?", options: [
+        "Một ký tự duy nhất (vd 'A')",
+        "Một câu dài",
+        "Một số thực" ],
+      answer: 0, explain: "<code>char</code> lưu đúng 1 ký tự, đặt trong dấu nháy đơn." },
+
+    { q: "Giá trị kiểu <code>char</code> được đặt trong dấu gì?", options: [
+        "Nháy kép <code>\"A\"</code>",
+        "Nháy đơn <code>'A'</code>",
+        "Ngoặc tròn <code>(A)</code>" ],
+      answer: 1, explain: "Ký tự dùng nháy đơn: <code>'A'</code>. Nháy kép là cho chuỗi." },
+
+    { q: "Ký hiệu định dạng nào dùng cho <code>int</code> trong <code>printf</code>?", options: [
+        "<code>%d</code>", "<code>%f</code>", "<code>%c</code>" ],
+      answer: 0, explain: "<code>%d</code> cho số nguyên (int)." },
+
+    { q: "Ký hiệu nào dùng cho <code>float</code>?", options: [
+        "<code>%c</code>", "<code>%f</code>", "<code>%d</code>" ],
+      answer: 1, explain: "<code>%f</code> cho số thực (float)." },
+
+    { q: "Ký hiệu nào dùng cho <code>char</code>?", options: [
+        "<code>%c</code>", "<code>%d</code>", "<code>%s</code>" ],
+      answer: 0, explain: "<code>%c</code> cho một ký tự." },
+
+    { q: "<code>%.2f</code> in số thực như thế nào?", options: [
+        "Làm tròn lấy 2 chữ số sau dấu phẩy",
+        "In thành số nguyên",
+        "In 2 lần" ],
+      answer: 0, explain: "<code>%.2f</code> in 2 chữ số thập phân, vd 1.65." },
+
+    { q: "Khai báo nào đúng cú pháp?", options: [
+        "<code>int tuoi = 18;</code>",
+        "<code>tuoi int = 18;</code>",
+        "<code>int tuoi = 18</code>" ],
+      answer: 0, explain: "Cú pháp: kiểu + tên + (=) giá trị + dấu <code>;</code>. Đáp án cuối thiếu <code>;</code>." },
+
+    { q: "Tên biến nào sau đây KHÔNG hợp lệ?", options: [
+        "<code>diem_toan</code>",
+        "<code>_diem</code>",
+        "<code>diem toan</code> (có khoảng trắng)" ],
+      answer: 2, explain: "Tên biến không được chứa khoảng trắng." },
+
+    { q: "Chuyện gì xảy ra nếu dùng <code>%d</code> để in một biến <code>float</code>?", options: [
+        "In ra số sai (không như mong đợi)",
+        "In ra hoàn toàn đúng",
+        "Máy tự sửa giúp" ],
+      answer: 0, explain: "Sai ký hiệu định dạng sẽ in ra giá trị sai — phải dùng đúng <code>%f</code>." },
+
+    { q: "Có thể gán lại giá trị mới cho một biến đã khai báo không?", options: [
+        "Được, gán lại bằng dấu <code>=</code>",
+        "Không bao giờ được",
+        "Chỉ gán được 1 lần duy nhất" ],
+      answer: 0, explain: "Biến có thể đổi giá trị: <code>tuoi = 20;</code> sau khi đã khai báo." },
+
+    { q: "Lệnh nào in đúng giá trị biến <code>float chieuCao = 1.65;</code> với 2 số lẻ?", options: [
+        "<code>printf(\"%.2f\", chieuCao);</code>",
+        "<code>printf(\"%d\", chieuCao);</code>",
+        "<code>printf(\"%c\", chieuCao);</code>" ],
+      answer: 0, explain: "Dùng <code>%.2f</code> cho float với 2 chữ số thập phân → 1.65." }
+  ]
+};
+</script>
+<script src="review.js"></script>
+</body>
+</html>

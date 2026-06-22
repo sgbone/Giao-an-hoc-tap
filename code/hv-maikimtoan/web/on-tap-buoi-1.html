@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 1 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 1 — Làm quen lập trình & Hello World. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="index.html" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 1 — Làm quen &amp; Hello World</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📘 Ôn tập Buổi 1 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 1,
+  questions: [
+    { q: "Lập trình là gì?", options: [
+        "Viết các bước (lệnh) để máy tính làm theo",
+        "Sửa chữa phần cứng máy tính",
+        "Vẽ tranh trên máy tính" ],
+      answer: 0, explain: "Lập trình là viết chỉ dẫn (mã nguồn) cho máy tính thực hiện — giống như viết công thức nấu ăn." },
+
+    { q: "Thứ tự đúng từ code đến chương trình chạy được là?", options: [
+        "Chương trình → Mã nguồn → Trình biên dịch",
+        "Mã nguồn → Trình biên dịch → Chương trình chạy được",
+        "Trình biên dịch → Chương trình → Mã nguồn" ],
+      answer: 1, explain: "Người viết mã nguồn → trình biên dịch (compiler) dịch ra → tạo chương trình chạy được." },
+
+    { q: "Đuôi file đúng để lưu một chương trình C là gì?", options: [
+        "<code>.cpp</code>", "<code>.txt</code>", "<code>.c</code>" ],
+      answer: 2, explain: "File C phải lưu với đuôi <code>.c</code>. Đuôi <code>.cpp</code> là cho C++." },
+
+    { q: "Phím tắt <b>Biên dịch &amp; chạy</b> trong Dev-C++ là?", options: [
+        "<kbd>F11</kbd>", "<kbd>F9</kbd>", "<kbd>F10</kbd>" ],
+      answer: 0, explain: "<kbd>F11</kbd> vừa biên dịch vừa chạy — dùng nhiều nhất. <kbd>F9</kbd> chỉ biên dịch, <kbd>F10</kbd> chỉ chạy." },
+
+    { q: "Phím tắt để <b>lưu file</b> là?", options: [
+        "<kbd>Ctrl</kbd>+<kbd>N</kbd>", "<kbd>Ctrl</kbd>+<kbd>S</kbd>", "<kbd>Ctrl</kbd>+<kbd>P</kbd>" ],
+      answer: 1, explain: "<kbd>Ctrl</kbd>+<kbd>S</kbd> để lưu. <kbd>Ctrl</kbd>+<kbd>N</kbd> là tạo file mới." },
+
+    { q: "Dòng nào khai báo dùng thư viện nhập/xuất chuẩn?", options: [
+        "<code>#include &lt;stdio.h&gt;</code>",
+        "<code>int main()</code>",
+        "<code>printf();</code>" ],
+      answer: 0, explain: "<code>#include &lt;stdio.h&gt;</code> nạp thư viện chứa <code>printf</code>, <code>scanf</code>…" },
+
+    { q: "Chương trình C bắt đầu chạy từ đâu?", options: [
+        "Từ dòng <code>#include</code>",
+        "Từ hàm <code>int main()</code>",
+        "Từ dòng cuối cùng" ],
+      answer: 1, explain: "<code>main()</code> là nơi chương trình bắt đầu thực thi." },
+
+    { q: "Lệnh nào dùng để in chữ ra màn hình?", options: [
+        "<code>scanf</code>", "<code>printf</code>", "<code>include</code>" ],
+      answer: 1, explain: "<code>printf</code> = print formatted, dùng để in ra màn hình." },
+
+    { q: "Ký tự <code>\\n</code> trong <code>printf</code> có tác dụng gì?", options: [
+        "In ra chữ n", "Xuống dòng", "Xóa màn hình" ],
+      answer: 1, explain: "<code>\\n</code> là ký tự xuống dòng (newline)." },
+
+    { q: "Cuối mỗi câu lệnh trong C bắt buộc có ký tự gì?", options: [
+        "Dấu phẩy <code>,</code>", "Dấu chấm <code>.</code>", "Dấu chấm phẩy <code>;</code>" ],
+      answer: 2, explain: "Quên dấu <code>;</code> là lỗi rất hay gặp khi mới học!" },
+
+    { q: "<code>return 0;</code> ở cuối <code>main</code> nghĩa là gì?", options: [
+        "Báo chương trình kết thúc thành công",
+        "In ra số 0",
+        "Bắt đầu chương trình" ],
+      answer: 0, explain: "<code>return 0;</code> báo cho hệ điều hành biết chương trình chạy xong, không lỗi." },
+
+    { q: "Cặp dấu <code>{ }</code> dùng để làm gì?", options: [
+        "Bao quanh thân hàm (khối lệnh)",
+        "Kết thúc câu lệnh",
+        "In ra ngoặc nhọn" ],
+      answer: 0, explain: "Dấu ngoặc nhọn <code>{ }</code> bao quanh khối lệnh, ví dụ thân hàm <code>main</code>." },
+
+    { q: "Khi biên dịch bị lỗi, nên nhìn vào đâu để biết lỗi?", options: [
+        "Khung <b>Compile Log</b> phía dưới",
+        "Tắt máy rồi mở lại",
+        "Đổi tên file" ],
+      answer: 0, explain: "Compile Log hiển thị số dòng và nội dung lỗi — đọc kỹ để sửa." },
+
+    { q: "Khi gõ chương trình, vì sao nên tự gõ thay vì copy-paste?", options: [
+        "Để giúp não ghi nhớ cú pháp",
+        "Vì máy không cho dán",
+        "Để file nặng hơn" ],
+      answer: 0, explain: "Tự gõ giúp quen tay và nhớ cú pháp lâu hơn — rất quan trọng với người mới." },
+
+    { q: "Dòng <code>Press any key to continue</code> ở console nghĩa là gì?", options: [
+        "Chương trình bị lỗi",
+        "Chương trình đã chạy xong, bấm phím bất kỳ để đóng",
+        "Cần nhập mật khẩu" ],
+      answer: 1, explain: "Đó là thông báo chương trình kết thúc; bấm phím bất kỳ để đóng cửa sổ console." }
+  ]
+};
+</script>
+<script src="review.js"></script>
+</body>
+</html>
