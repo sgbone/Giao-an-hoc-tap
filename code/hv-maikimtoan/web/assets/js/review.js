@@ -7,8 +7,30 @@
   const data = window.QUIZ;
   if (!data) return;
 
+  // ----- xáo trộn (Fisher-Yates) -----
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  // xáo các đáp án trong 1 câu, giữ đúng đáp án đúng
+  function shuffleOpts(item) {
+    const correctVal = item.options[item.answer];
+    const opts = shuffle(item.options);
+    return { q: item.q, options: opts, answer: opts.indexOf(correctVal), explain: item.explain };
+  }
+
+  // ----- chuẩn bị danh sách câu hỏi -----
+  let questions = data.questions.slice();
+  if (data.shuffle || data.pick) questions = shuffle(questions);
+  if (data.pick && data.pick < questions.length) questions = questions.slice(0, data.pick);
+  if (data.shuffleOptions) questions = questions.map(shuffleOpts);
+
   const root = document.getElementById("quiz-root");
-  const total = data.questions.length;
+  const total = questions.length;
   let answered = 0;
   let correct = 0;
 
@@ -30,7 +52,7 @@
   }
 
   // ----- render từng câu -----
-  data.questions.forEach((item, qi) => {
+  questions.forEach((item, qi) => {
     const card = document.createElement("div");
     card.className = "q-card";
 

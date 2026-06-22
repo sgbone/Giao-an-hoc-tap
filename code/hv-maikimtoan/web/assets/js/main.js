@@ -103,6 +103,54 @@ int main() {
         printf("%d la so le\\n", n);
     }
     return 0;
+}`,
+
+  /* ----- Buổi 5 ----- */
+  forloop: `#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        printf("%d\\n", i);
+    }
+    return 0;
+}`,
+
+  whileloop: `#include <stdio.h>
+
+int main() {
+    int i = 1;
+    while (i <= 5) {
+        printf("%d ", i);
+        i++;
+    }
+    return 0;
+}`,
+
+  sumn: `#include <stdio.h>
+
+int main() {
+    int n, tong = 0;
+    printf("Nhap N: ");
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        tong = tong + i;
+    }
+    printf("Tong = %d\\n", tong);
+    return 0;
+}`,
+
+  /* ----- Buổi 6 ----- */
+  star: `#include <stdio.h>
+
+int main() {
+    int n = 4;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("*");
+        }
+        printf("\\n");
+    }
+    return 0;
 }`
 };
 
@@ -160,6 +208,34 @@ const OUTPUTS = {
     "10 la so chan",
     "",
     "Process exited after 1.62s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "forloop-out": [
+    "1", "2", "3", "4", "5",
+    "",
+    "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "whileloop-out": [
+    "1 2 3 4 5 ",
+    "",
+    "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "sumn-out": [
+    "Nhap N: 5",
+    "Tong = 15",
+    "",
+    "Process exited after 1.90s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "star-out": [
+    "*",
+    "**",
+    "***",
+    "****",
+    "",
+    "Process exited after 0.02s with return value 0",
     "Press any key to continue . . ."
   ]
 };

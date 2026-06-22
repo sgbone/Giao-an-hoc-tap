@@ -367,6 +367,18 @@ pre.code.mini { font-size: 12.8px; padding: 14px 16px; }
 .nav-hw:hover { color: #fff; }
 .nav-rv { color: var(--accent); font-weight: 600; }
 .nav-rv:hover { color: #fff; }
+.nav-mid { color: var(--yellow); font-weight: 700; }
+.nav-mid:hover { color: #fff; }
+
+/* ===== KHỐI THI GIỮA KỲ ===== */
+.midterm-card {
+  background:
+    radial-gradient(700px 240px at 100% 0%, rgba(250,204,21,.12), transparent 60%),
+    linear-gradient(180deg, #1c1838, #221a33);
+  border: 1px solid rgba(250,204,21,.35);
+}
+.midterm-card h3 { color: var(--yellow); }
+.midterm-card .cta { background: linear-gradient(120deg, var(--yellow), var(--accent-3)); color: #2a1a04; }
 
 /* ===== KHỐI DẪN SANG TRANG ÔN TẬP ===== */
 .review-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
@@ -514,7 +526,7 @@ pre.code.mini { font-size: 12.8px; padding: 14px 16px; }
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 980px) {
-  .sidebar { transform: translateX(-100%); box-shadow: none; }
+  .sidebar { transform: translateX(-100%); box-shadow: none; padding-top: 76px; }
   body.nav-open .sidebar { transform: none; box-shadow: 24px 0 60px rgba(0,0,0,.5); }
   #menu-toggle { display: inline-flex; }
   #sidebar-backdrop { display: block; pointer-events: none; }

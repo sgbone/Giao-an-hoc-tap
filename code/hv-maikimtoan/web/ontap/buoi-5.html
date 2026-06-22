@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 5 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 5 — Vòng lặp for & while. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="../index.html#b5-for" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 5 — Vòng lặp for &amp; while</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📓 Ôn tập Buổi 5 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 5,
+  questions: [
+    { q: "Vòng lặp dùng để làm gì?", options: [
+        "Lặp đi lặp lại một công việc nhiều lần",
+        "Khai báo biến",
+        "Nhập dữ liệu" ],
+      answer: 0, explain: "Vòng lặp giúp làm một việc lặp lại mà không phải viết lại nhiều lần." },
+
+    { q: "Cú pháp <code>for</code> gồm mấy phần trong ngoặc?", options: [
+        "3 phần: khởi tạo; điều kiện; bước lặp",
+        "2 phần",
+        "1 phần" ],
+      answer: 0, explain: "<code>for (khởi tạo; điều kiện; bước lặp)</code>." },
+
+    { q: "<code>i++</code> tương đương với?", options: [
+        "<code>i = i + 1</code>",
+        "<code>i = i - 1</code>",
+        "<code>i = 1</code>" ],
+      answer: 0, explain: "<code>i++</code> tăng i thêm 1." },
+
+    { q: "<code>for (int i = 1; i <= 10; i++)</code> chạy bao nhiêu lần?", options: [
+        "10", "9", "11" ],
+      answer: 0, explain: "i nhận giá trị 1..10 → 10 lần." },
+
+    { q: "Vòng lặp <code>while</code> kiểm tra điều kiện khi nào?", options: [
+        "Trước mỗi lần lặp",
+        "Sau mỗi lần lặp",
+        "Không kiểm tra" ],
+      answer: 0, explain: "<code>while</code> kiểm tra điều kiện trước rồi mới chạy thân lặp." },
+
+    { q: "Điều gì xảy ra nếu quên <code>i++</code> trong <code>while</code>?", options: [
+        "Lặp vô hạn (chạy mãi không dừng)",
+        "Lỗi biên dịch",
+        "Chạy đúng 1 lần" ],
+      answer: 0, explain: "Điều kiện luôn đúng → vòng lặp không bao giờ dừng." },
+
+    { q: "Đoạn <code>for (i=1; i<=5; i++) printf(\"%d\", i);</code> in ra?", options: [
+        "12345", "1234", "123456" ],
+      answer: 0, explain: "In lần lượt 1,2,3,4,5 liền nhau." },
+
+    { q: "Tổng các số từ 1 đến 5 (1+2+3+4+5) bằng?", options: [
+        "15", "10", "20" ],
+      answer: 0, explain: "1+2+3+4+5 = 15." },
+
+    { q: "<code>i--</code> nghĩa là gì?", options: [
+        "Giảm i đi 1",
+        "Tăng i thêm 1",
+        "Gán i = 0" ],
+      answer: 0, explain: "<code>i--</code> tương đương <code>i = i - 1</code>." },
+
+    { q: "Khác biệt chính giữa <code>for</code> và <code>while</code>?", options: [
+        "<code>for</code> gộp sẵn khởi tạo/điều kiện/bước; <code>while</code> viết rời",
+        "Chúng hoàn toàn giống nhau",
+        "<code>while</code> chạy nhanh hơn" ],
+      answer: 0, explain: "<code>for</code> gọn cho lặp đếm; <code>while</code> linh hoạt, bước lặp viết trong thân." },
+
+    { q: "<code>for (i=2; i<=10; i++)</code> chạy bao nhiêu lần?", options: [
+        "9", "10", "8" ],
+      answer: 0, explain: "Từ 2 đến 10 có 10 - 2 + 1 = 9 lần." },
+
+    { q: "Để in các số chẵn, bước lặp nào tiện nhất?", options: [
+        "<code>i += 2</code> (bắt đầu từ số chẵn)",
+        "<code>i++</code>",
+        "<code>i--</code>" ],
+      answer: 0, explain: "Bắt đầu i=2 và <code>i += 2</code> cho ra 2,4,6,…" },
+
+    { q: "Trong vòng lặp lồng vẽ tam giác, vòng lặp NGOÀI điều khiển?", options: [
+        "Số dòng",
+        "Số sao trên mỗi dòng",
+        "Màu sắc" ],
+      answer: 0, explain: "Vòng ngoài duyệt dòng, vòng trong in số sao của dòng đó." },
+
+    { q: "Sau đoạn <code>for (i=1; i<=N; i++) printf(\"%d\\n\", i);</code> dòng cuối in số?", options: [
+        "N", "N-1", "1" ],
+      answer: 0, explain: "Số cuối được in là N." },
+
+    { q: "Khi nào nên dùng vòng lặp thay vì viết tay nhiều <code>printf</code>?", options: [
+        "Khi công việc lặp lại nhiều lần theo quy luật",
+        "Khi chỉ in 1 dòng",
+        "Khi khai báo biến" ],
+      answer: 0, explain: "Lặp lại có quy luật → dùng vòng lặp gọn và linh hoạt." }
+  ]
+};
+</script>
+<script src="../assets/js/review.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập GIỮA KỲ · Lập trình C</title>
+<meta name="description" content="Ôn tập giữa kỳ (Buổi 1-6) — ngân hàng 500 câu, mỗi lần random 50 câu. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="../index.html" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🎯 Ôn tập GIỮA KỲ</span>
+    <h1>Giữa kỳ — Buổi 1 → 6</h1>
+    <p>Ngân hàng <b>500 câu</b>. Mỗi lần làm, hệ thống <b>chọn ngẫu nhiên 50 câu</b> (đáp án cũng đảo vị trí)
+       trong phạm vi kiến thức 6 buổi đầu. Bấm <b>"Làm lại"</b> để được bộ 50 câu mới.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>🎯 Ôn tập Giữa kỳ — Lập trình C (Buổi 1 → 6)</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script src="../assets/js/midterm-data.js"></script>
+<script>
+window.QUIZ = {
+  pick: 50,
+  shuffle: true,
+  shuffleOptions: true,
+  questions: window.MIDTERM_QUESTIONS || []
+};
+</script>
+<script src="../assets/js/review.js"></script>
+</body>
+</html>

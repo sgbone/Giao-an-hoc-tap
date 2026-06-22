@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 6 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 6 — Ôn tập tổng hợp Buổi 1-5. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="../index.html#b6-recap" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 6 — Tổng hợp Buổi 1 → 5</h1>
+    <p>15 câu trắc nghiệm tổng hợp. Chọn đáp án để biết đúng/sai ngay và xem giải thích.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📔 Ôn tập Buổi 6 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 6,
+  shuffleOptions: true,
+  questions: [
+    { q: "Cuối mỗi câu lệnh C phải có ký tự gì?", options: [
+        "Dấu chấm phẩy <code>;</code>", "Dấu phẩy <code>,</code>", "Dấu chấm <code>.</code>" ],
+      answer: 0, explain: "Mọi câu lệnh kết thúc bằng <code>;</code>." },
+
+    { q: "Ký hiệu định dạng nào cho <code>float</code>?", options: [
+        "<code>%f</code>", "<code>%d</code>", "<code>%c</code>" ],
+      answer: 0, explain: "<code>%f</code> dùng cho số thực." },
+
+    { q: "Trong <code>scanf</code>, trước tên biến cần ký hiệu gì?", options: [
+        "<code>&amp;</code>", "<code>*</code>", "<code>#</code>" ],
+      answer: 0, explain: "Cần dấu <code>&amp;</code> (địa chỉ của biến)." },
+
+    { q: "<code>7 / 2</code> (hai số nguyên) cho kết quả?", options: [
+        "3", "3.5", "4" ],
+      answer: 0, explain: "Chia số nguyên cắt phần thập phân → 3." },
+
+    { q: "<code>7 % 3</code> bằng?", options: [
+        "1", "2", "0" ],
+      answer: 0, explain: "7 chia 3 dư 1." },
+
+    { q: "Giá trị của <code>2 + 3 * 4</code>?", options: [
+        "14", "20", "24" ],
+      answer: 0, explain: "Nhân trước: 3*4=12, +2 = 14." },
+
+    { q: "Phân biệt <code>=</code> và <code>==</code>?", options: [
+        "<code>=</code> gán, <code>==</code> so sánh",
+        "Giống nhau",
+        "<code>=</code> so sánh, <code>==</code> gán" ],
+      answer: 0, explain: "<code>=</code> để gán; <code>==</code> để so sánh bằng." },
+
+    { q: "Điều kiện kiểm tra số chẵn?", options: [
+        "<code>n % 2 == 0</code>", "<code>n / 2 == 0</code>", "<code>n % 2 == 1</code>" ],
+      answer: 0, explain: "Chia hết cho 2 (dư 0) là số chẵn." },
+
+    { q: "<code>for (i=1; i<=6; i++)</code> chạy bao nhiêu lần?", options: [
+        "6", "5", "7" ],
+      answer: 0, explain: "i = 1..6 → 6 lần." },
+
+    { q: "Tổng 1 + 2 + ... + 10 bằng?", options: [
+        "55", "45", "50" ],
+      answer: 0, explain: "10*11/2 = 55." },
+
+    { q: "Quên <code>i++</code> trong <code>while</code> gây ra?", options: [
+        "Lặp vô hạn", "Lỗi cú pháp", "Chạy 1 lần" ],
+      answer: 0, explain: "Điều kiện luôn đúng → lặp mãi." },
+
+    { q: "Trong vòng lặp lồng vẽ tam giác sao, vòng NGOÀI điều khiển?", options: [
+        "Số dòng", "Số sao mỗi dòng", "Tốc độ" ],
+      answer: 0, explain: "Vòng ngoài: dòng; vòng trong: số sao." },
+
+    { q: "Để in menu rồi cho người dùng chọn 1–4, ta dùng?", options: [
+        "<code>printf</code> in menu + <code>scanf</code> đọc lựa chọn + <code>if/else if</code>",
+        "Chỉ <code>printf</code>",
+        "Chỉ <code>scanf</code>" ],
+      answer: 0, explain: "In menu, đọc lựa chọn, rồi rẽ nhánh bằng if/else if." },
+
+    { q: "Khi chia mà mẫu số bằng 0, chương trình nên?", options: [
+        "Kiểm tra <code>if (b == 0)</code> để báo 'Khong chia duoc'",
+        "Cứ chia bình thường",
+        "Thoát ngay không báo" ],
+      answer: 0, explain: "Phải kiểm tra mẫu khác 0 trước khi chia." },
+
+    { q: "Giá trị char được đặt trong dấu?", options: [
+        "Nháy đơn <code>'A'</code>", "Nháy kép <code>\"A\"</code>", "Ngoặc <code>(A)</code>" ],
+      answer: 0, explain: "char dùng nháy đơn." }
+  ]
+};
+</script>
+<script src="../assets/js/review.js"></script>
+</body>
+</html>

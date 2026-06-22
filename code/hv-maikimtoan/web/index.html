@@ -57,11 +57,27 @@
     <a href="#b4-grade" class="nav-link">Ví dụ: xếp loại</a>
     <a href="#b4-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
 
+    <p class="nav-label">Buổi 5 — Vòng lặp</p>
+    <a href="#b5-for" class="nav-link">Vòng lặp for</a>
+    <a href="#b5-while" class="nav-link">Vòng lặp while</a>
+    <a href="#b5-infinite" class="nav-link">Lặp vô hạn</a>
+    <a href="#b5-sum" class="nav-link">Thực hành: tính tổng</a>
+    <a href="#b5-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 6 — Ôn tập tổng hợp</p>
+    <a href="#b6-recap" class="nav-link">Ôn nhanh kiến thức</a>
+    <a href="#b6-star" class="nav-link">Tam giác sao</a>
+    <a href="#b6-menu" class="nav-link">Máy tính có menu</a>
+    <a href="#b6-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
     <p class="nav-label">Ôn tập</p>
+    <a href="ontap/giua-ky.html" class="nav-link nav-mid">🎯 Thi GIỮA KỲ (50 câu)</a>
     <a href="ontap/buoi-1.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 1</a>
     <a href="ontap/buoi-2.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 2</a>
     <a href="ontap/buoi-3.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 3</a>
     <a href="ontap/buoi-4.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 4</a>
+    <a href="ontap/buoi-5.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 5</a>
+    <a href="ontap/buoi-6.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 6</a>
   </nav>
 
   <div class="sidebar-footer">
@@ -781,6 +797,282 @@ Xep loai: Kha</pre>
     </div>
   </section>
 
+  <!-- ================= BUỔI 5 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 5</span>
+    <h2>Vòng lặp for và while</h2>
+  </div>
+
+  <!-- 1. for -->
+  <section id="b5-for" class="card reveal">
+    <h3><span class="num">1</span> Vòng lặp <code>for</code></h3>
+    <p>Vòng lặp giúp làm một việc <b>lặp đi lặp lại</b> mà không phải viết lại nhiều lần. Ví dụ in các số từ 1 đến 5:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 dem.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="forloop"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="forloop-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="forloop-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <p>Cú pháp gồm <b>3 phần</b> trong ngoặc, cách nhau bởi dấu <code>;</code>:</p>
+    <ul class="explain">
+      <li><b>Khởi tạo</b>: <code>int i = 1</code> — chạy 1 lần lúc đầu.</li>
+      <li><b>Điều kiện</b>: <code>i &lt;= 5</code> — còn đúng thì còn lặp.</li>
+      <li><b>Bước lặp</b>: <code>i++</code> — chạy sau mỗi vòng (<code>i++</code> nghĩa là <code>i = i + 1</code>).</li>
+    </ul>
+  </section>
+
+  <!-- 2. while -->
+  <section id="b5-while" class="card reveal">
+    <h3><span class="num">2</span> Vòng lặp <code>while</code></h3>
+    <p>Cùng kết quả như <code>for</code> nhưng khởi tạo nằm ngoài, bước lặp viết bên trong thân:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 demwhile.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="whileloop"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="whileloop-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="whileloop-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted">💡 <code>while</code> kiểm tra điều kiện <b>trước</b> mỗi lần lặp.</p>
+  </section>
+
+  <!-- 3. lặp vô hạn -->
+  <section id="b5-infinite" class="card reveal">
+    <h3><span class="num">3</span> Cảnh báo: lặp vô hạn</h3>
+    <p>Nếu <b>quên tăng biến</b> (<code>i++</code>) thì điều kiện luôn đúng và vòng lặp <b>chạy mãi không dừng</b> — console in liên tục.</p>
+    <div class="compare">
+      <div class="compare-col bad">
+        <div class="compare-tag">❌ Lặp vô hạn (thiếu i++)</div>
+        <pre class="code mini">int i = 1;
+while (i &lt;= 5) {
+    printf("%d ", i);
+    <span class="tok-com">// quên i++ !</span>
+}</pre>
+      </div>
+      <div class="compare-col good">
+        <div class="compare-tag">✅ Đúng</div>
+        <pre class="code mini">int i = 1;
+while (i &lt;= 5) {
+    printf("%d ", i);
+    i++;
+}</pre>
+      </div>
+    </div>
+    <div class="callout callout-tip">
+      Nếu lỡ chạy vòng lặp vô hạn, cứ <b>đóng cửa sổ console</b> để dừng, rồi thêm bước tăng biến.
+    </div>
+  </section>
+
+  <!-- 4. thực hành tổng -->
+  <section id="b5-sum" class="card reveal">
+    <h3><span class="num">4</span> Thực hành: Tính tổng từ 1 đến N</h3>
+    <p>Dùng một biến <code>tong</code> cộng dồn qua từng vòng lặp. Bấm <b>"Chạy thử"</b> với <code>N = 5</code>.</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 tong.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="sumn"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="sumn-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="sumn-out" hidden>
+          <div class="console-bar">Console — gõ số rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BÀI TẬP VỀ NHÀ — BUỔI 5 ===== -->
+  <section id="b5-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 5 — Vòng lặp</h3>
+      <p class="muted">3 bài theo độ khó tăng dần. Làm cho chương trình in ra <b>giống kết quả mẫu</b> nhé!</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">In từ 1 đến N</p>
+        <p class="hw-desc">Nhập N rồi in tất cả số từ 1 đến N, mỗi số một dòng.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap N: 5
+1
+2
+3
+4
+5</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: <code>for (int i = 1; i &lt;= n; i++) printf("%d\n", i);</code></p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Tổng các số chẵn</p>
+        <p class="hw-desc">Nhập N, tính tổng các số chẵn từ 1 đến N.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap N: 6
+Tong cac so chan: 12</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: trong vòng lặp, dùng <code>if (i % 2 == 0) tong += i;</code></p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Bảng cửu chương</p>
+        <p class="hw-desc">Nhập một số N (1–9), in bảng cửu chương của N (từ N×1 đến N×10).</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap N: 3
+3 x 1 = 3
+3 x 2 = 6
+...
+3 x 10 = 30</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: dùng <code>for</code> chạy i từ 1→10, in <code>N x i = (N*i)</code>.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 6 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 6</span>
+    <h2>Ôn tập tổng hợp (Buổi 1 → 5)</h2>
+  </div>
+
+  <!-- 1. ôn nhanh -->
+  <section id="b6-recap" class="card reveal">
+    <h3><span class="num">1</span> Ôn nhanh toàn bộ kiến thức</h3>
+    <p>Trước khi làm bài tổng hợp, cùng điểm lại những "vũ khí" đã có:</p>
+    <div class="type-grid">
+      <div class="type-card"><div class="type-icon">📦</div><b>Biến</b><p>int, float, char</p></div>
+      <div class="type-card"><div class="type-icon">⌨️</div><b>Nhập/Xuất</b><p>printf, scanf, &amp;</p></div>
+      <div class="type-card"><div class="type-icon">➗</div><b>Toán tử</b><p>+ - * / %</p></div>
+      <div class="type-card"><div class="type-icon">🔀</div><b>Điều kiện</b><p>if - else if - else</p></div>
+      <div class="type-card"><div class="type-icon">🔁</div><b>Vòng lặp</b><p>for, while</p></div>
+      <div class="type-card"><div class="type-icon">⚠️</div><b>Lỗi hay gặp</b><p>quên ; &amp; == i++</p></div>
+    </div>
+  </section>
+
+  <!-- 2. tam giác sao -->
+  <section id="b6-star" class="card reveal">
+    <h3><span class="num">2</span> Bài tổng hợp: Tam giác sao (vòng lặp lồng)</h3>
+    <p>Dùng <b>vòng lặp lồng nhau</b>: vòng ngoài cho từng <b>dòng</b>, vòng trong in số <b>sao</b> của dòng đó.</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 tamgiac.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="star"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="star-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="star-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted">💡 Dòng thứ <code>i</code> in đúng <code>i</code> dấu sao, rồi xuống dòng.</p>
+  </section>
+
+  <!-- 3. menu máy tính -->
+  <section id="b6-menu" class="card reveal">
+    <h3><span class="num">3</span> Bài tổng hợp: Máy tính có menu</h3>
+    <p>Kết hợp <code>printf</code> + <code>scanf</code> + <code>if/else if</code>: in menu, đọc lựa chọn, rồi tính.</p>
+    <div class="ui-mock">
+      <div class="ui-editor">1. Cong&#10;2. Tru&#10;3. Nhan&#10;4. Chia&#10;Nhap lua chon (1-4):</div>
+    </div>
+    <div class="callout callout-warn">
+      <b>Lưu ý phép chia:</b> nếu mẫu số <code>b == 0</code> thì báo "Khong chia duoc" thay vì chia.
+    </div>
+  </section>
+
+  <!-- ===== BÀI TẬP VỀ NHÀ — BUỔI 6 ===== -->
+  <section id="b6-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 6 — Ôn tập tổng hợp</h3>
+      <p class="muted">3 bài theo độ khó tăng dần, vận dụng cả vòng lặp lồng và điều kiện.</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">Tam giác sao</p>
+        <p class="hw-desc">Nhập N, in tam giác sao N dòng (dòng i có i dấu sao).</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap N: 4
+*
+**
+***
+****</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: vòng lặp lồng — vòng ngoài dòng, vòng trong in sao.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Tổng chia hết 3 hoặc 5</p>
+        <p class="hw-desc">Nhập N, tính tổng các số chia hết cho 3 <b>hoặc</b> 5 từ 1 đến N.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap N: 10
+Tong = 33</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: <code>if (i % 3 == 0 || i % 5 == 0) tong += i;</code> (3+5+6+9+10 = 33).</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Tam giác sao ngược</p>
+        <p class="hw-desc">Nhập N, in tam giác sao "ngược" (dòng đầu N sao, giảm dần còn 1).</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap N: 5
+*****
+****
+***
+**
+*</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: vòng ngoài cho i từ N giảm về 1; vòng trong in i dấu sao.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA THI GIỮA KỲ ===== -->
+  <section id="midterm-cta" class="card reveal midterm-card">
+    <h3>🎯 Sẵn sàng cho bài kiểm tra GIỮA KỲ?</h3>
+    <p>Ngân hàng <b>500 câu</b> trắc nghiệm trong phạm vi <b>Buổi 1 → 6</b>. Mỗi lần làm, hệ thống chọn
+       <b>ngẫu nhiên 50 câu</b> (đáp án đảo vị trí) và tự chấm điểm. Luyện nhiều lần để chắc kiến thức!</p>
+    <a class="cta" href="ontap/giua-ky.html">🎯 Làm đề giữa kỳ (50 câu ngẫu nhiên) →</a>
+  </section>
+
   <!-- ÔN TẬP — dẫn sang trang riêng -->
   <section id="review-cta" class="card reveal">
     <h3>🧠 Ôn tập nhanh</h3>
@@ -806,17 +1098,27 @@ Xep loai: Kha</pre>
         <span class="rl-text"><b>Ôn tập Buổi 4</b><small>15 câu · Điều kiện if-else</small></span>
         <span class="rl-go">→</span>
       </a>
+      <a class="review-link" href="ontap/buoi-5.html">
+        <span class="rl-icon">📓</span>
+        <span class="rl-text"><b>Ôn tập Buổi 5</b><small>15 câu · Vòng lặp for &amp; while</small></span>
+        <span class="rl-go">→</span>
+      </a>
+      <a class="review-link" href="ontap/buoi-6.html">
+        <span class="rl-icon">📔</span>
+        <span class="rl-text"><b>Ôn tập Buổi 6</b><small>15 câu · Tổng hợp Buổi 1–5</small></span>
+        <span class="rl-go">→</span>
+      </a>
     </div>
   </section>
 
   <footer class="footer">
-    <p>📘 Khóa học Lập trình C — Buổi 1 → 4</p>
+    <p>📘 Khóa học Lập trình C — Buổi 1 → 6</p>
     <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
   </footer>
 
 </main>
 
-<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else"];</script>
+<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else", "5 — Vong lap for, while", "6 — On tap tong hop"];</script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
