@@ -70,7 +70,11 @@
 </aside>
 
 <!-- nút mở menu trên mobile -->
-<button id="menu-toggle" aria-label="Menu">☰</button>
+<button id="menu-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="sidebar">
+  <span class="mt-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  <span class="mt-label">Menu</span>
+</button>
+<div id="sidebar-backdrop"></div>
 
 <!-- ============ MAIN ============ -->
 <main class="content">

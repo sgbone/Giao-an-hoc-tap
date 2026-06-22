@@ -93,10 +93,42 @@ body::before {
 }
 .sidebar-footer span { color: var(--accent-3); }
 
+/* nút mở menu (mobile) — kiểu glass, có nhãn, icon hamburger động */
 #menu-toggle {
-  position: fixed; top: 14px; left: 14px; z-index: 150; display: none;
-  width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line);
-  background: var(--bg-card); color: var(--text); font-size: 20px; cursor: pointer;
+  position: fixed; top: 16px; left: 16px; z-index: 160; display: none;
+  align-items: center; gap: 10px; height: 46px; padding: 0 16px 0 13px;
+  border-radius: 14px; cursor: pointer; color: var(--text);
+  font-family: var(--font); font-size: 14px; font-weight: 700; letter-spacing: .01em;
+  background: rgba(18,26,48,.82); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border: 1px solid var(--line); box-shadow: 0 10px 26px rgba(0,0,0,.45);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+#menu-toggle:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 14px 32px rgba(94,234,212,.28); }
+#menu-toggle:active { transform: translateY(0) scale(.97); }
+#menu-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.mt-bars { position: relative; width: 20px; height: 14px; flex: none; }
+.mt-bars span {
+  position: absolute; left: 0; width: 100%; height: 2.5px; border-radius: 3px;
+  background: var(--accent);
+  transition: top .28s ease, transform .28s ease, opacity .18s ease, width .28s ease;
+}
+.mt-bars span:nth-child(1) { top: 0; }
+.mt-bars span:nth-child(2) { top: 6px; width: 75%; }
+.mt-bars span:nth-child(3) { top: 12px; }
+.mt-label { line-height: 1; }
+
+/* khi mở: hamburger -> dấu X */
+body.nav-open .mt-bars span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+body.nav-open .mt-bars span:nth-child(2) { opacity: 0; width: 100%; }
+body.nav-open .mt-bars span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+body.nav-open #menu-toggle { border-color: var(--accent); }
+
+/* lớp nền mờ phía sau sidebar (mobile) */
+#sidebar-backdrop {
+  position: fixed; inset: 0; z-index: 90; display: none;
+  background: rgba(5,8,16,.6); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  opacity: 0; transition: opacity .3s ease;
 }
 
 /* ===================== CONTENT ===================== */
@@ -482,10 +514,12 @@ pre.code.mini { font-size: 12.8px; padding: 14px 16px; }
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 980px) {
-  .sidebar { transform: translateX(-100%); }
-  .sidebar.open { transform: none; }
-  #menu-toggle { display: block; }
-  .content { margin-left: 0; padding: 70px 18px 60px; }
+  .sidebar { transform: translateX(-100%); box-shadow: none; }
+  body.nav-open .sidebar { transform: none; box-shadow: 24px 0 60px rgba(0,0,0,.5); }
+  #menu-toggle { display: inline-flex; }
+  #sidebar-backdrop { display: block; pointer-events: none; }
+  body.nav-open #sidebar-backdrop { opacity: 1; pointer-events: auto; }
+  .content { margin-left: 0; padding: 80px 18px 60px; }
   .compare { grid-template-columns: 1fr; }
   .flow-arrow { transform: rotate(90deg); }
 }

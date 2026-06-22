@@ -354,8 +354,29 @@ sections.forEach(s => navIO.observe(s));
 
 /* ---------- Menu mobile ---------- */
 const sidebar = document.getElementById("sidebar");
-document.getElementById("menu-toggle").addEventListener("click", () => sidebar.classList.toggle("open"));
-navLinks.forEach(l => l.addEventListener("click", () => sidebar.classList.remove("open")));
+const menuToggle = document.getElementById("menu-toggle");
+const backdrop = document.getElementById("sidebar-backdrop");
+
+function setNav(open){
+  document.body.classList.toggle("nav-open", open);
+  if (menuToggle){
+    menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    menuToggle.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+    const label = menuToggle.querySelector(".mt-label");
+    if (label) label.textContent = open ? "Đóng" : "Menu";
+  }
+}
+
+if (menuToggle){
+  menuToggle.addEventListener("click", () =>
+    setNav(!document.body.classList.contains("nav-open")));
+}
+if (backdrop) backdrop.addEventListener("click", () => setNav(false));
+navLinks.forEach(l => l.addEventListener("click", () => setNav(false)));
+// Esc để đóng menu
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && document.body.classList.contains("nav-open")) setNav(false);
+});
 
 /* ---------- Hiệu ứng gõ tiêu đề hero ---------- */
 (function typeHeroTitle(){
