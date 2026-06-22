@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Học Lập Trình C · Buổi 1 & 2</title>
+<meta name="description" content="Khóa học lập trình C cho người mới — Buổi 1 & 2. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Nền hạt code bay -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Thanh tiến độ đọc -->
+<div id="progress-bar"></div>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-logo">&lt;/&gt;</div>
+    <div class="brand-text">
+      <strong>C Academy</strong>
+      <span>Lập trình từ số 0</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <p class="nav-label">Buổi 1 — Làm quen</p>
+    <a href="#b1-intro" class="nav-link">Lập trình là gì?</a>
+    <a href="#b1-setup" class="nav-link">Cài đặt Dev-C++</a>
+    <a href="#b1-keys" class="nav-link">Phím tắt cần nhớ</a>
+    <a href="#b1-hello" class="nav-link">Hello World</a>
+    <a href="#b1-errors" class="nav-link">Xử lý lỗi</a>
+
+    <p class="nav-label">Buổi 2 — Biến & kiểu</p>
+    <a href="#b2-var" class="nav-link">Biến là gì?</a>
+    <a href="#b2-types" class="nav-link">Các kiểu dữ liệu</a>
+    <a href="#b2-declare" class="nav-link">Khai báo & in ra</a>
+    <a href="#b2-format" class="nav-link">Định dạng in</a>
+    <a href="#b2-practice" class="nav-link">Luyện tập</a>
+
+    <p class="nav-label">Ôn tập</p>
+    <a href="#quiz" class="nav-link">Câu hỏi nhanh</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    ✍️ Trần Hoàng Đức Anh <span>(Bò)</span>
+  </div>
+</aside>
+
+<!-- nút mở menu trên mobile -->
+<button id="menu-toggle" aria-label="Menu">☰</button>
+
+<!-- ============ MAIN ============ -->
+<main class="content">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badges">
+      <span class="badge badge-green">● Người mới bắt đầu</span>
+      <span class="badge">Dev-C++ 6.3</span>
+      <span class="badge">Ngôn ngữ C</span>
+    </div>
+    <h1 class="hero-title">
+      Học Lập Trình <span class="grad">C</span><br />
+      <span class="type-wrap">Buổi <span id="typed"></span><span class="cursor">|</span></span>
+    </h1>
+    <p class="hero-sub">
+      Hành trình từ con số 0. Mỗi khái niệm giải thích chậm rãi, có ví dụ minh họa
+      và code chạy thật để bạn vừa đọc vừa hiểu.
+    </p>
+
+    <div class="terminal hero-term">
+      <div class="term-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="term-title">main.c — Dev-C++</span>
+      </div>
+      <pre class="term-body"><code id="hero-code"></code></pre>
+    </div>
+
+    <a href="#b1-intro" class="cta">Bắt đầu học ↓</a>
+  </header>
+
+  <!-- ================= BUỔI 1 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 1</span>
+    <h2>Làm quen lập trình &amp; cài đặt Dev-C++</h2>
+  </div>
+
+  <!-- 1. Lập trình là gì -->
+  <section id="b1-intro" class="card reveal">
+    <h3><span class="num">1</span> Lập trình là gì?</h3>
+    <p>
+      Hãy tưởng tượng bạn viết một <b>công thức nấu ăn</b> cho máy tính làm theo từng bước.
+      Đó chính là <b>lập trình</b> — bạn ra lệnh, máy tính thực hiện chính xác y như vậy.
+    </p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-icon">📝</div>
+        <b>Mã nguồn</b>
+        <small>Code do người viết</small>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon">⚙️</div>
+        <b>Trình biên dịch</b>
+        <small>Dịch sang ngôn ngữ máy</small>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-icon">🚀</div>
+        <b>Chương trình</b>
+        <small>Chạy được, ra kết quả</small>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <b>Vì sao học C?</b> C là ngôn ngữ lâu đời, là nền tảng của C++, Java, Python…
+      Học C giúp bạn hiểu rõ máy tính hoạt động ra sao — học xong C, các ngôn ngữ khác sẽ dễ hơn nhiều.
+    </div>
+  </section>
+
+  <!-- 2. Cài đặt -->
+  <section id="b1-setup" class="card reveal">
+    <h3><span class="num">2</span> Cài đặt &amp; làm quen Dev-C++</h3>
+    <p>Chạy file cài đặt <code>Embarcadero_Dev-Cpp_6.3_Setup.exe</code> → bấm <b>Next</b> liên tục → chọn ngôn ngữ → hoàn tất. Đã có sẵn trình biên dịch TDM-GCC, không cần cài thêm gì.</p>
+
+    <div class="ui-mock">
+      <div class="ui-row ui-toolbar">
+        <span class="ui-tool">📄 New</span>
+        <span class="ui-tool">💾 Save</span>
+        <span class="ui-tool ui-hot">⚙️ Compile (F9)</span>
+        <span class="ui-tool ui-hot">▶️ Run (F10)</span>
+        <span class="ui-tool ui-hot">⚡ Compile &amp; Run (F11)</span>
+      </div>
+      <div class="ui-editor">Vùng soạn code — bạn gõ chương trình ở đây</div>
+      <div class="ui-log">Compile Log — nơi báo lỗi &amp; thông báo biên dịch (luôn nhìn xuống đây!)</div>
+    </div>
+
+    <div class="callout callout-warn">
+      <b>Lưu file đúng cách!</b> Bấm <kbd>Ctrl</kbd>+<kbd>S</kbd>, đặt tên <code>bai1.c</code> —
+      <b>nhớ gõ đuôi <code>.c</code></b> (không phải <code>.cpp</code>). Nên tạo thư mục riêng như <code>D:\HocC\</code> để khỏi thất lạc.
+    </div>
+  </section>
+
+  <!-- 3. Phím tắt -->
+  <section id="b1-keys" class="card reveal">
+    <h3><span class="num">3</span> Phím tắt cần nhớ ngay</h3>
+    <div class="keys">
+      <div class="key-item"><kbd>Ctrl</kbd>+<kbd>N</kbd><span>Tạo file mới</span></div>
+      <div class="key-item"><kbd>Ctrl</kbd>+<kbd>S</kbd><span>Lưu file (.c)</span></div>
+      <div class="key-item"><kbd>F9</kbd><span>Chỉ biên dịch</span></div>
+      <div class="key-item"><kbd>F10</kbd><span>Chỉ chạy</span></div>
+      <div class="key-item key-hot"><kbd>F11</kbd><span>Biên dịch &amp; chạy ⭐</span></div>
+      <div class="key-item"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd><span>Lưu tên khác</span></div>
+    </div>
+    <p class="muted">💡 Dùng nhiều nhất là <b>F11</b> — vừa biên dịch vừa chạy chỉ với một phím.</p>
+  </section>
+
+  <!-- 4. Hello World -->
+  <section id="b1-hello" class="card reveal">
+    <h3><span class="num">4</span> Chương trình đầu tiên: Hello World</h3>
+    <p>Đây là chương trình kinh điển mà mọi lập trình viên đều bắt đầu. Bấm <b>"Chạy thử"</b> để xem kết quả!</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 bai1.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="hello"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="hello-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="hello-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="sub">Giải thích từng dòng — không bỏ sót dòng nào:</h4>
+    <ul class="explain">
+      <li><code>#include &lt;stdio.h&gt;</code> — khai báo dùng thư viện nhập/xuất chuẩn.</li>
+      <li><code>int main()</code> — nơi chương trình <b>bắt đầu chạy</b>.</li>
+      <li><code>{ }</code> — dấu ngoặc nhọn bao quanh <b>thân hàm</b>.</li>
+      <li><code>printf(...)</code> — lệnh <b>in chữ ra màn hình</b>.</li>
+      <li><code>\n</code> — ký tự <b>xuống dòng</b>.</li>
+      <li><code>return 0;</code> — báo chương trình <b>kết thúc thành công</b>.</li>
+      <li class="hl"><code>;</code> — <b>dấu chấm phẩy</b>: cuối mỗi câu lệnh BẮT BUỘC phải có!</li>
+    </ul>
+
+    <div class="callout callout-info">
+      Sau khi chạy, console hiện dòng <code>Process exited... Press any key to continue</code>
+      — nghĩa là chương trình đã chạy xong, bấm phím bất kỳ để đóng.
+    </div>
+  </section>
+
+  <!-- 5. Xử lý lỗi -->
+  <section id="b1-errors" class="card reveal">
+    <h3><span class="num">5</span> Tập đọc &amp; sửa lỗi</h3>
+    <p>Lỗi là chuyện bình thường! Quan trọng là biết <b>đọc thông báo lỗi</b> để sửa. Thử bỏ dấu <code>;</code> xem điều gì xảy ra:</p>
+
+    <div class="compare">
+      <div class="compare-col bad">
+        <div class="compare-tag">❌ Thiếu dấu ;</div>
+        <pre class="code mini" data-code="error"></pre>
+        <div class="err-log">
+          <b>[Error]</b> expected ';' before 'return'<br />
+          <span>bai1.c — dòng 4</span>
+        </div>
+      </div>
+      <div class="compare-col good">
+        <div class="compare-tag">✅ Đã sửa</div>
+        <pre class="code mini" data-code="fixed"></pre>
+        <div class="ok-log">✓ Compilation successful</div>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <b>Quy tắc vàng:</b> Khi gặp lỗi đỏ, đừng hoảng! Nhìn xuống khung <b>Compile Log</b>,
+      đọc <b>số dòng</b> và <b>nội dung lỗi</b>, rồi sửa từ lỗi đầu tiên.
+    </div>
+
+    <div class="homework">
+      <h4>🏠 Bài tập về nhà — Buổi 1</h4>
+      <ol>
+        <li>In ra 5 dòng: họ tên, năm sinh, lớp, sở thích, ước mơ.</li>
+        <li>In ra hình một ngôi sao bằng ký tự <code>*</code> (5 dòng).</li>
+        <li>Tạo file <code>baitap.c</code>, lưu đúng và chạy thử để quen thao tác.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 2 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 2</span>
+    <h2>Biến và kiểu dữ liệu</h2>
+  </div>
+
+  <!-- Biến là gì -->
+  <section id="b2-var" class="card reveal">
+    <h3><span class="num">1</span> Biến là gì?</h3>
+    <p>
+      Biến giống như một <b>cái hộp có dán nhãn</b> để chứa giá trị. Bạn có thể bỏ giá trị vào,
+      lấy ra, hoặc thay bằng giá trị khác.
+    </p>
+
+    <div class="boxes">
+      <div class="box-var">
+        <div class="box-label">tuoi</div>
+        <div class="box-body">18</div>
+        <div class="box-type">int</div>
+      </div>
+      <div class="box-var">
+        <div class="box-label">chieuCao</div>
+        <div class="box-body">1.65</div>
+        <div class="box-type">float</div>
+      </div>
+      <div class="box-var">
+        <div class="box-label">gioiTinh</div>
+        <div class="box-body">'N'</div>
+        <div class="box-type">char</div>
+      </div>
+    </div>
+
+    <p>Mỗi biến gồm 3 thành phần: <b>tên</b> · <b>kiểu dữ liệu</b> · <b>giá trị</b>.</p>
+
+    <div class="callout callout-tip">
+      <b>Quy tắc đặt tên biến:</b> bắt đầu bằng chữ cái hoặc dấu <code>_</code>,
+      không có khoảng trắng, không trùng từ khóa của C.
+    </div>
+  </section>
+
+  <!-- Các kiểu -->
+  <section id="b2-types" class="card reveal">
+    <h3><span class="num">2</span> Các kiểu dữ liệu cơ bản</h3>
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="type-icon">🔢</div>
+        <b>int</b>
+        <p>Số nguyên</p>
+        <span class="type-ex">1, 2, -5, 100</span>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">📐</div>
+        <b>float</b>
+        <p>Số thực (có phần thập phân)</p>
+        <span class="type-ex">3.14, -0.5</span>
+      </div>
+      <div class="type-card">
+        <div class="type-icon">🔤</div>
+        <b>char</b>
+        <p>Một ký tự duy nhất</p>
+        <span class="type-ex">'A', 'b', '5'</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Khai báo -->
+  <section id="b2-declare" class="card reveal">
+    <h3><span class="num">3</span> Khai báo, gán giá trị &amp; in ra</h3>
+    <p>Cùng viết chương trình lưu thông tin một người rồi in ra màn hình:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 bai2.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="vars"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="vars-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="vars-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Định dạng -->
+  <section id="b2-format" class="card reveal">
+    <h3><span class="num">4</span> Định dạng in (rất quan trọng!)</h3>
+    <p>Mỗi kiểu dữ liệu có một <b>ký hiệu định dạng</b> riêng khi dùng với <code>printf</code>:</p>
+
+    <table class="fmt-table">
+      <thead><tr><th>Ký hiệu</th><th>Dùng cho</th><th>Ví dụ</th></tr></thead>
+      <tbody>
+        <tr><td><code>%d</code></td><td>int (số nguyên)</td><td><code>printf("%d", 18);</code> → 18</td></tr>
+        <tr><td><code>%f</code></td><td>float (số thực)</td><td><code>printf("%f", 1.65);</code> → 1.650000</td></tr>
+        <tr><td><code>%.2f</code></td><td>float, 2 chữ số thập phân</td><td><code>printf("%.2f", 1.65);</code> → 1.65</td></tr>
+        <tr><td><code>%c</code></td><td>char (1 ký tự)</td><td><code>printf("%c", 'N');</code> → N</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warn">
+      <b>Lỗi thường gặp!</b> Dùng nhầm <code>%d</code> cho <code>float</code> sẽ ra <b>số sai be bét</b>.
+      Hãy luôn dùng đúng ký hiệu cho đúng kiểu.
+    </div>
+  </section>
+
+  <!-- Luyện tập -->
+  <section id="b2-practice" class="card reveal">
+    <h3><span class="num">5</span> Luyện tập tại lớp</h3>
+    <div class="task-list">
+      <div class="task"><span class="task-no">①</span> Tự khai báo 5 biến với 3 kiểu khác nhau, in ra màn hình.</div>
+      <div class="task"><span class="task-no">②</span> Đổi giá trị biến giữa chừng: gán lại biến rồi in lần 2.</div>
+    </div>
+
+    <div class="homework">
+      <h4>🏠 Bài tập về nhà — Buổi 2</h4>
+      <ol>
+        <li>Khai báo 3 biến lưu điểm Toán, Văn, Anh. In ra cả 3.</li>
+        <li>Khai báo biến lưu giá 1 ly trà sữa (45000), in ra:
+          <code>Gia 1 ly tra sua la 45000 VND</code></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="card reveal">
+    <h3>🧠 Câu hỏi nhanh — Tự kiểm tra</h3>
+    <div class="quiz" data-answer="1">
+      <p class="quiz-q">1. Đuôi file đúng để lưu chương trình C là gì?</p>
+      <button class="quiz-opt">.cpp</button>
+      <button class="quiz-opt" data-correct>.c</button>
+      <button class="quiz-opt">.txt</button>
+    </div>
+    <div class="quiz" data-answer="2">
+      <p class="quiz-q">2. Phím tắt "Biên dịch &amp; chạy" trong Dev-C++?</p>
+      <button class="quiz-opt">F9</button>
+      <button class="quiz-opt" data-correct>F11</button>
+      <button class="quiz-opt">Ctrl+S</button>
+    </div>
+    <div class="quiz" data-answer="3">
+      <p class="quiz-q">3. Ký hiệu định dạng nào dùng cho kiểu <code>float</code>?</p>
+      <button class="quiz-opt">%d</button>
+      <button class="quiz-opt">%c</button>
+      <button class="quiz-opt" data-correct>%f</button>
+    </div>
+    <div class="quiz" data-answer="4">
+      <p class="quiz-q">4. Cuối mỗi câu lệnh trong C phải có ký tự gì?</p>
+      <button class="quiz-opt" data-correct>Dấu chấm phẩy ;</button>
+      <button class="quiz-opt">Dấu phẩy ,</button>
+      <button class="quiz-opt">Dấu chấm .</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>📘 Khóa học Lập trình C — Buổi 1 &amp; 2</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
