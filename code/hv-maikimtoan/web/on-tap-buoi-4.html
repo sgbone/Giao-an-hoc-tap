@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 4 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 4 — Câu lệnh điều kiện if-else. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="buoi3-4.html" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 4 — Câu lệnh điều kiện</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📕 Ôn tập Buổi 4 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 4,
+  questions: [
+    { q: "Toán tử nào dùng để <b>so sánh bằng nhau</b>?", options: [
+        "<code>=</code>", "<code>==</code>", "<code>!=</code>" ],
+      answer: 1, explain: "<code>==</code> là so sánh bằng. <code>=</code> là phép gán." },
+
+    { q: "Sự khác nhau giữa <code>=</code> và <code>==</code>?", options: [
+        "<code>=</code> để gán, <code>==</code> để so sánh",
+        "Giống hệt nhau",
+        "<code>=</code> để so sánh, <code>==</code> để gán" ],
+      answer: 0, explain: "<code>n = 5</code> gán 5 cho n; <code>n == 5</code> hỏi n có bằng 5 không." },
+
+    { q: "Toán tử <code>!=</code> nghĩa là gì?", options: [
+        "Bằng nhau", "Khác nhau", "Lớn hơn" ],
+      answer: 1, explain: "<code>!=</code> là 'khác nhau' (not equal)." },
+
+    { q: "Toán tử <code>&amp;&amp;</code> nghĩa là gì?", options: [
+        "HOẶC", "VÀ", "PHỦ ĐỊNH" ],
+      answer: 1, explain: "<code>&amp;&amp;</code> là VÀ — đúng khi cả hai điều kiện đều đúng." },
+
+    { q: "Toán tử <code>||</code> nghĩa là gì?", options: [
+        "VÀ", "HOẶC", "KHÁC" ],
+      answer: 1, explain: "<code>||</code> là HOẶC — đúng khi ít nhất một điều kiện đúng." },
+
+    { q: "Cấu trúc <code>if (dieu_kien) { ... }</code> chạy khối lệnh khi nào?", options: [
+        "Khi điều kiện ĐÚNG",
+        "Khi điều kiện SAI",
+        "Luôn luôn chạy" ],
+      answer: 0, explain: "Khối trong <code>if</code> chỉ chạy khi điều kiện đúng." },
+
+    { q: "Phần <code>else</code> chạy khi nào?", options: [
+        "Khi điều kiện <code>if</code> SAI",
+        "Khi điều kiện <code>if</code> ĐÚNG",
+        "Không bao giờ chạy" ],
+      answer: 0, explain: "<code>else</code> chạy khi điều kiện của <code>if</code> sai." },
+
+    { q: "Điều kiện kiểm tra số chẵn là?", options: [
+        "<code>n % 2 == 0</code>",
+        "<code>n / 2 == 0</code>",
+        "<code>n % 2 == 1</code>" ],
+      answer: 0, explain: "Chia hết cho 2 (dư 0) là số chẵn → <code>n % 2 == 0</code>." },
+
+    { q: "Điều kiện nào nhận biết số <b>lẻ</b>?", options: [
+        "<code>n % 2 == 1</code>",
+        "<code>n % 2 == 0</code>",
+        "<code>n == 1</code>" ],
+      answer: 0, explain: "Số lẻ chia 2 dư 1 → <code>n % 2 == 1</code>." },
+
+    { q: "Khi có nhiều hơn 2 trường hợp, ta dùng?", options: [
+        "<code>else if</code>",
+        "Nhiều <code>printf</code>",
+        "Vòng lặp for" ],
+      answer: 0, explain: "Dùng chuỗi <code>if – else if – else</code> cho nhiều nhánh." },
+
+    { q: "Trong chuỗi <code>if – else if</code>, chương trình xét các điều kiện như thế nào?", options: [
+        "Lần lượt từ trên xuống, gặp điều kiện đúng đầu tiên thì chạy",
+        "Chạy tất cả các nhánh",
+        "Chạy nhánh cuối cùng" ],
+      answer: 0, explain: "Xét từ trên xuống; trúng nhánh đúng đầu tiên rồi bỏ qua phần còn lại." },
+
+    { q: "Để xếp loại điểm (≥8 Gioi, ≥6.5 Kha…), nên xét thứ tự nào?", options: [
+        "Từ điểm cao xuống thấp",
+        "Từ điểm thấp lên cao",
+        "Thứ tự nào cũng đúng như nhau" ],
+      answer: 0, explain: "Xét từ cao xuống thấp để nhánh đầu trúng là dừng, tránh sai logic." },
+
+    { q: "Biểu thức <code>(diem &gt;= 5) &amp;&amp; (diem &lt; 6.5)</code> đúng khi?", options: [
+        "diem trong khoảng từ 5 đến dưới 6.5",
+        "diem nhỏ hơn 5",
+        "diem lớn hơn hoặc bằng 6.5" ],
+      answer: 0, explain: "<code>&amp;&amp;</code> yêu cầu cả hai: diem ≥ 5 VÀ diem < 6.5." },
+
+    { q: "Câu nào viết ĐÚNG để so sánh n có bằng 10 không?", options: [
+        "<code>if (n == 10)</code>",
+        "<code>if (n = 10)</code>",
+        "<code>if (n => 10)</code>" ],
+      answer: 0, explain: "So sánh bằng dùng <code>==</code>. <code>=</code> là gán, <code>=&gt;</code> không tồn tại." },
+
+    { q: "Toán tử <code>!</code> (phủ định) làm gì?", options: [
+        "Đảo ngược đúng thành sai và ngược lại",
+        "Cộng thêm 1",
+        "So sánh lớn hơn" ],
+      answer: 0, explain: "<code>!</code> đảo giá trị logic: !đúng = sai, !sai = đúng." }
+  ]
+};
+</script>
+<script src="review.js"></script>
+</body>
+</html>

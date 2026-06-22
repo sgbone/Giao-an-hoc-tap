@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 3 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 3 — Nhập dữ liệu & toán tử. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="buoi3-4.html" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 3 — Nhập liệu &amp; toán tử</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📙 Ôn tập Buổi 3 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 3,
+  questions: [
+    { q: "Lệnh nào dùng để <b>nhập</b> dữ liệu từ bàn phím?", options: [
+        "<code>printf</code>", "<code>scanf</code>", "<code>include</code>" ],
+      answer: 1, explain: "<code>scanf</code> đọc dữ liệu người dùng gõ vào; <code>printf</code> để in ra." },
+
+    { q: "Câu lệnh <code>scanf</code> đúng để nhập một biến <code>int tuoi;</code> là?", options: [
+        "<code>scanf(\"%d\", tuoi);</code>",
+        "<code>scanf(\"%d\", &amp;tuoi);</code>",
+        "<code>scanf(\"%f\", &amp;tuoi);</code>" ],
+      answer: 1, explain: "Cần dấu <code>&amp;</code> trước tên biến, và <code>%d</code> cho int." },
+
+    { q: "Dấu <code>&amp;</code> trong <code>scanf(\"%d\", &amp;tuoi)</code> nghĩa là gì (tạm hiểu)?", options: [
+        "Địa chỉ của biến",
+        "Phép VÀ logic",
+        "Một lỗi cú pháp" ],
+      answer: 0, explain: "<code>&amp;</code> là 'địa chỉ của biến' — để scanf biết bỏ giá trị vào đâu." },
+
+    { q: "Lỗi nào hay quên nhất khi viết <code>scanf</code>?", options: [
+        "Quên dấu <code>&amp;</code> trước tên biến",
+        "Viết hoa SCANF",
+        "Thiếu thư viện math.h" ],
+      answer: 0, explain: "Quên <code>&amp;</code> là lỗi kinh điển của người mới." },
+
+    { q: "Để nhập một số thực vào biến <code>float a;</code> dùng ký hiệu nào?", options: [
+        "<code>%d</code>", "<code>%f</code>", "<code>%c</code>" ],
+      answer: 1, explain: "<code>%f</code> dùng cho float khi nhập lẫn khi in." },
+
+    { q: "Toán tử <code>%</code> làm gì?", options: [
+        "Chia lấy phần dư",
+        "Tính phần trăm",
+        "Chia lấy phần nguyên thập phân" ],
+      answer: 0, explain: "<code>%</code> lấy số dư của phép chia, ví dụ <code>7 % 3</code> = 1." },
+
+    { q: "<code>5 / 2</code> trong C cho kết quả là?", options: [
+        "2.5", "2", "3" ],
+      answer: 1, explain: "Hai số nguyên chia nhau bị cắt phần thập phân → 2." },
+
+    { q: "Muốn <code>5 / 2</code> ra <b>2.5</b> thì phải làm sao?", options: [
+        "Cho ít nhất một số là số thực: <code>5.0 / 2</code>",
+        "Không thể được",
+        "Dùng dấu <code>%</code>" ],
+      answer: 0, explain: "Chỉ cần một toán hạng là float, vd <code>5.0 / 2</code> = 2.5." },
+
+    { q: "<code>7 % 2</code> bằng bao nhiêu?", options: [
+        "3", "1", "0" ],
+      answer: 1, explain: "7 chia 2 dư 1." },
+
+    { q: "Toán tử <code>%</code> dùng được với kiểu nào?", options: [
+        "Chỉ số nguyên (int)",
+        "Chỉ số thực (float)",
+        "Mọi kiểu" ],
+      answer: 0, explain: "<code>%</code> chỉ dùng cho số nguyên." },
+
+    { q: "Trong <code>2 + 3 * 4</code>, phép nào tính trước?", options: [
+        "Phép nhân <code>3 * 4</code>",
+        "Phép cộng <code>2 + 3</code>",
+        "Tính từ trái sang phải" ],
+      answer: 0, explain: "Nhân/chia ưu tiên hơn cộng/trừ → 3*4=12, rồi +2 = 14." },
+
+    { q: "<code>(2 + 3) * 4</code> bằng bao nhiêu?", options: [
+        "14", "20", "24" ],
+      answer: 1, explain: "Ngoặc tính trước: (2+3)=5, rồi 5*4 = 20." },
+
+    { q: "Dấu ngoặc <code>( )</code> trong biểu thức dùng để làm gì?", options: [
+        "Ép thứ tự tính toán",
+        "Kết thúc câu lệnh",
+        "Khai báo biến" ],
+      answer: 0, explain: "Ngoặc giúp phần bên trong được tính trước." },
+
+    { q: "Để in <b>trung bình</b> của 3 số nguyên a, b, c chính xác phần lẻ, nên?", options: [
+        "Dùng float và in bằng <code>%.2f</code>",
+        "Dùng int và in bằng <code>%d</code>",
+        "Dùng char" ],
+      answer: 0, explain: "Phải dùng float (hoặc ép kiểu) để giữ phần thập phân, in bằng <code>%.2f</code>." },
+
+    { q: "Sau khi gõ giá trị cho <code>scanf</code> trong console, ta bấm phím gì để nhập?", options: [
+        "<kbd>Enter</kbd>", "<kbd>Esc</kbd>", "<kbd>Tab</kbd>" ],
+      answer: 0, explain: "Gõ giá trị xong bấm <kbd>Enter</kbd> để scanf nhận dữ liệu." }
+  ]
+};
+</script>
+<script src="review.js"></script>
+</body>
+</html>

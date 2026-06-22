@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Học Lập Trình C · Buổi 3 & 4</title>
+<meta name="description" content="Khóa học lập trình C cho người mới — Buổi 3 & 4. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-logo">&lt;/&gt;</div>
+    <div class="brand-text">
+      <strong>C Academy</strong>
+      <span>Lập trình từ số 0</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <p class="nav-label">Buổi 3 — Nhập liệu &amp; toán tử</p>
+    <a href="#b3-scanf" class="nav-link">Nhập dữ liệu (scanf)</a>
+    <a href="#b3-op" class="nav-link">Toán tử số học</a>
+    <a href="#b3-intdiv" class="nav-link">Bẫy chia số nguyên</a>
+    <a href="#b3-priority" class="nav-link">Thứ tự ưu tiên</a>
+    <a href="#b3-calc" class="nav-link">Máy tính mini</a>
+    <a href="#b3-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 4 — Điều kiện if-else</p>
+    <a href="#b4-compare" class="nav-link">So sánh &amp; logic</a>
+    <a href="#b4-if" class="nav-link">Cấu trúc if-else</a>
+    <a href="#b4-elseif" class="nav-link">if - else if - else</a>
+    <a href="#b4-grade" class="nav-link">Ví dụ: xếp loại</a>
+    <a href="#b4-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Ôn tập</p>
+    <a href="on-tap-buoi-3.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 3</a>
+    <a href="on-tap-buoi-4.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 4</a>
+
+    <p class="nav-label">Bài học khác</p>
+    <a href="index.html" class="nav-link">← Buổi 1 &amp; 2</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    ✍️ Trần Hoàng Đức Anh <span>(Bò)</span>
+  </div>
+</aside>
+
+<button id="menu-toggle" aria-label="Menu">☰</button>
+
+<!-- ============ MAIN ============ -->
+<main class="content">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badges">
+      <span class="badge badge-green">● Tiếp nối Buổi 1–2</span>
+      <span class="badge">Dev-C++ 6.3</span>
+      <span class="badge">Ngôn ngữ C</span>
+    </div>
+    <h1 class="hero-title">
+      Học Lập Trình <span class="grad">C</span><br />
+      <span class="type-wrap">Buổi <span id="typed"></span><span class="cursor">|</span></span>
+    </h1>
+    <p class="hero-sub">
+      Giờ chương trình của bạn sẽ biết <b>nhận dữ liệu từ người dùng</b>, <b>tính toán</b>
+      và <b>tự ra quyết định</b>. Đây là lúc lập trình bắt đầu thú vị!
+    </p>
+
+    <div class="terminal hero-term">
+      <div class="term-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="term-title">main.c — Dev-C++</span>
+      </div>
+      <pre class="term-body"><code id="hero-code" data-snippet="calc"></code></pre>
+    </div>
+
+    <a href="#b3-scanf" class="cta">Bắt đầu học ↓</a>
+  </header>
+
+  <!-- ================= BUỔI 3 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 3</span>
+    <h2>Nhập dữ liệu và toán tử</h2>
+  </div>
+
+  <!-- 1. scanf -->
+  <section id="b3-scanf" class="card reveal">
+    <h3><span class="num">1</span> Nhập dữ liệu với <code>scanf</code></h3>
+    <p>Ở Buổi 2, giá trị do ta gán sẵn. Bây giờ ta cho <b>người dùng tự nhập</b> bằng lệnh <code>scanf</code>.</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 nhaptuoi.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="scanf"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="scanf-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="scanf-out" hidden>
+          <div class="console-bar">Console — gõ số rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warn">
+      <b>Nhớ dấu <code>&amp;</code> trước tên biến trong <code>scanf</code>!</b> Đây là lỗi rất hay quên.
+      Tạm hiểu: <code>&amp;</code> nghĩa là "địa chỉ của biến" — học kỹ sau. Cú pháp:
+      <code>scanf("%d", &amp;tuoi);</code>
+    </div>
+    <ul class="explain">
+      <li>Định dạng nhập giống định dạng in: <code>%d</code> (int), <code>%f</code> (float), <code>%c</code> (char).</li>
+      <li>Khi console hiện ra, gõ giá trị rồi bấm <kbd>Enter</kbd> để nhập.</li>
+    </ul>
+  </section>
+
+  <!-- 2. toán tử -->
+  <section id="b3-op" class="card reveal">
+    <h3><span class="num">2</span> Các toán tử số học</h3>
+    <table class="fmt-table">
+      <thead><tr><th>Toán tử</th><th>Ý nghĩa</th><th>Ví dụ</th></tr></thead>
+      <tbody>
+        <tr><td><code>+</code></td><td>Cộng</td><td><code>5 + 2</code> → 7</td></tr>
+        <tr><td><code>-</code></td><td>Trừ</td><td><code>5 - 2</code> → 3</td></tr>
+        <tr><td><code>*</code></td><td>Nhân</td><td><code>5 * 2</code> → 10</td></tr>
+        <tr><td><code>/</code></td><td>Chia</td><td><code>6 / 2</code> → 3</td></tr>
+        <tr><td><code>%</code></td><td>Chia lấy dư (chỉ dùng cho int)</td><td><code>5 % 2</code> → 1</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3. bẫy chia nguyên -->
+  <section id="b3-intdiv" class="card reveal">
+    <h3><span class="num">3</span> Cái bẫy: chia hai số nguyên</h3>
+    <p>Đây là lỗi <b>rất hay gặp</b>: <code>5 / 2</code> cho kết quả <code>2</code> chứ không phải <code>2.5</code>!
+       Vì cả hai đều là số nguyên nên C cắt bỏ phần thập phân.</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 chia.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="intdiv"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="intdiv-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="intdiv-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <b>Cách sửa:</b> muốn ra 2.5 thì cho ít nhất một số là số thực:
+      <code>5.0 / 2</code> → 2.5. Dấu <code>%</code> chỉ dùng cho số nguyên.
+    </div>
+  </section>
+
+  <!-- 4. thứ tự ưu tiên -->
+  <section id="b3-priority" class="card reveal">
+    <h3><span class="num">4</span> Thứ tự ưu tiên các phép tính</h3>
+    <p>Giống toán học: nhân chia trước, cộng trừ sau. Dùng dấu ngoặc <code>( )</code> để ép thứ tự.</p>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-icon">①</div><b>( )</b><small>Ngoặc tính trước</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-icon">②</div><b>* / %</b><small>Nhân, chia, chia dư</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-icon">③</div><b>+ -</b><small>Cộng, trừ</small></div>
+    </div>
+    <div class="callout callout-info">
+      Ví dụ: <code>2 + 3 * 4</code> = 14 (nhân trước). Còn <code>(2 + 3) * 4</code> = 20 (ngoặc trước).
+    </div>
+  </section>
+
+  <!-- 5. máy tính -->
+  <section id="b3-calc" class="card reveal">
+    <h3><span class="num">5</span> Thực hành: Máy tính mini</h3>
+    <p>Nhập 2 số rồi in ra cả 4 phép tính. Bấm <b>"Chạy thử"</b> để xem kết quả với <code>a = 6</code>, <code>b = 4</code>.</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 maytinh.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="calc"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="calc-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="calc-out" hidden>
+          <div class="console-bar">Console — gõ số rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted">💡 Dùng <code>float</code> để phép chia ra số lẻ chính xác.</p>
+  </section>
+
+  <!-- ===== BÀI TẬP VỀ NHÀ — BUỔI 3 ===== -->
+  <section id="b3-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 3 — Nhập liệu &amp; toán tử</h3>
+      <p class="muted">3 bài theo độ khó tăng dần. Làm cho chương trình in ra <b>giống kết quả mẫu</b> nhé!</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">Tổng hai số</p>
+        <p class="hw-desc">Nhập 2 số nguyên <code>a</code>, <code>b</code> rồi in ra tổng của chúng.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap a: 7
+Nhap b: 5
+Tong = 12</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: 2 lần <code>scanf("%d", &amp;...)</code>, rồi in <code>a + b</code> bằng <code>%d</code>.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Điểm trung bình</p>
+        <p class="hw-desc">Nhập điểm Toán, Văn, Anh (số thực) rồi tính và in ra điểm trung bình.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap diem Toan: 8
+Nhap diem Van: 7
+Nhap diem Anh: 9
+Diem trung binh: 8.00</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: dùng <code>float</code>; trung bình = <code>(t + v + a) / 3</code>, in bằng <code>%.2f</code>.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Hình tròn</p>
+        <p class="hw-desc">Nhập bán kính <code>r</code>, tính <b>chu vi</b> (<code>2 * 3.14 * r</code>) và <b>diện tích</b> (<code>3.14 * r * r</code>).</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap ban kinh r: 2
+Chu vi: 12.56
+Dien tich: 12.56</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: thử thêm in cả đường kính. Nhớ dùng <code>float</code> cho r.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 4 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 4</span>
+    <h2>Câu lệnh điều kiện if – else</h2>
+  </div>
+
+  <!-- 1. so sánh & logic -->
+  <section id="b4-compare" class="card reveal">
+    <h3><span class="num">1</span> Toán tử so sánh &amp; logic</h3>
+    <table class="fmt-table">
+      <thead><tr><th>Toán tử</th><th>Ý nghĩa</th></tr></thead>
+      <tbody>
+        <tr><td><code>==</code></td><td>Bằng nhau</td></tr>
+        <tr><td><code>!=</code></td><td>Khác nhau</td></tr>
+        <tr><td><code>&gt;</code> <code>&lt;</code></td><td>Lớn hơn / nhỏ hơn</td></tr>
+        <tr><td><code>&gt;=</code> <code>&lt;=</code></td><td>Lớn hơn hoặc bằng / nhỏ hơn hoặc bằng</td></tr>
+        <tr><td><code>&amp;&amp;</code></td><td>VÀ (cả hai điều kiện đúng)</td></tr>
+        <tr><td><code>||</code></td><td>HOẶC (một trong hai đúng)</td></tr>
+        <tr><td><code>!</code></td><td>PHỦ ĐỊNH (đảo đúng/sai)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warn">
+      <b>Lỗi cực kỳ hay gặp:</b> dùng <code>=</code> (gán) thay vì <code>==</code> (so sánh)!
+      <br />• <code>n = 5</code> nghĩa là "gán 5 cho n". <br />• <code>n == 5</code> nghĩa là "n có bằng 5 không?".
+    </div>
+  </section>
+
+  <!-- 2. if-else -->
+  <section id="b4-if" class="card reveal">
+    <h3><span class="num">2</span> Cấu trúc <code>if – else</code></h3>
+    <p>Cho chương trình "ra quyết định": nếu điều kiện đúng làm việc này, sai làm việc kia.</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 chanle.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="evenodd"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="evenodd-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="evenodd-out" hidden>
+          <div class="console-bar">Console — gõ số rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <b>Mẹo kiểm tra chẵn/lẻ:</b> số chia hết cho 2 (tức <code>n % 2 == 0</code>) là số chẵn.
+    </div>
+  </section>
+
+  <!-- 3. else if -->
+  <section id="b4-elseif" class="card reveal">
+    <h3><span class="num">3</span> Nhiều nhánh: <code>if – else if – else</code></h3>
+    <p>Khi có nhiều hơn 2 trường hợp, dùng <code>else if</code>. Ví dụ xét số dương / âm / bằng 0:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 dauso.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="ifelse"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="ifelse-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="ifelse-out" hidden>
+          <div class="console-bar">Console — gõ số rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted">💡 Chương trình kiểm tra lần lượt từ trên xuống, gặp điều kiện đúng đầu tiên thì chạy nhánh đó.</p>
+  </section>
+
+  <!-- 4. ví dụ xếp loại -->
+  <section id="b4-grade" class="card reveal">
+    <h3><span class="num">4</span> Ví dụ thực tế: Xếp loại học lực</h3>
+    <p>Nhập điểm trung bình, xếp loại theo thang điểm. Lưu ý thứ tự xét từ cao xuống thấp:</p>
+    <ul class="explain">
+      <li>≥ 8.0 → <b>Gioi</b></li>
+      <li>≥ 6.5 → <b>Kha</b></li>
+      <li>≥ 5.0 → <b>Trung binh</b></li>
+      <li>&lt; 5.0 → <b>Yeu</b></li>
+    </ul>
+    <div class="callout callout-tip">
+      Vì sao xét từ cao xuống? Nếu điểm là 9, điều kiện <code>diem &gt;= 8.0</code> đúng ngay,
+      chương trình in "Gioi" rồi bỏ qua các nhánh sau. Gọn và đúng!
+    </div>
+  </section>
+
+  <!-- ===== BÀI TẬP VỀ NHÀ — BUỔI 4 ===== -->
+  <section id="b4-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 4 — Câu lệnh điều kiện</h3>
+      <p class="muted">3 bài theo độ khó tăng dần. Chú ý dùng <code>==</code> để so sánh (không phải <code>=</code>) nhé!</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">Chẵn hay lẻ</p>
+        <p class="hw-desc">Nhập 1 số nguyên, kiểm tra và in ra số đó là chẵn hay lẻ.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap so n: 7
+7 la so le</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: dùng <code>if (n % 2 == 0)</code> … <code>else</code> …</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Số lớn hơn</p>
+        <p class="hw-desc">Nhập 2 số, in ra số lớn hơn (nếu bằng nhau thì báo "Hai so bang nhau").</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap a: 8
+Nhap b: 12
+So lon hon la: 12</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: dùng <code>if (a &gt; b)</code> … <code>else if (a &lt; b)</code> … <code>else</code> …</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Xếp loại học lực</p>
+        <p class="hw-desc">Nhập điểm trung bình rồi xếp loại: ≥8 Gioi, ≥6.5 Kha, ≥5 Trung binh, còn lại Yeu.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap diem trung binh: 7.5
+Xep loai: Kha</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: dùng chuỗi <code>if – else if – else</code>, xét từ điểm cao xuống thấp.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ÔN TẬP CTA -->
+  <section id="review-cta" class="card reveal">
+    <h3>🧠 Ôn tập nhanh</h3>
+    <p>Làm bộ câu hỏi trắc nghiệm <b>tự chấm điểm</b> cho từng buổi để củng cố kiến thức nhé!</p>
+    <div class="review-links">
+      <a class="review-link" href="on-tap-buoi-3.html">
+        <span class="rl-icon">📙</span>
+        <span class="rl-text"><b>Ôn tập Buổi 3</b><small>15 câu · Nhập liệu &amp; toán tử</small></span>
+        <span class="rl-go">→</span>
+      </a>
+      <a class="review-link" href="on-tap-buoi-4.html">
+        <span class="rl-icon">📕</span>
+        <span class="rl-text"><b>Ôn tập Buổi 4</b><small>15 câu · Điều kiện if-else</small></span>
+        <span class="rl-go">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>📘 Khóa học Lập trình C — Buổi 3 &amp; 4</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+
+</main>
+
+<script>window.HERO_WORDS = ["3 — Nhap lieu & toan tu", "4 — Dieu kien if-else"];</script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -3,6 +3,8 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/buoi1-2", "destination": "/index.html" },
-    { "source": "/buoi1-2/", "destination": "/index.html" }
+    { "source": "/buoi1-2/", "destination": "/index.html" },
+    { "source": "/buoi3-4", "destination": "/buoi3-4.html" },
+    { "source": "/buoi3-4/", "destination": "/buoi3-4.html" }
   ]
 }

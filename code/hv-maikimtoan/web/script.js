@@ -34,6 +34,75 @@ int main() {
     printf("Gioi tinh: %c\\n", gioiTinh);
 
     return 0;
+}`,
+
+  /* ----- Buổi 3 ----- */
+  scanf: `#include <stdio.h>
+
+int main() {
+    int tuoi;
+    printf("Nhap tuoi cua ban: ");
+    scanf("%d", &tuoi);
+    printf("Tuoi cua ban la: %d\\n", tuoi);
+    return 0;
+}`,
+
+  calc: `#include <stdio.h>
+
+int main() {
+    float a, b;
+    printf("Nhap so a: ");
+    scanf("%f", &a);
+    printf("Nhap so b: ");
+    scanf("%f", &b);
+
+    printf("Tong: %.2f\\n", a + b);
+    printf("Hieu: %.2f\\n", a - b);
+    printf("Tich: %.2f\\n", a * b);
+    printf("Thuong: %.2f\\n", a / b);
+    return 0;
+}`,
+
+  intdiv: `#include <stdio.h>
+
+int main() {
+    printf("5 / 2 = %d\\n", 5 / 2);
+    printf("5 %% 2 = %d\\n", 5 % 2);
+    printf("5.0 / 2 = %.1f\\n", 5.0 / 2);
+    return 0;
+}`,
+
+  /* ----- Buổi 4 ----- */
+  ifelse: `#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Nhap so nguyen: ");
+    scanf("%d", &n);
+
+    if (n > 0) {
+        printf("So duong\\n");
+    } else if (n < 0) {
+        printf("So am\\n");
+    } else {
+        printf("So 0\\n");
+    }
+    return 0;
+}`,
+
+  evenodd: `#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Nhap so n: ");
+    scanf("%d", &n);
+
+    if (n % 2 == 0) {
+        printf("%d la so chan\\n", n);
+    } else {
+        printf("%d la so le\\n", n);
+    }
+    return 0;
 }`
 };
 
@@ -51,6 +120,46 @@ const OUTPUTS = {
     "Gioi tinh: N",
     "",
     "Process exited after 0.03s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "scanf-out": [
+    "Nhap tuoi cua ban: 18",
+    "Tuoi cua ban la: 18",
+    "",
+    "Process exited after 2.51s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "calc-out": [
+    "Nhap so a: 6",
+    "Nhap so b: 4",
+    "Tong: 10.00",
+    "Hieu: 2.00",
+    "Tich: 24.00",
+    "Thuong: 1.50",
+    "",
+    "Process exited after 3.20s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "intdiv-out": [
+    "5 / 2 = 2",
+    "5 % 2 = 1",
+    "5.0 / 2 = 2.5",
+    "",
+    "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "ifelse-out": [
+    "Nhap so nguyen: -7",
+    "So am",
+    "",
+    "Process exited after 1.84s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "evenodd-out": [
+    "Nhap so n: 10",
+    "10 la so chan",
+    "",
+    "Process exited after 1.62s with return value 0",
     "Press any key to continue . . ."
   ]
 };
@@ -251,7 +360,8 @@ navLinks.forEach(l => l.addEventListener("click", () => sidebar.classList.remove
 /* ---------- Hiệu ứng gõ tiêu đề hero ---------- */
 (function typeHeroTitle(){
   const el = document.getElementById("typed");
-  const words = ["1 — Hello World", "2 — Biến & kiểu dữ liệu"];
+  if (!el) return;
+  const words = window.HERO_WORDS || ["1 — Hello World", "2 — Biến & kiểu dữ liệu"];
   let w = 0, c = 0, deleting = false;
   function loop(){
     const word = words[w];
@@ -266,7 +376,8 @@ navLinks.forEach(l => l.addEventListener("click", () => sidebar.classList.remove
 /* ---------- Gõ code trong terminal hero ---------- */
 (function typeHeroCode(){
   const el = document.getElementById("hero-code");
-  const code = SNIPPETS.hello;
+  if (!el) return;
+  const code = SNIPPETS[el.dataset.snippet] || SNIPPETS.hello;
   let i = 0;
   function type(){
     if (i <= code.length){
