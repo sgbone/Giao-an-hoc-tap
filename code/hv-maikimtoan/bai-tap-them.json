@@ -1,0 +1,923 @@
+{
+  "tieu_de": "Bài tập thêm — Toàn Học Lập Trình C",
+  "tac_gia": "Trần Hoàng Đức Anh (Bò)",
+  "mo_ta": "Tài liệu bài tập luyện thêm: mỗi buổi 10 bài, nội dung đa dạng và vui, đều nằm trong phạm vi kiến thức đã học của buổi đó. Dùng để tự luyện ở nhà.",
+  "ghi_chu": "Mức độ: 'Siêu dễ' (làm theo mẫu), 'Vừa' (phải suy nghĩ), 'Khó' (sáng tạo). 'ket_qua_mau' là gợi ý kết quả minh hoạ.",
+  "cac_buoi": [
+    {
+      "buoi": 1,
+      "chu_de": "Làm quen & Hello World",
+      "kien_thuc": [
+        "printf",
+        "\\n",
+        "dấu ;"
+      ],
+      "bai_tap": [
+        {
+          "id": "1.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Chào thế giới",
+          "de_bai": "In ra dòng chữ: Xin chao the gioi lap trinh!",
+          "ket_qua_mau": "Xin chao the gioi lap trinh!",
+          "goi_y": "Dùng 1 lệnh printf, nhớ \\n cuối câu."
+        },
+        {
+          "id": "1.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Danh thiếp mini",
+          "de_bai": "In 2 dòng: tên thật và biệt danh của em.",
+          "ket_qua_mau": "Ten: Duc Anh\nBiet danh: Bo",
+          "goi_y": "Mỗi dòng một printf."
+        },
+        {
+          "id": "1.3",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Mặt cười",
+          "de_bai": "In ra một khuôn mặt cười bằng ký tự, ví dụ :) hoặc ^_^",
+          "ket_qua_mau": "Chao ban  ^_^",
+          "goi_y": "In trực tiếp các ký tự."
+        },
+        {
+          "id": "1.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Câu nói chất",
+          "de_bai": "In ra câu nói truyền cảm hứng yêu thích của em (1-2 dòng).",
+          "ket_qua_mau": "\"Khong gi la khong the!\"\n- Bo -",
+          "goi_y": "Dùng dấu \\\" để in dấu nháy kép nếu cần."
+        },
+        {
+          "id": "1.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Khung tên",
+          "de_bai": "In tên em nằm trong khung bằng dấu *.",
+          "ket_qua_mau": "******\n* BO *\n******",
+          "goi_y": "Vẽ 3 dòng: viền trên, tên, viền dưới."
+        },
+        {
+          "id": "1.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Menu trà sữa",
+          "de_bai": "In ra một thực đơn trà sữa (chỉ in chữ, chưa tính tiền).",
+          "ket_qua_mau": "--- TRA SUA BO ---\n1. Tran chau 25k\n2. Pho mai 30k\n3. Khoai mon 28k",
+          "goi_y": "Mỗi món một printf."
+        },
+        {
+          "id": "1.7",
+          "do_kho": "Vừa",
+          "tieu_de": "Chú mèo ASCII",
+          "de_bai": "In ra một chú mèo bằng ký tự (cat ASCII art đơn giản).",
+          "ket_qua_mau": "=^..^=  meo meo",
+          "goi_y": "Sáng tạo bằng ký tự bàn phím."
+        },
+        {
+          "id": "1.8",
+          "do_kho": "Khó",
+          "tieu_de": "Trái tim",
+          "de_bai": "In ra hình trái tim đơn giản bằng ký tự *.",
+          "ket_qua_mau": "  ** **\n *******\n  *****\n   ***\n    *",
+          "goi_y": "Vẽ từng dòng, canh khoảng trắng."
+        },
+        {
+          "id": "1.9",
+          "do_kho": "Khó",
+          "tieu_de": "Cây thông Noel",
+          "de_bai": "In một cây thông bằng ký tự (tự sáng tạo số dòng).",
+          "ket_qua_mau": "   *\n  ***\n *****\n   |",
+          "goi_y": "Thêm khoảng trắng đầu dòng để canh giữa."
+        },
+        {
+          "id": "1.10",
+          "do_kho": "Khó",
+          "tieu_de": "Cà khịa bạn thân (vui)",
+          "de_bai": "In 3 câu 'cà khịa' hài hước gửi đứa bạn thân của em.",
+          "ket_qua_mau": "Ban oi code di!\nDung ngu nua~\nMai thi roi do!",
+          "goi_y": "Vui thôi, mỗi câu một printf."
+        }
+      ]
+    },
+    {
+      "buoi": 2,
+      "chu_de": "Biến & kiểu dữ liệu",
+      "kien_thuc": [
+        "int",
+        "float",
+        "char",
+        "%d %f %c",
+        "gán giá trị"
+      ],
+      "bai_tap": [
+        {
+          "id": "2.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Tuổi của tôi",
+          "de_bai": "Khai báo biến tuổi (int) = 15, in ra: Nam nay toi 15 tuoi.",
+          "ket_qua_mau": "Nam nay toi 15 tuoi",
+          "goi_y": "Dùng %d cho tuổi."
+        },
+        {
+          "id": "2.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Bảng điểm gán sẵn",
+          "de_bai": "Khai báo 3 biến float điểm Toán, Văn, Anh và in ra.",
+          "ket_qua_mau": "Toan: 8.50\nVan: 7.00\nAnh: 9.00",
+          "goi_y": "Dùng %.2f."
+        },
+        {
+          "id": "2.3",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Hạng học lực",
+          "de_bai": "Khai báo char hang = 'A', in ra: Hang cua em la: A",
+          "ket_qua_mau": "Hang cua em la: A",
+          "goi_y": "Dùng %c và nháy đơn 'A'."
+        },
+        {
+          "id": "2.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Thẻ nhân vật game",
+          "de_bai": "Khai báo tên hạng (char), level (int), máu (float) cho nhân vật rồi in.",
+          "ket_qua_mau": "Hang: S\nLevel: 12\nMau: 100.50",
+          "goi_y": "Mỗi kiểu một ký hiệu in tương ứng."
+        },
+        {
+          "id": "2.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Thống kê MXH",
+          "de_bai": "Khai báo số like, share, comment (int) và in từng dòng.",
+          "ket_qua_mau": "Like: 120\nShare: 30\nComment: 45",
+          "goi_y": "3 biến int, %d."
+        },
+        {
+          "id": "2.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Ly trà sữa + topping",
+          "de_bai": "Khai báo giá ly (int) và giá topping (int), in từng giá.",
+          "ket_qua_mau": "Gia ly: 25000\nTopping: 5000",
+          "goi_y": "Chưa cần cộng, chỉ in."
+        },
+        {
+          "id": "2.7",
+          "do_kho": "Vừa",
+          "tieu_de": "Nhiệt độ hôm nay",
+          "de_bai": "Khai báo biến float nhietDo = 31.5, in 'Nhiet do: 31.50 do C'.",
+          "ket_qua_mau": "Nhiet do: 31.50 do C",
+          "goi_y": "%.2f."
+        },
+        {
+          "id": "2.8",
+          "do_kho": "Vừa",
+          "tieu_de": "Đổi giá trị giữa chừng",
+          "de_bai": "Gán điểm = 7, in lần 1; gán lại điểm = 9, in lần 2.",
+          "ket_qua_mau": "Lan 1: 7\nLan 2: 9",
+          "goi_y": "Gán lại biến rồi in tiếp."
+        },
+        {
+          "id": "2.9",
+          "do_kho": "Khó",
+          "tieu_de": "Thẻ thú cưng",
+          "de_bai": "Tạo 'thẻ' thú cưng: tên viết tắt (char), tuổi (int), cân nặng (float) in dạng đẹp.",
+          "ket_qua_mau": "=== THU CUNG ===\nTen: M\nTuoi: 2\nCan nang: 4.50",
+          "goi_y": "Trang trí bằng dấu = cho vui."
+        },
+        {
+          "id": "2.10",
+          "do_kho": "Khó",
+          "tieu_de": "Hồ sơ idol",
+          "de_bai": "Khai báo nhiều biến mô tả idol yêu thích (năm sinh, chiều cao...) và in card thông tin.",
+          "ket_qua_mau": "--- IDOL ---\nNam sinh: 2000\nCao: 1.75",
+          "goi_y": "Tự chọn các trường thông tin."
+        }
+      ]
+    },
+    {
+      "buoi": 3,
+      "chu_de": "Nhập liệu & toán tử",
+      "kien_thuc": [
+        "scanf",
+        "& ",
+        "+ - * / %"
+      ],
+      "bai_tap": [
+        {
+          "id": "3.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Bốn phép tính",
+          "de_bai": "Nhập 2 số, in tổng, hiệu, tích, thương.",
+          "ket_qua_mau": "Nhap a: 6\nNhap b: 4\nTong=10 Hieu=2 Tich=24 Thuong=1.50",
+          "goi_y": "Dùng float để chia ra số lẻ."
+        },
+        {
+          "id": "3.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Điểm trung bình",
+          "de_bai": "Nhập 3 điểm, tính trung bình.",
+          "ket_qua_mau": "Nhap 3 diem: 8 7 9\nTrung binh: 8.00",
+          "goi_y": "(a+b+c)/3, dùng float."
+        },
+        {
+          "id": "3.3",
+          "do_kho": "Vừa",
+          "tieu_de": "Hình chữ nhật",
+          "de_bai": "Nhập 2 cạnh, tính chu vi và diện tích.",
+          "ket_qua_mau": "Dai: 5  Rong: 3\nChu vi: 16  Dien tich: 15",
+          "goi_y": "CV=(d+r)*2, DT=d*r."
+        },
+        {
+          "id": "3.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Hình tròn",
+          "de_bai": "Nhập bán kính r, tính chu vi và diện tích (3.14).",
+          "ket_qua_mau": "r: 2\nChu vi: 12.56\nDien tich: 12.56",
+          "goi_y": "2*3.14*r và 3.14*r*r."
+        },
+        {
+          "id": "3.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Đổi tiền USD",
+          "de_bai": "Nhập số tiền VND, đổi ra USD (1 USD = 25000).",
+          "ket_qua_mau": "VND: 250000\nUSD: 10.00",
+          "goi_y": "Chia cho 25000, dùng float."
+        },
+        {
+          "id": "3.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Đổi giây",
+          "de_bai": "Nhập số giây, đổi ra phút và giây.",
+          "ket_qua_mau": "Giay: 130\n2 phut 10 giay",
+          "goi_y": "phut = s/60, giay = s%60."
+        },
+        {
+          "id": "3.7",
+          "do_kho": "Vừa",
+          "tieu_de": "Tiền trà sữa",
+          "de_bai": "Nhập số ly và giá mỗi ly, tính tổng tiền.",
+          "ket_qua_mau": "So ly: 3  Gia: 25000\nTong: 75000",
+          "goi_y": "Nhân hai số."
+        },
+        {
+          "id": "3.8",
+          "do_kho": "Khó",
+          "tieu_de": "Hoán đổi 2 số",
+          "de_bai": "Nhập 2 số rồi hoán đổi giá trị cho nhau, in kết quả.",
+          "ket_qua_mau": "a=5 b=9 -> a=9 b=5",
+          "goi_y": "Dùng một biến tạm tmp."
+        },
+        {
+          "id": "3.9",
+          "do_kho": "Khó",
+          "tieu_de": "Tách chữ số",
+          "de_bai": "Nhập số có 2 chữ số, in chữ số hàng chục và hàng đơn vị.",
+          "ket_qua_mau": "So: 47\nChuc: 4  Donvi: 7",
+          "goi_y": "Dùng / 10 và % 10."
+        },
+        {
+          "id": "3.10",
+          "do_kho": "Khó",
+          "tieu_de": "Máy tính BMI",
+          "de_bai": "Nhập cân nặng (kg) và chiều cao (m), tính BMI = cn/(cao*cao).",
+          "ket_qua_mau": "Can: 60  Cao: 1.70\nBMI: 20.76",
+          "goi_y": "Dùng float, %.2f."
+        }
+      ]
+    },
+    {
+      "buoi": 4,
+      "chu_de": "Câu lệnh điều kiện if-else",
+      "kien_thuc": [
+        "== != < > <= >=",
+        "&& || !",
+        "%"
+      ],
+      "bai_tap": [
+        {
+          "id": "4.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Âm / Dương / Không",
+          "de_bai": "Nhập 1 số, cho biết nó âm, dương hay bằng 0.",
+          "ket_qua_mau": "Nhap: -7 -> So am",
+          "goi_y": "if - else if - else."
+        },
+        {
+          "id": "4.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Chẵn hay lẻ",
+          "de_bai": "Nhập 1 số, kiểm tra chẵn/lẻ.",
+          "ket_qua_mau": "Nhap: 8 -> So chan",
+          "goi_y": "Dùng n % 2 == 0."
+        },
+        {
+          "id": "4.3",
+          "do_kho": "Vừa",
+          "tieu_de": "Số lớn hơn",
+          "de_bai": "Nhập 2 số, in số lớn hơn (báo nếu bằng nhau).",
+          "ket_qua_mau": "a=8 b=12 -> Lon hon: 12",
+          "goi_y": "So sánh a và b."
+        },
+        {
+          "id": "4.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Lớn nhất 3 số",
+          "de_bai": "Nhập 3 số, tìm số lớn nhất.",
+          "ket_qua_mau": "3 7 5 -> Max: 7",
+          "goi_y": "Kết hợp nhiều if hoặc &&."
+        },
+        {
+          "id": "4.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Xếp loại học lực",
+          "de_bai": "Nhập điểm TB, xếp loại Gioi/Kha/TB/Yeu.",
+          "ket_qua_mau": "7.5 -> Kha",
+          "goi_y": "Xét từ điểm cao xuống."
+        },
+        {
+          "id": "4.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Phân loại tuổi",
+          "de_bai": "Nhập tuổi, in nhóm (Mam non/Tieu hoc/THCS/THPT/Lon).",
+          "ket_qua_mau": "13 -> THCS",
+          "goi_y": "Chia khoảng bằng else if."
+        },
+        {
+          "id": "4.7",
+          "do_kho": "Khó",
+          "tieu_de": "Năm nhuận",
+          "de_bai": "Nhập năm, kiểm tra có phải năm nhuận không.",
+          "ket_qua_mau": "2024 -> Nam nhuan",
+          "goi_y": "Chia hết 4 và (không chia hết 100 hoặc chia hết 400)."
+        },
+        {
+          "id": "4.8",
+          "do_kho": "Khó",
+          "tieu_de": "Tam giác hợp lệ",
+          "de_bai": "Nhập 3 cạnh, kiểm tra có tạo thành tam giác không.",
+          "ket_qua_mau": "3 4 5 -> La tam giac",
+          "goi_y": "Tổng 2 cạnh > cạnh còn lại (dùng &&)."
+        },
+        {
+          "id": "4.9",
+          "do_kho": "Khó",
+          "tieu_de": "FizzBuzz mini (vui)",
+          "de_bai": "Nhập số: chia hết 3 in 'Fizz', chia hết 5 in 'Buzz', cả hai in 'FizzBuzz', còn lại in số.",
+          "ket_qua_mau": "15 -> FizzBuzz",
+          "goi_y": "Kiểm tra cả hai điều kiện trước."
+        },
+        {
+          "id": "4.10",
+          "do_kho": "Khó",
+          "tieu_de": "Oẳn tù tì (vui)",
+          "de_bai": "Nhập lựa chọn của 2 người (0=Keo,1=Bua,2=Bao), in ai thắng.",
+          "ket_qua_mau": "P1=1 P2=2 -> P2 thang",
+          "goi_y": "Liệt kê các trường hợp bằng if."
+        }
+      ]
+    },
+    {
+      "buoi": 5,
+      "chu_de": "Vòng lặp for & while",
+      "kien_thuc": [
+        "for",
+        "while",
+        "i++",
+        "vòng lặp lồng cơ bản"
+      ],
+      "bai_tap": [
+        {
+          "id": "5.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Đếm 1 đến N",
+          "de_bai": "Nhập N, in các số từ 1 đến N.",
+          "ket_qua_mau": "N=5 -> 1 2 3 4 5",
+          "goi_y": "for i=1..N."
+        },
+        {
+          "id": "5.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Tổng 1 đến N",
+          "de_bai": "Nhập N, tính tổng 1+2+...+N.",
+          "ket_qua_mau": "N=5 -> Tong=15",
+          "goi_y": "Cộng dồn trong vòng lặp."
+        },
+        {
+          "id": "5.3",
+          "do_kho": "Vừa",
+          "tieu_de": "Số chẵn 1..N",
+          "de_bai": "Nhập N, in các số chẵn từ 1 đến N.",
+          "ket_qua_mau": "N=6 -> 2 4 6",
+          "goi_y": "if i%2==0 hoặc i+=2."
+        },
+        {
+          "id": "5.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Giai thừa",
+          "de_bai": "Nhập N, tính N! = 1*2*...*N.",
+          "ket_qua_mau": "N=5 -> 120",
+          "goi_y": "Nhân dồn, khởi tạo kq=1."
+        },
+        {
+          "id": "5.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Bảng cửu chương",
+          "de_bai": "Nhập N (1-9), in bảng cửu chương của N.",
+          "ket_qua_mau": "N=3 -> 3x1=3 ... 3x10=30",
+          "goi_y": "for i=1..10 in N*i."
+        },
+        {
+          "id": "5.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Đếm bội số",
+          "de_bai": "Nhập N, đếm có bao nhiêu số chia hết cho 3 từ 1..N.",
+          "ket_qua_mau": "N=10 -> 3 so",
+          "goi_y": "if i%3==0 dem++."
+        },
+        {
+          "id": "5.7",
+          "do_kho": "Khó",
+          "tieu_de": "Tổng các chữ số",
+          "de_bai": "Nhập số nguyên, tính tổng các chữ số của nó.",
+          "ket_qua_mau": "1234 -> 10",
+          "goi_y": "Dùng while: %10 rồi /10."
+        },
+        {
+          "id": "5.8",
+          "do_kho": "Khó",
+          "tieu_de": "Đảo ngược số",
+          "de_bai": "Nhập số nguyên, in số đảo ngược.",
+          "ket_qua_mau": "123 -> 321",
+          "goi_y": "while lấy từng chữ số."
+        },
+        {
+          "id": "5.9",
+          "do_kho": "Khó",
+          "tieu_de": "Số nguyên tố",
+          "de_bai": "Nhập N, kiểm tra N có phải số nguyên tố không.",
+          "ket_qua_mau": "7 -> La so nguyen to",
+          "goi_y": "Đếm ước từ 2..N-1."
+        },
+        {
+          "id": "5.10",
+          "do_kho": "Khó",
+          "tieu_de": "Đếm ngược phóng tên lửa (vui)",
+          "de_bai": "Nhập N, đếm ngược N..1 rồi in 'BUM! 🚀'.",
+          "ket_qua_mau": "N=3 -> 3 2 1 BUM!",
+          "goi_y": "for i=N; i>=1; i--."
+        }
+      ]
+    },
+    {
+      "buoi": 6,
+      "chu_de": "Ôn tập tổng hợp (1-5)",
+      "kien_thuc": [
+        "if-else",
+        "for/while",
+        "vòng lặp lồng",
+        "menu"
+      ],
+      "bai_tap": [
+        {
+          "id": "6.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Tam giác sao",
+          "de_bai": "Nhập N, in tam giác sao N dòng.",
+          "ket_qua_mau": "N=4 -> *, **, ***, ****",
+          "goi_y": "Vòng lặp lồng."
+        },
+        {
+          "id": "6.2",
+          "do_kho": "Vừa",
+          "tieu_de": "Tam giác ngược",
+          "de_bai": "Nhập N, in tam giác sao ngược.",
+          "ket_qua_mau": "N=4 -> ****, ***, **, *",
+          "goi_y": "Vòng ngoài giảm dần."
+        },
+        {
+          "id": "6.3",
+          "do_kho": "Vừa",
+          "tieu_de": "Hình chữ nhật sao",
+          "de_bai": "Nhập số dòng và cột, in hình chữ nhật bằng *.",
+          "ket_qua_mau": "3x5 -> 3 dòng, mỗi dòng 5 sao",
+          "goi_y": "2 vòng lặp lồng."
+        },
+        {
+          "id": "6.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Máy tính có menu",
+          "de_bai": "Nhập a,b và phép tính (1-4), in kết quả; chia 0 thì báo lỗi.",
+          "ket_qua_mau": "a=6 b=0 chia -> Khong chia duoc",
+          "goi_y": "if/else if + kiểm tra b==0."
+        },
+        {
+          "id": "6.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Tổng chia hết 3 hoặc 5",
+          "de_bai": "Nhập N, tính tổng các số chia hết cho 3 hoặc 5 từ 1..N.",
+          "ket_qua_mau": "N=10 -> 33",
+          "goi_y": "if i%3==0 || i%5==0."
+        },
+        {
+          "id": "6.6",
+          "do_kho": "Khó",
+          "tieu_de": "Bảng cửu chương đầy đủ",
+          "de_bai": "In bảng cửu chương từ 2 đến 9 (dùng vòng lặp lồng).",
+          "ket_qua_mau": "2x1=2 ... 9x10=90",
+          "goi_y": "Vòng ngoài 2..9, trong 1..10."
+        },
+        {
+          "id": "6.7",
+          "do_kho": "Khó",
+          "tieu_de": "Tam giác số",
+          "de_bai": "Nhập N, in tam giác số: dòng i in 1..i.",
+          "ket_qua_mau": "N=4 -> 1 / 12 / 123 / 1234",
+          "goi_y": "Vòng trong in từ 1 đến i."
+        },
+        {
+          "id": "6.8",
+          "do_kho": "Khó",
+          "tieu_de": "Dãy Fibonacci",
+          "de_bai": "Nhập N, in N số Fibonacci đầu tiên.",
+          "ket_qua_mau": "N=6 -> 1 1 2 3 5 8",
+          "goi_y": "Lưu 2 số trước, cộng dồn."
+        },
+        {
+          "id": "6.9",
+          "do_kho": "Khó",
+          "tieu_de": "Kim cương sao",
+          "de_bai": "Nhập N, in hình kim cương (thoi) bằng *.",
+          "ket_qua_mau": "N=3 -> tam giác lên rồi xuống",
+          "goi_y": "Canh khoảng trắng + sao."
+        },
+        {
+          "id": "6.10",
+          "do_kho": "Khó",
+          "tieu_de": "Đoán số bí mật (vui)",
+          "de_bai": "Số bí mật cố định (vd 7). Cho nhập nhiều lần tới khi đoán đúng (while).",
+          "ket_qua_mau": "Doan: 5 -> Lon hon\nDoan: 7 -> Chinh xac!",
+          "goi_y": "while tới khi đoán đúng."
+        }
+      ]
+    },
+    {
+      "buoi": 7,
+      "chu_de": "Mảng một chiều",
+      "kien_thuc": [
+        "int a[n]",
+        "duyệt mảng",
+        "tổng/max/đếm"
+      ],
+      "bai_tap": [
+        {
+          "id": "7.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Nhập & in mảng",
+          "de_bai": "Nhập N số vào mảng rồi in lại.",
+          "ket_qua_mau": "5 2 8 1 -> Mang: 5 2 8 1",
+          "goi_y": "2 vòng lặp: nhập và in."
+        },
+        {
+          "id": "7.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Tổng mảng",
+          "de_bai": "Nhập mảng N số, tính tổng các phần tử.",
+          "ket_qua_mau": "[4 6 8 2] -> Tong=20",
+          "goi_y": "Cộng dồn a[i]."
+        },
+        {
+          "id": "7.3",
+          "do_kho": "Vừa",
+          "tieu_de": "Trung bình mảng",
+          "de_bai": "Nhập mảng N số, tính trung bình cộng.",
+          "ket_qua_mau": "[4 6 8 2] -> TB=5.00",
+          "goi_y": "(float)tong/n."
+        },
+        {
+          "id": "7.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Max & Min",
+          "de_bai": "Nhập mảng, tìm phần tử lớn nhất và nhỏ nhất.",
+          "ket_qua_mau": "[4 9 2 7] -> Max=9 Min=2",
+          "goi_y": "Khởi tạo max=min=a[0]."
+        },
+        {
+          "id": "7.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Đếm dương / âm",
+          "de_bai": "Nhập mảng, đếm số phần tử dương và âm.",
+          "ket_qua_mau": "[1 -2 3 -4] -> Duong=2 Am=2",
+          "goi_y": "Xét dấu từng a[i]."
+        },
+        {
+          "id": "7.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Đếm chẵn",
+          "de_bai": "Nhập mảng, đếm số phần tử chẵn.",
+          "ket_qua_mau": "[1 2 3 4] -> 2 so chan",
+          "goi_y": "if a[i]%2==0."
+        },
+        {
+          "id": "7.7",
+          "do_kho": "Khó",
+          "tieu_de": "Đếm xuất hiện của X",
+          "de_bai": "Nhập mảng và số X, đếm X xuất hiện mấy lần.",
+          "ket_qua_mau": "[3 7 3 1 3] X=3 -> 3 lan",
+          "goi_y": "if a[i]==X dem++."
+        },
+        {
+          "id": "7.8",
+          "do_kho": "Khó",
+          "tieu_de": "Vị trí lớn nhất",
+          "de_bai": "Nhập mảng, in giá trị lớn nhất và vị trí của nó.",
+          "ket_qua_mau": "[4 9 2] -> Max=9 tai vi tri 1",
+          "goi_y": "Lưu chỉ số khi cập nhật max."
+        },
+        {
+          "id": "7.9",
+          "do_kho": "Khó",
+          "tieu_de": "Đảo ngược mảng",
+          "de_bai": "Nhập mảng, in mảng theo thứ tự ngược lại.",
+          "ket_qua_mau": "[1 2 3] -> 3 2 1",
+          "goi_y": "Vòng lặp từ n-1 về 0."
+        },
+        {
+          "id": "7.10",
+          "do_kho": "Khó",
+          "tieu_de": "Sổ điểm lớp học (vui)",
+          "de_bai": "Nhập điểm cả lớp, in điểm cao nhất và đếm số bạn đạt (>=5).",
+          "ket_qua_mau": "[8 4 9 5] -> Cao nhat=9, Dat=3",
+          "goi_y": "Kết hợp max + đếm."
+        }
+      ]
+    },
+    {
+      "buoi": 8,
+      "chu_de": "Chuỗi ký tự",
+      "kien_thuc": [
+        "char s[]",
+        "fgets",
+        "strlen/strcmp/strcat",
+        "duyệt ký tự"
+      ],
+      "bai_tap": [
+        {
+          "id": "8.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Đếm ký tự",
+          "de_bai": "Nhập một chuỗi, in độ dài (số ký tự).",
+          "ket_qua_mau": "Lap trinh -> Do dai: 9",
+          "goi_y": "Dùng strlen."
+        },
+        {
+          "id": "8.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Chào theo tên",
+          "de_bai": "Nhập họ tên, in 'Xin chao <ten>!'.",
+          "ket_qua_mau": "Bo -> Xin chao Bo!",
+          "goi_y": "fgets để nhập cả tên."
+        },
+        {
+          "id": "8.3",
+          "do_kho": "Vừa",
+          "tieu_de": "Đếm khoảng trắng",
+          "de_bai": "Nhập chuỗi, đếm số khoảng trắng.",
+          "ket_qua_mau": "Hoc lap trinh vui -> 3",
+          "goi_y": "if s[i]==' '."
+        },
+        {
+          "id": "8.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Đếm chữ hoa",
+          "de_bai": "Nhập chuỗi, đếm số chữ in hoa.",
+          "ket_qua_mau": "Hoc Lap Trinh C -> 4",
+          "goi_y": "'A'..'Z'."
+        },
+        {
+          "id": "8.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Đếm nguyên âm",
+          "de_bai": "Nhập chuỗi, đếm số nguyên âm (a,e,i,o,u).",
+          "ket_qua_mau": "lap trinh -> 3",
+          "goi_y": "So sánh từng ký tự."
+        },
+        {
+          "id": "8.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Đếm ký tự X",
+          "de_bai": "Nhập chuỗi và 1 ký tự, đếm ký tự đó xuất hiện mấy lần.",
+          "ket_qua_mau": "'banana' 'a' -> 3",
+          "goi_y": "Duyệt và so sánh."
+        },
+        {
+          "id": "8.7",
+          "do_kho": "Khó",
+          "tieu_de": "In ngược chuỗi",
+          "de_bai": "Nhập chuỗi, in nó theo thứ tự ngược.",
+          "ket_qua_mau": "abcde -> edcba",
+          "goi_y": "Lặp từ strlen-1 về 0."
+        },
+        {
+          "id": "8.8",
+          "do_kho": "Khó",
+          "tieu_de": "So sánh 2 chuỗi",
+          "de_bai": "Nhập 2 chuỗi, kiểm tra có giống nhau không.",
+          "ket_qua_mau": "'abc' 'abc' -> Giong nhau",
+          "goi_y": "Dùng strcmp == 0."
+        },
+        {
+          "id": "8.9",
+          "do_kho": "Khó",
+          "tieu_de": "Nối họ và tên",
+          "de_bai": "Nhập họ và tên riêng, nối thành họ tên đầy đủ.",
+          "ket_qua_mau": "'Tran' + 'Bo' -> Tran Bo",
+          "goi_y": "strcat (nhớ thêm dấu cách)."
+        },
+        {
+          "id": "8.10",
+          "do_kho": "Khó",
+          "tieu_de": "Tên bạn hét to (vui)",
+          "de_bai": "Nhập tên, in tên đó dạng IN HOA toàn bộ.",
+          "ket_qua_mau": "'bo' -> BO",
+          "goi_y": "Đổi 'a'..'z' sang hoa bằng - 32."
+        }
+      ]
+    },
+    {
+      "buoi": 9,
+      "chu_de": "Hàm (function)",
+      "kien_thuc": [
+        "tham số",
+        "return",
+        "void",
+        "gọi hàm"
+      ],
+      "bai_tap": [
+        {
+          "id": "9.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Hàm cộng",
+          "de_bai": "Viết hàm cong(a,b) trả về a+b, gọi và in.",
+          "ket_qua_mau": "cong(4,6) -> 10",
+          "goi_y": "int cong(int a,int b){return a+b;}"
+        },
+        {
+          "id": "9.2",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "Hàm tìm max",
+          "de_bai": "Viết hàm timMax(a,b) trả về số lớn hơn.",
+          "ket_qua_mau": "timMax(7,12) -> 12",
+          "goi_y": "Dùng if trong hàm."
+        },
+        {
+          "id": "9.3",
+          "do_kho": "Vừa",
+          "tieu_de": "Hàm kiểm tra chẵn",
+          "de_bai": "Viết hàm laChan(n) trả về 1 nếu chẵn, 0 nếu lẻ.",
+          "ket_qua_mau": "laChan(8) -> 1",
+          "goi_y": "return n%2==0;"
+        },
+        {
+          "id": "9.4",
+          "do_kho": "Vừa",
+          "tieu_de": "Hàm tổng 1..N",
+          "de_bai": "Viết hàm tongTu1DenN(n) trả về tổng 1..n.",
+          "ket_qua_mau": "tongTu1DenN(5) -> 15",
+          "goi_y": "Vòng lặp trong hàm."
+        },
+        {
+          "id": "9.5",
+          "do_kho": "Vừa",
+          "tieu_de": "Hàm giai thừa",
+          "de_bai": "Viết hàm giaiThua(n) trả về n!.",
+          "ket_qua_mau": "giaiThua(5) -> 120",
+          "goi_y": "Nhân dồn rồi return."
+        },
+        {
+          "id": "9.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Hàm chu vi tròn",
+          "de_bai": "Viết hàm chuViTron(r) trả về 2*3.14*r.",
+          "ket_qua_mau": "chuViTron(2) -> 12.56",
+          "goi_y": "Kiểu trả về float."
+        },
+        {
+          "id": "9.7",
+          "do_kho": "Khó",
+          "tieu_de": "Hàm void in sao",
+          "de_bai": "Viết hàm void inTamGiacSao(n) in tam giác n dòng.",
+          "ket_qua_mau": "inTamGiacSao(4) -> 4 dòng sao",
+          "goi_y": "void, không return."
+        },
+        {
+          "id": "9.8",
+          "do_kho": "Khó",
+          "tieu_de": "Hàm số nguyên tố",
+          "de_bai": "Viết hàm laNguyenTo(n) trả về 1/0.",
+          "ket_qua_mau": "laNguyenTo(7) -> 1",
+          "goi_y": "Đếm ước trong hàm."
+        },
+        {
+          "id": "9.9",
+          "do_kho": "Khó",
+          "tieu_de": "Hàm lũy thừa",
+          "de_bai": "Viết hàm luyThua(a,b) trả về a^b.",
+          "ket_qua_mau": "luyThua(2,5) -> 32",
+          "goi_y": "Nhân a với chính nó b lần."
+        },
+        {
+          "id": "9.10",
+          "do_kho": "Khó",
+          "tieu_de": "Hàm khen ngợi (vui)",
+          "de_bai": "Viết hàm void khen() in một lời khen trong khung đẹp; gọi 3 lần.",
+          "ket_qua_mau": "*** GIOI LAM! ***",
+          "goi_y": "Gọi lại hàm nhiều lần cho vui."
+        }
+      ]
+    },
+    {
+      "buoi": 10,
+      "chu_de": "Tổng kết & dự án",
+      "kien_thuc": [
+        "mảng + hàm + vòng lặp + điều kiện",
+        "menu while"
+      ],
+      "bai_tap": [
+        {
+          "id": "10.1",
+          "do_kho": "Siêu dễ",
+          "tieu_de": "QLĐ: Nhập & In",
+          "de_bai": "Quản lý điểm: menu cho nhập danh sách điểm và in ra.",
+          "ket_qua_mau": "Chon 2 -> Diem: 8 7 9",
+          "goi_y": "Mảng float + 2 hàm."
+        },
+        {
+          "id": "10.2",
+          "do_kho": "Vừa",
+          "tieu_de": "QLĐ: Trung bình & Max",
+          "de_bai": "Thêm chức năng tính điểm trung bình và tìm điểm cao nhất.",
+          "ket_qua_mau": "TB=8.00 Max=9",
+          "goi_y": "Tách thành hàm trungBinh, timMax."
+        },
+        {
+          "id": "10.3",
+          "do_kho": "Vừa",
+          "tieu_de": "QLĐ: Đếm đạt",
+          "de_bai": "Thêm chức năng đếm số sinh viên đạt (>=5).",
+          "ket_qua_mau": "So dat: 3",
+          "goi_y": "Hàm demDat duyệt mảng."
+        },
+        {
+          "id": "10.4",
+          "do_kho": "Khó",
+          "tieu_de": "QLĐ: Sắp xếp",
+          "de_bai": "Thêm chức năng sắp xếp điểm từ cao xuống thấp.",
+          "ket_qua_mau": "9 8 7 5",
+          "goi_y": "2 vòng lặp lồng đổi chỗ."
+        },
+        {
+          "id": "10.5",
+          "do_kho": "Khó",
+          "tieu_de": "QLĐ: Thống kê loại",
+          "de_bai": "Đếm số SV theo loại Gioi/Kha/TB/Yeu.",
+          "ket_qua_mau": "Gioi:2 Kha:1 TB:1 Yeu:0",
+          "goi_y": "Duyệt mảng + if-else if."
+        },
+        {
+          "id": "10.6",
+          "do_kho": "Vừa",
+          "tieu_de": "Cửa hàng mini",
+          "de_bai": "Nhập giá nhiều mặt hàng (mảng), tính tổng tiền và giá trung bình.",
+          "ket_qua_mau": "Tong: 95000 TB: 31666.67",
+          "goi_y": "Mảng + tổng + trung bình."
+        },
+        {
+          "id": "10.7",
+          "do_kho": "Khó",
+          "tieu_de": "Máy tính đa năng",
+          "de_bai": "Menu nhiều chức năng, mỗi chức năng là một hàm (cộng/trừ/giai thừa/nguyên tố).",
+          "ket_qua_mau": "Menu lặp tới khi Thoat",
+          "goi_y": "Mỗi mục gọi một hàm."
+        },
+        {
+          "id": "10.8",
+          "do_kho": "Khó",
+          "tieu_de": "Bảng xếp hạng top 3",
+          "de_bai": "Nhập điểm nhiều bạn, in 3 điểm cao nhất (Top 3).",
+          "ket_qua_mau": "Top: 9.5 9.0 8.5",
+          "goi_y": "Sắp xếp rồi in 3 phần tử đầu."
+        },
+        {
+          "id": "10.9",
+          "do_kho": "Khó",
+          "tieu_de": "Điểm trung bình có trọng số",
+          "de_bai": "Nhập điểm và hệ số từng môn, tính TB có trọng số.",
+          "ket_qua_mau": "(8*2+7*1)/3 = 7.67",
+          "goi_y": "Tổng (điểm*hệ số) / tổng hệ số."
+        },
+        {
+          "id": "10.10",
+          "do_kho": "Khó",
+          "tieu_de": "Đoán số nhiều lượt (vui)",
+          "de_bai": "Số bí mật cố định, cho đoán nhiều lần, đếm số lượt đã đoán.",
+          "ket_qua_mau": "Doan dung sau 4 luot!",
+          "goi_y": "while + biến đếm lượt."
+        }
+      ]
+    }
+  ]
+}
