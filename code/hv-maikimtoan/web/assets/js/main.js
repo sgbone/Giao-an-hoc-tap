@@ -151,6 +151,44 @@ int main() {
         printf("\\n");
     }
     return 0;
+}`,
+
+  /* ----- Buổi 7 ----- */
+  arrio: `#include <stdio.h>
+
+int main() {
+    int n, a[100];
+    printf("Nhap so phan tu: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("a[%d] = ", i);
+        scanf("%d", &a[i]);
+    }
+
+    printf("Mang vua nhap: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    return 0;
+}`,
+
+  arrsum: `#include <stdio.h>
+
+int main() {
+    int n = 5;
+    int a[5] = {4, 7, 2, 9, 5};
+    int tong = 0, max = a[0];
+
+    for (int i = 0; i < n; i++) {
+        tong = tong + a[i];
+        if (a[i] > max) {
+            max = a[i];
+        }
+    }
+    printf("Tong = %d\\n", tong);
+    printf("Max = %d\\n", max);
+    return 0;
 }`
 };
 
@@ -236,6 +274,24 @@ const OUTPUTS = {
     "****",
     "",
     "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "arrio-out": [
+    "Nhap so phan tu: 4",
+    "a[0] = 5",
+    "a[1] = 2",
+    "a[2] = 8",
+    "a[3] = 1",
+    "Mang vua nhap: 5 2 8 1 ",
+    "",
+    "Process exited after 4.10s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "arrsum-out": [
+    "Tong = 27",
+    "Max = 9",
+    "",
+    "Process exited after 0.03s with return value 0",
     "Press any key to continue . . ."
   ]
 };

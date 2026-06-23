@@ -70,6 +70,13 @@
     <a href="#b6-menu" class="nav-link">Máy tính có menu</a>
     <a href="#b6-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
 
+    <p class="nav-label">Buổi 7 — Mảng một chiều</p>
+    <a href="#b7-intro" class="nav-link">Mảng là gì?</a>
+    <a href="#b7-declare" class="nav-link">Khai báo &amp; truy cập</a>
+    <a href="#b7-io" class="nav-link">Nhập / xuất mảng</a>
+    <a href="#b7-process" class="nav-link">Xử lý mảng</a>
+    <a href="#b7-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
     <p class="nav-label">Ôn tập</p>
     <a href="ontap/giua-ky.html" class="nav-link nav-mid">🎯 Thi GIỮA KỲ (50 câu)</a>
     <a href="ontap/buoi-1.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 1</a>
@@ -78,6 +85,7 @@
     <a href="ontap/buoi-4.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 4</a>
     <a href="ontap/buoi-5.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 5</a>
     <a href="ontap/buoi-6.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 6</a>
+    <a href="ontap/buoi-7.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 7</a>
   </nav>
 
   <div class="sidebar-footer">
@@ -1065,6 +1073,162 @@ Tong = 33</pre>
     </div>
   </section>
 
+  <!-- ================= BUỔI 7 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 7</span>
+    <h2>Mảng một chiều</h2>
+  </div>
+
+  <!-- 1. mảng là gì -->
+  <section id="b7-intro" class="card reveal">
+    <h3><span class="num">1</span> Mảng là gì?</h3>
+    <p>Đến giờ mỗi biến chỉ chứa <b>một</b> giá trị. Nhưng nếu cần lưu điểm của 30 học sinh thì khai báo 30 biến rất cực!
+       <b>Mảng</b> giúp ta lưu <b>nhiều giá trị cùng kiểu</b> trong một dãy ô liền nhau.</p>
+
+    <div class="callout callout-info">
+      So sánh: <b>biến đơn</b> = 1 cái hộp; <b>mảng</b> = 1 dãy hộp xếp liền nhau, mỗi hộp có <b>số thứ tự</b> (chỉ số).
+    </div>
+
+    <p>Mảng <code>int a[5];</code> gồm 5 ô, đánh số <b>bắt đầu từ 0</b>:</p>
+    <div class="boxes">
+      <div class="box-var"><div class="box-label">a[0]</div><div class="box-body">4</div></div>
+      <div class="box-var"><div class="box-label">a[1]</div><div class="box-body">7</div></div>
+      <div class="box-var"><div class="box-label">a[2]</div><div class="box-body">2</div></div>
+      <div class="box-var"><div class="box-label">a[3]</div><div class="box-body">9</div></div>
+      <div class="box-var"><div class="box-label">a[4]</div><div class="box-body">5</div></div>
+    </div>
+
+    <div class="callout callout-warn">
+      <b>Cực kỳ quan trọng:</b> chỉ số mảng bắt đầu từ <b>0</b>, không phải 1!
+      Mảng <code>a[5]</code> thì ô đầu là <code>a[0]</code> và ô cuối là <code>a[4]</code> (không có <code>a[5]</code>).
+    </div>
+  </section>
+
+  <!-- 2. khai báo & truy cập -->
+  <section id="b7-declare" class="card reveal">
+    <h3><span class="num">2</span> Khai báo &amp; truy cập phần tử</h3>
+    <ul class="explain">
+      <li><b>Khai báo:</b> <code>int a[100];</code> — tạo mảng tối đa 100 số nguyên.</li>
+      <li><b>Gán giá trị:</b> <code>a[0] = 4;</code> đặt 4 vào ô đầu tiên.</li>
+      <li><b>Đọc giá trị:</b> <code>printf("%d", a[2]);</code> in giá trị ô thứ 3.</li>
+      <li><b>Khai báo sẵn:</b> <code>int a[5] = {4, 7, 2, 9, 5};</code></li>
+    </ul>
+    <div class="callout callout-tip">
+      Thường khai báo dư (vd <code>a[100]</code>) rồi chỉ dùng <code>n</code> phần tử đầu — với <code>n</code> do người dùng nhập.
+    </div>
+  </section>
+
+  <!-- 3. nhập / xuất -->
+  <section id="b7-io" class="card reveal">
+    <h3><span class="num">3</span> Nhập và xuất mảng</h3>
+    <p>Dùng <b>vòng lặp</b> (đã học ở Buổi 5!) để duyệt qua từng ô. Chỉ số chạy từ <code>0</code> đến <code>n-1</code>.</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 mang.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="arrio"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="arrio-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="arrio-out" hidden>
+          <div class="console-bar">Console — gõ số rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted">💡 Để ý <code>for (i = 0; i &lt; n; i++)</code> — bắt đầu từ 0 và dừng ở <code>i &lt; n</code>.</p>
+  </section>
+
+  <!-- 4. xử lý mảng -->
+  <section id="b7-process" class="card reveal">
+    <h3><span class="num">4</span> Xử lý mảng: tổng &amp; lớn nhất</h3>
+    <p>Kết hợp vòng lặp + biến phụ để tính toán. Ví dụ tính <b>tổng</b> và tìm <b>số lớn nhất</b>:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 xulymang.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="arrsum"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="arrsum-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="arrsum-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <ul class="explain">
+      <li><b>Tổng:</b> bắt đầu <code>tong = 0</code>, cộng dồn <code>tong = tong + a[i]</code>.</li>
+      <li><b>Lớn nhất:</b> giả sử <code>max = a[0]</code>, gặp phần tử lớn hơn thì cập nhật.</li>
+      <li><b>Đếm:</b> dùng <code>if (a[i] % 2 == 0) dem++;</code> để đếm số chẵn.</li>
+    </ul>
+  </section>
+
+  <!-- ===== BÀI TẬP VỀ NHÀ — BUỔI 7 ===== -->
+  <section id="b7-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 7 — Mảng một chiều</h3>
+      <p class="muted">3 bài theo độ khó tăng dần. Nhớ: chỉ số chạy từ <b>0</b> đến <b>n-1</b> nhé!</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">Nhập &amp; in lại mảng</p>
+        <p class="hw-desc">Nhập N số nguyên vào mảng rồi in lại tất cả trên một dòng.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap so phan tu: 4
+a[0] = 5
+a[1] = 2
+a[2] = 8
+a[3] = 1
+Mang: 5 2 8 1</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: 1 vòng lặp để nhập, 1 vòng lặp để in.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Tổng &amp; trung bình</p>
+        <p class="hw-desc">Nhập mảng N số, tính tổng và trung bình cộng các phần tử.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap so phan tu: 4
+a[0] = 4
+a[1] = 6
+a[2] = 8
+a[3] = 2
+Tong = 20
+Trung binh = 5.00</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: tổng là <code>int</code>; trung bình dùng <code>(float)tong / n</code> in bằng <code>%.2f</code>.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Đếm số lần xuất hiện</p>
+        <p class="hw-desc">Nhập mảng N số và một số <code>X</code>, đếm xem <code>X</code> xuất hiện bao nhiêu lần trong mảng.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap so phan tu: 5
+a[0] = 3
+a[1] = 7
+a[2] = 3
+a[3] = 1
+a[4] = 3
+Nhap X: 3
+So 3 xuat hien 3 lan</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: duyệt mảng, <code>if (a[i] == X) dem++;</code></p>
+      </article>
+
+    </div>
+  </section>
+
   <!-- ===== CTA THI GIỮA KỲ ===== -->
   <section id="midterm-cta" class="card reveal midterm-card">
     <h3>🎯 Sẵn sàng cho bài kiểm tra GIỮA KỲ?</h3>
@@ -1108,17 +1272,22 @@ Tong = 33</pre>
         <span class="rl-text"><b>Ôn tập Buổi 6</b><small>15 câu · Tổng hợp Buổi 1–5</small></span>
         <span class="rl-go">→</span>
       </a>
+      <a class="review-link" href="ontap/buoi-7.html">
+        <span class="rl-icon">📒</span>
+        <span class="rl-text"><b>Ôn tập Buổi 7</b><small>15 câu · Mảng một chiều</small></span>
+        <span class="rl-go">→</span>
+      </a>
     </div>
   </section>
 
   <footer class="footer">
-    <p>📘 Khóa học Lập trình C — Buổi 1 → 6</p>
+    <p>📘 Khóa học Lập trình C — Buổi 1 → 7</p>
     <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
   </footer>
 
 </main>
 
-<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else", "5 — Vong lap for, while", "6 — On tap tong hop"];</script>
+<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else", "5 — Vong lap for, while", "6 — On tap tong hop", "7 — Mang mot chieu"];</script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 7 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 7 — Mảng một chiều. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="../index.html#b7-intro" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 7 — Mảng một chiều</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📒 Ôn tập Buổi 7 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 7,
+  shuffleOptions: true,
+  questions: [
+    { q: "Mảng (array) là gì?", options: [
+        "Một dãy nhiều ô nhớ cùng kiểu, xếp liền nhau",
+        "Một biến chứa đúng 1 giá trị",
+        "Một câu lệnh in" ],
+      answer: 0, explain: "Mảng là dãy nhiều ô cùng kiểu — như nhiều cái hộp xếp liền nhau." },
+
+    { q: "Chỉ số (vị trí) của mảng trong C bắt đầu từ mấy?", options: [
+        "0", "1", "-1" ],
+      answer: 0, explain: "Phần tử đầu tiên là <code>a[0]</code>." },
+
+    { q: "Khai báo <code>int a[5];</code> tạo ra bao nhiêu ô?", options: [
+        "5 ô", "4 ô", "6 ô" ],
+      answer: 0, explain: "5 ô: <code>a[0], a[1], a[2], a[3], a[4]</code>." },
+
+    { q: "Với <code>int a[5];</code>, ô CUỐI cùng là?", options: [
+        "<code>a[4]</code>", "<code>a[5]</code>", "<code>a[0]</code>" ],
+      answer: 0, explain: "5 ô đánh số 0..4 nên ô cuối là <code>a[4]</code>." },
+
+    { q: "Phần tử ĐẦU tiên của mảng <code>a</code> là?", options: [
+        "<code>a[0]</code>", "<code>a[1]</code>", "<code>a</code>" ],
+      answer: 0, explain: "Phần tử đầu luôn là <code>a[0]</code>." },
+
+    { q: "Cách truy cập phần tử thứ 3 của mảng <code>a</code>?", options: [
+        "<code>a[2]</code>", "<code>a[3]</code>", "<code>a(3)</code>" ],
+      answer: 0, explain: "Đếm từ 0: phần tử thứ 3 là <code>a[2]</code>." },
+
+    { q: "Để duyệt mảng n phần tử, vòng lặp đúng là?", options: [
+        "<code>for (i = 0; i < n; i++)</code>",
+        "<code>for (i = 1; i <= n; i++)</code>",
+        "<code>for (i = 0; i <= n; i++)</code>" ],
+      answer: 0, explain: "Chỉ số chạy từ 0 đến n-1 → điều kiện <code>i &lt; n</code>." },
+
+    { q: "Câu lệnh <code>scanf</code> để nhập vào ô <code>a[i]</code> (kiểu int)?", options: [
+        "<code>scanf(\"%d\", &a[i]);</code>",
+        "<code>scanf(\"%d\", a[i]);</code>",
+        "<code>scanf(\"%f\", &a[i]);</code>" ],
+      answer: 0, explain: "Vẫn cần dấu <code>&amp;</code> và <code>%d</code> cho int." },
+
+    { q: "Lệnh nào in giá trị ô <code>a[i]</code> (kiểu int)?", options: [
+        "<code>printf(\"%d\", a[i]);</code>",
+        "<code>printf(\"%d\", &a[i]);</code>",
+        "<code>printf(\"%c\", a[i]);</code>" ],
+      answer: 0, explain: "In giá trị thì KHÔNG có <code>&amp;</code>." },
+
+    { q: "Để tính tổng các phần tử mảng, trong vòng lặp ta viết?", options: [
+        "<code>tong = tong + a[i];</code>",
+        "<code>tong = a[i];</code>",
+        "<code>tong = tong + i;</code>" ],
+      answer: 0, explain: "Cộng dồn từng phần tử <code>a[i]</code> vào <code>tong</code>." },
+
+    { q: "Mảng <code>int a[5] = {4, 7, 2, 9, 5};</code> thì <code>a[3]</code> bằng?", options: [
+        "9", "2", "5" ],
+      answer: 0, explain: "Đếm từ 0: a[0]=4, a[1]=7, a[2]=2, a[3]=9." },
+
+    { q: "Để tìm giá trị lớn nhất, ta thường khởi tạo <code>max</code> bằng?", options: [
+        "<code>a[0]</code> (phần tử đầu)",
+        "0",
+        "n" ],
+      answer: 0, explain: "Gán max = a[0] rồi so sánh với các phần tử còn lại." },
+
+    { q: "Điều kiện cập nhật max khi duyệt mảng?", options: [
+        "<code>if (a[i] > max) max = a[i];</code>",
+        "<code>if (a[i] < max) max = a[i];</code>",
+        "<code>max = max + a[i];</code>" ],
+      answer: 0, explain: "Gặp phần tử lớn hơn max hiện tại thì cập nhật." },
+
+    { q: "Để đếm số phần tử chẵn trong mảng, kiểm tra?", options: [
+        "<code>if (a[i] % 2 == 0) dem++;</code>",
+        "<code>if (i % 2 == 0) dem++;</code>",
+        "<code>if (a[i] == 0) dem++;</code>" ],
+      answer: 0, explain: "Xét giá trị phần tử <code>a[i]</code> chia hết cho 2." },
+
+    { q: "Truy cập <code>a[5]</code> với mảng <code>int a[5];</code> là?", options: [
+        "Sai — vượt khỏi mảng (ô hợp lệ chỉ tới a[4])",
+        "Đúng — đó là phần tử thứ 5",
+        "Đúng — luôn an toàn" ],
+      answer: 0, explain: "Mảng 5 ô chỉ có a[0]..a[4]; a[5] là vượt giới hạn." }
+  ]
+};
+</script>
+<script src="../assets/js/review.js"></script>
+</body>
+</html>
