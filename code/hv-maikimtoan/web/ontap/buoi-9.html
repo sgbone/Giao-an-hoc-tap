@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 9 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 9 — Hàm (function). Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="../index.html#b9-intro" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 9 — Hàm (function)</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📘 Ôn tập Buổi 9 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 9,
+  shuffleOptions: true,
+  questions: [
+    { q: "Hàm (function) dùng để làm gì?", options: [
+        "Chia nhỏ chương trình thành các phần làm việc riêng",
+        "Khai báo biến toàn cục",
+        "Nhập dữ liệu" ],
+      answer: 0, explain: "Hàm gom một công việc lại, gọi đi gọi lại được — giúp code gọn." },
+
+    { q: "Trong ví dụ máy xay sinh tố, 'trái cây bỏ vào' tương ứng với?", options: [
+        "Tham số (đầu vào của hàm)",
+        "Giá trị trả về",
+        "Tên hàm" ],
+      answer: 0, explain: "Đầu vào = tham số; ly sinh tố ra = giá trị trả về." },
+
+    { q: "Cú pháp khai báo hàm đúng là?", options: [
+        "<code>kieu_tra_ve ten_ham(tham_so) { ... }</code>",
+        "<code>ten_ham kieu_tra_ve(tham_so) { ... }</code>",
+        "<code>function ten_ham() { ... }</code>" ],
+      answer: 0, explain: "Bắt đầu bằng kiểu trả về, rồi tên hàm, rồi tham số trong ngoặc." },
+
+    { q: "Từ khóa nào để hàm trả giá trị về nơi gọi?", options: [
+        "<code>return</code>", "<code>printf</code>", "<code>scanf</code>" ],
+      answer: 0, explain: "<code>return</code> trả giá trị về cho chỗ gọi hàm." },
+
+    { q: "Hàm <code>int cong(int a, int b) { return a + b; }</code> trả về kiểu gì?", options: [
+        "<code>int</code>", "<code>float</code>", "<code>void</code>" ],
+      answer: 0, explain: "Kiểu trả về ghi ngay trước tên hàm: <code>int</code>." },
+
+    { q: "Gọi <code>cong(3, 5)</code> với hàm cộng ở trên cho kết quả?", options: [
+        "8", "35", "2" ],
+      answer: 0, explain: "3 + 5 = 8." },
+
+    { q: "Kiểu trả về <code>void</code> nghĩa là?", options: [
+        "Hàm không trả về giá trị nào",
+        "Hàm trả về số 0",
+        "Hàm trả về chuỗi" ],
+      answer: 0, explain: "<code>void</code> dùng cho hàm chỉ làm việc (vd in ra) mà không trả giá trị." },
+
+    { q: "Trong Dev-C++, nên viết hàm phụ ở đâu để tránh báo lỗi?", options: [
+        "Phía TRÊN hàm <code>main</code>",
+        "Phía dưới hàm <code>main</code>",
+        "Bên trong hàm <code>main</code>" ],
+      answer: 0, explain: "Viết hàm phụ phía trên main (khi chưa học khai báo nguyên mẫu)." },
+
+    { q: "<code>int x = cong(3, 5);</code> — giá trị trả về của hàm được?", options: [
+        "Gán vào biến x",
+        "In ra màn hình ngay",
+        "Bỏ đi" ],
+      answer: 0, explain: "Giá trị return được gán cho x." },
+
+    { q: "'Tham số' của hàm là gì?", options: [
+        "Dữ liệu đầu vào truyền cho hàm",
+        "Tên của hàm",
+        "Kết quả hàm in ra" ],
+      answer: 0, explain: "Tham số là đầu vào, vd a và b trong <code>cong(int a, int b)</code>." },
+
+    { q: "Hàm <code>giaiThua(5)</code> (5! = 1*2*3*4*5) trả về?", options: [
+        "120", "25", "15" ],
+      answer: 0, explain: "5! = 1*2*3*4*5 = 120." },
+
+    { q: "Một hàm kiểm tra số chẵn nên trả về kiểu gì cho gọn?", options: [
+        "<code>int</code> (1 nếu chẵn, 0 nếu lẻ)",
+        "<code>void</code>",
+        "<code>char</code>" ],
+      answer: 0, explain: "Trả 1/0 (đúng/sai) bằng kiểu int rất tiện để dùng trong if." },
+
+    { q: "Lợi ích chính của việc dùng hàm là?", options: [
+        "Tránh lặp code, dễ đọc, dễ sửa",
+        "Làm chương trình chạy chậm hơn",
+        "Bắt buộc phải có để biên dịch" ],
+      answer: 0, explain: "Hàm giúp tái sử dụng, chia nhỏ và bảo trì dễ hơn." },
+
+    { q: "Hàm <code>void inTamGiac(int n)</code> nên làm gì?", options: [
+        "In ra màn hình (không cần return giá trị)",
+        "Trả về một số",
+        "Trả về một chuỗi" ],
+      answer: 0, explain: "void → chỉ thực hiện việc in, không trả giá trị." },
+
+    { q: "Có thể gọi một hàm bao nhiêu lần trong chương trình?", options: [
+        "Bao nhiêu lần tùy ý",
+        "Chỉ 1 lần",
+        "Tối đa 2 lần" ],
+      answer: 0, explain: "Viết hàm một lần, gọi lại bao nhiêu lần cũng được." }
+  ]
+};
+</script>
+<script src="../assets/js/review.js"></script>
+</body>
+</html>

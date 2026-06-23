@@ -84,8 +84,22 @@
     <a href="#b8-practice" class="nav-link">Thực hành: đếm chữ hoa</a>
     <a href="#b8-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
 
-    <p class="nav-label">Ôn tập</p>
+    <p class="nav-label">Buổi 9 — Hàm</p>
+    <a href="#b9-intro" class="nav-link">Hàm là gì?</a>
+    <a href="#b9-example" class="nav-link">Ví dụ: hàm cộng</a>
+    <a href="#b9-common" class="nav-link">Hàm có vòng lặp</a>
+    <a href="#b9-practice" class="nav-link">Thực hành: tìm max</a>
+    <a href="#b9-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 10 — Tổng kết</p>
+    <a href="#b10-recap" class="nav-link">Tổng kết toàn khóa</a>
+    <a href="#b10-project" class="nav-link">Dự án Quản lý điểm</a>
+    <a href="#b10-next" class="nav-link">Học gì tiếp theo</a>
+    <a href="#b10-homework" class="nav-link nav-hw">🎓 Dự án cuối khóa</a>
+
+    <p class="nav-label">Ôn tập &amp; Thi</p>
     <a href="ontap/giua-ky.html" class="nav-link nav-mid">🎯 Thi GIỮA KỲ (50 câu)</a>
+    <a href="ontap/cuoi-ky.html" class="nav-link nav-fin">🏁 Thi CUỐI KỲ (50 câu)</a>
     <a href="ontap/buoi-1.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 1</a>
     <a href="ontap/buoi-2.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 2</a>
     <a href="ontap/buoi-3.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 3</a>
@@ -94,6 +108,8 @@
     <a href="ontap/buoi-6.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 6</a>
     <a href="ontap/buoi-7.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 7</a>
     <a href="ontap/buoi-8.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 8</a>
+    <a href="ontap/buoi-9.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 9</a>
+    <a href="ontap/buoi-10.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 10</a>
   </nav>
 
   <div class="sidebar-footer">
@@ -1389,6 +1405,289 @@ Chuoi nguoc: edcba</pre>
     </div>
   </section>
 
+  <!-- ================= BUỔI 9 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 9</span>
+    <h2>Hàm (Function)</h2>
+  </div>
+
+  <!-- 1. hàm là gì -->
+  <section id="b9-intro" class="card reveal">
+    <h3><span class="num">1</span> Hàm là gì?</h3>
+    <p>Hãy tưởng tượng <b>cái máy xay sinh tố</b>: bỏ trái cây + đường vào (<b>tham số</b>),
+       nó cho ra một ly sinh tố (<b>giá trị trả về</b>). <b>Hàm</b> cũng vậy — nhận đầu vào, xử lý, trả kết quả.</p>
+
+    <div class="flow">
+      <div class="flow-step"><div class="flow-icon">🍓</div><b>Tham số</b><small>Đầu vào (a, b…)</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-icon">⚙️</div><b>Thân hàm</b><small>Xử lý công việc</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-icon">🥤</div><b>return</b><small>Giá trị trả về</small></div>
+    </div>
+
+    <p>Cú pháp chung:</p>
+    <div class="code-block" data-lang="C">
+      <div class="code-head"><span class="code-file">📄 cú pháp</span></div>
+      <pre class="code mini">kieu_tra_ve ten_ham(tham_so) {
+    <span class="tok-com">// thân hàm</span>
+    return gia_tri;
+}</pre>
+    </div>
+    <div class="callout callout-tip">
+      <b>Lưu ý Dev-C++:</b> viết hàm phụ <b>phía trên</b> hàm <code>main</code> để tránh báo lỗi
+      (khi chưa học khai báo nguyên mẫu hàm).
+    </div>
+  </section>
+
+  <!-- 2. ví dụ -->
+  <section id="b9-example" class="card reveal">
+    <h3><span class="num">2</span> Ví dụ: hàm cộng hai số</h3>
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 cong.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="funcadd"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="funcadd-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="funcadd-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <ul class="explain">
+      <li><code>int cong(int a, int b)</code> — hàm tên <code>cong</code>, nhận 2 tham số, trả về <code>int</code>.</li>
+      <li><code>return a + b;</code> — trả kết quả về nơi gọi.</li>
+      <li><code>int x = cong(3, 5);</code> — gọi hàm, kết quả (8) gán cho <code>x</code>.</li>
+      <li>Hàm chỉ làm việc (không trả giá trị) thì để kiểu <code>void</code>.</li>
+    </ul>
+  </section>
+
+  <!-- 3. hàm thường dùng -->
+  <section id="b9-common" class="card reveal">
+    <h3><span class="num">3</span> Hàm có vòng lặp bên trong</h3>
+    <p>Hàm có thể chứa cả vòng lặp, điều kiện… Ví dụ hàm tính giai thừa <code>n!</code>:</p>
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 giaithua.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="funcfact"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="funcfact-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="funcfact-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. thực hành -->
+  <section id="b9-practice" class="card reveal">
+    <h3><span class="num">4</span> Thực hành: hàm tìm max</h3>
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 timmax.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="funcmax"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="funcmax-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="funcmax-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted">💡 Viết hàm một lần, gọi lại bao nhiêu lần tùy ý — đó là sức mạnh của hàm!</p>
+  </section>
+
+  <!-- ===== BÀI TẬP VỀ NHÀ — BUỔI 9 ===== -->
+  <section id="b9-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 9 — Hàm</h3>
+      <p class="muted">3 bài theo độ khó tăng dần. Viết hàm phía trên <code>main</code> rồi gọi trong <code>main</code> nhé!</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">Hàm tổng hai số</p>
+        <p class="hw-desc">Viết hàm <code>tongHai(int a, int b)</code> trả về tổng, gọi và in kết quả.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Tong cua 4 va 6 la: 10</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: <code>int tongHai(int a, int b) { return a + b; }</code></p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Hàm tổng 1 → N</p>
+        <p class="hw-desc">Viết hàm <code>tongTu1DenN(int n)</code> trả về tổng các số từ 1 đến n.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>tongTu1DenN(5) = 15</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: dùng vòng lặp cộng dồn bên trong hàm, rồi <code>return</code>.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Hàm void in tam giác</p>
+        <p class="hw-desc">Viết hàm <code>void inTamGiacSao(int n)</code> in ra tam giác sao n dòng.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>inTamGiacSao(4):
+*
+**
+***
+****</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: kiểu <code>void</code> (không return), dùng vòng lặp lồng để in.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 10 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 10</span>
+    <h2>Tổng kết &amp; định hướng</h2>
+  </div>
+
+  <!-- 1. tổng kết -->
+  <section id="b10-recap" class="card reveal">
+    <h3><span class="num">1</span> Tổng kết toàn khóa</h3>
+    <p>Chúc mừng! Bạn đã đi qua chặng đường dài. Đây là tất cả "vũ khí" bạn đã có:</p>
+    <div class="type-grid">
+      <div class="type-card"><div class="type-icon">🖨️</div><b>In/Nhập</b><p>printf, scanf</p></div>
+      <div class="type-card"><div class="type-icon">📦</div><b>Biến</b><p>int, float, char</p></div>
+      <div class="type-card"><div class="type-icon">➗</div><b>Toán tử</b><p>+ - * / %</p></div>
+      <div class="type-card"><div class="type-icon">🔀</div><b>Điều kiện</b><p>if - else if</p></div>
+      <div class="type-card"><div class="type-icon">🔁</div><b>Vòng lặp</b><p>for, while</p></div>
+      <div class="type-card"><div class="type-icon">📊</div><b>Mảng</b><p>a[0]..a[n-1]</p></div>
+      <div class="type-card"><div class="type-icon">🔤</div><b>Chuỗi</b><p>char[], string.h</p></div>
+      <div class="type-card"><div class="type-icon">🧩</div><b>Hàm</b><p>tham số, return</p></div>
+    </div>
+  </section>
+
+  <!-- 2. dự án -->
+  <section id="b10-project" class="card reveal">
+    <h3><span class="num">2</span> Dự án lớn: "Quản lý điểm sinh viên"</h3>
+    <p>Kết hợp <b>tất cả</b> kiến thức: mảng (lưu điểm), vòng lặp (menu), điều kiện (lựa chọn), hàm (chia nhỏ).
+       Chương trình có menu lặp lại tới khi chọn Thoát:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 quanlydiem.c (khung menu)</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="projmenu"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="projmenu-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="projmenu-out" hidden>
+          <div class="console-bar">Console — chọn 2 rồi 0 để thoát</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <p>Gợi ý chia thành các hàm cho gọn:</p>
+    <ul class="explain">
+      <li><code>void nhapDiem(float a[], int *n)</code> — nhập mảng điểm.</li>
+      <li><code>void inDiem(float a[], int n)</code> — in danh sách.</li>
+      <li><code>float trungBinh(float a[], int n)</code> — tính điểm trung bình cả lớp.</li>
+      <li><code>float timMax(float a[], int n)</code> — tìm điểm cao nhất.</li>
+      <li><code>int demDat(float a[], int n)</code> — đếm số sinh viên đạt (điểm ≥ 5).</li>
+    </ul>
+  </section>
+
+  <!-- 3. định hướng -->
+  <section id="b10-next" class="card reveal">
+    <h3><span class="num">3</span> Học gì tiếp theo?</h3>
+    <p>Khi đã vững nền tảng, hãy chinh phục các chủ đề nâng cao:</p>
+    <table class="fmt-table">
+      <thead><tr><th>Chủ đề</th><th>Mô tả</th></tr></thead>
+      <tbody>
+        <tr><td><b>Con trỏ (pointer)</b></td><td>Nền tảng cốt lõi của C, dùng <code>*</code> và <code>&amp;</code></td></tr>
+        <tr><td><b>Mảng 2 chiều</b></td><td>Xử lý dữ liệu dạng bảng / ma trận</td></tr>
+        <tr><td><b>Cấu trúc (struct)</b></td><td>Tự định nghĩa kiểu dữ liệu mới</td></tr>
+        <tr><td><b>Cấp phát động</b></td><td>Quản lý bộ nhớ với <code>malloc</code>/<code>free</code></td></tr>
+        <tr><td><b>Đọc/ghi file</b></td><td>Làm việc với file <code>.txt</code>, <code>.bin</code></td></tr>
+        <tr><td><b>Đệ quy</b></td><td>Hàm tự gọi chính nó</td></tr>
+        <tr><td><b>Cấu trúc dữ liệu &amp; giải thuật</b></td><td>Danh sách liên kết, sắp xếp, tìm kiếm</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-info">
+      📚 <b>Tài liệu gợi ý:</b> sách "The C Programming Language" (K&amp;R) · learn-c.org · w3schools.com/c ·
+      luyện tập tại codeforces.com, hackerrank.com.
+    </div>
+  </section>
+
+  <!-- ===== DỰ ÁN CUỐI KHÓA ===== -->
+  <section id="b10-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🎓 Dự án cuối khóa</span>
+      <h3>Buổi 10 — Hoàn thiện "Quản lý điểm sinh viên"</h3>
+      <p class="muted">Làm dần theo 3 mức. Đây cũng là nền cho phần dự án có thuyết trình + chạy chương trình.</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Mức 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">Menu + Nhập/In điểm</p>
+        <p class="hw-desc">Tạo menu lặp bằng <code>while</code>, làm chức năng <b>Nhập điểm</b> và <b>In danh sách điểm</b>.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>1. Nhap diem
+2. In diem
+0. Thoat
+Chon: 2
+Diem: 8.0 7.5 9.0</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: dùng mảng <code>float a[30]</code> và biến <code>n</code> số sinh viên.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Mức 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Trung bình · Max · Đếm đạt</p>
+        <p class="hw-desc">Thêm chức năng tính <b>điểm trung bình</b>, tìm <b>điểm cao nhất</b>, đếm <b>số SV đạt</b> (≥ 5).</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Diem trung binh: 8.17
+Diem cao nhat: 9.0
+So SV dat: 3</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: tách thành các hàm <code>trungBinh</code>, <code>timMax</code>, <code>demDat</code>.</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Mức 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Sắp xếp &amp; điểm thấp nhất</p>
+        <p class="hw-desc">Thêm chức năng <b>sắp xếp</b> điểm từ cao xuống thấp và tìm <b>điểm thấp nhất</b>.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Sap xep: 9.0 8.0 7.5 5.0
+Diem thap nhat: 5.0</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: sắp xếp bằng 2 vòng lặp lồng (so sánh &amp; đổi chỗ).</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== CTA THI CUỐI KỲ ===== -->
+  <section id="final-cta" class="card reveal final-card">
+    <h3>🏁 Sẵn sàng cho bài thi CUỐI KỲ?</h3>
+    <p>Ngân hàng <b>1000 câu</b> trắc nghiệm phủ toàn bộ <b>Buổi 1 → 10</b>. Mỗi lần làm, hệ thống chọn
+       <b>ngẫu nhiên 50 câu</b> (đáp án đảo vị trí) và tự chấm điểm. Luyện nhiều lần cho thật chắc!</p>
+    <a class="cta" href="ontap/cuoi-ky.html">🏁 Làm đề cuối kỳ (50 câu ngẫu nhiên) →</a>
+  </section>
+
   <!-- ===== CTA THI GIỮA KỲ ===== -->
   <section id="midterm-cta" class="card reveal midterm-card">
     <h3>🎯 Sẵn sàng cho bài kiểm tra GIỮA KỲ?</h3>
@@ -1442,17 +1741,27 @@ Chuoi nguoc: edcba</pre>
         <span class="rl-text"><b>Ôn tập Buổi 8</b><small>15 câu · Chuỗi ký tự</small></span>
         <span class="rl-go">→</span>
       </a>
+      <a class="review-link" href="ontap/buoi-9.html">
+        <span class="rl-icon">📘</span>
+        <span class="rl-text"><b>Ôn tập Buổi 9</b><small>15 câu · Hàm (function)</small></span>
+        <span class="rl-go">→</span>
+      </a>
+      <a class="review-link" href="ontap/buoi-10.html">
+        <span class="rl-icon">🎓</span>
+        <span class="rl-text"><b>Ôn tập Buổi 10</b><small>15 câu · Tổng kết toàn khóa</small></span>
+        <span class="rl-go">→</span>
+      </a>
     </div>
   </section>
 
   <footer class="footer">
-    <p>📘 Khóa học Lập trình C — Buổi 1 → 8</p>
+    <p>📘 Khóa học Lập trình C — Buổi 1 → 10 (Trọn khóa)</p>
     <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
   </footer>
 
 </main>
 
-<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else", "5 — Vong lap for, while", "6 — On tap tong hop", "7 — Mang mot chieu", "8 — Chuoi ky tu"];</script>
+<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else", "5 — Vong lap for, while", "6 — On tap tong hop", "7 — Mang mot chieu", "8 — Chuoi ky tu", "9 — Ham (function)", "10 — Tong ket & du an"];</script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

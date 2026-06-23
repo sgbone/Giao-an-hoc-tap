@@ -229,6 +229,73 @@ int main() {
     }
     printf("So chu hoa: %d\\n", dem);
     return 0;
+}`,
+
+  /* ----- Buổi 9 ----- */
+  funcadd: `#include <stdio.h>
+
+int cong(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int x = cong(3, 5);
+    printf("Tong = %d\\n", x);
+    return 0;
+}`,
+
+  funcfact: `#include <stdio.h>
+
+int giaiThua(int n) {
+    int kq = 1;
+    for (int i = 1; i <= n; i++) {
+        kq = kq * i;
+    }
+    return kq;
+}
+
+int main() {
+    printf("5! = %d\\n", giaiThua(5));
+    return 0;
+}`,
+
+  funcmax: `#include <stdio.h>
+
+int timMax(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+int main() {
+    printf("Max = %d\\n", timMax(7, 12));
+    return 0;
+}`,
+
+  /* ----- Buổi 10 ----- */
+  projmenu: `#include <stdio.h>
+
+int main() {
+    int chon = -1;
+    while (chon != 0) {
+        printf("\\n--- QUAN LY DIEM ---\\n");
+        printf("1. Nhap diem\\n");
+        printf("2. In diem\\n");
+        printf("0. Thoat\\n");
+        printf("Chon: ");
+        scanf("%d", &chon);
+
+        if (chon == 1) {
+            printf(">> Ban chon Nhap diem\\n");
+        } else if (chon == 2) {
+            printf(">> Ban chon In diem\\n");
+        } else if (chon == 0) {
+            printf("Tam biet!\\n");
+        }
+    }
+    return 0;
 }`
 };
 
@@ -353,6 +420,43 @@ const OUTPUTS = {
     "So chu hoa: 4",
     "",
     "Process exited after 2.80s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "funcadd-out": [
+    "Tong = 8",
+    "",
+    "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "funcfact-out": [
+    "5! = 120",
+    "",
+    "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "funcmax-out": [
+    "Max = 12",
+    "",
+    "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "projmenu-out": [
+    "",
+    "--- QUAN LY DIEM ---",
+    "1. Nhap diem",
+    "2. In diem",
+    "0. Thoat",
+    "Chon: 2",
+    ">> Ban chon In diem",
+    "",
+    "--- QUAN LY DIEM ---",
+    "1. Nhap diem",
+    "2. In diem",
+    "0. Thoat",
+    "Chon: 0",
+    "Tam biet!",
+    "",
+    "Process exited after 5.20s with return value 0",
     "Press any key to continue . . ."
   ]
 };

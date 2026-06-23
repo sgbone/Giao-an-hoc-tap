@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 10 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 10 — Tổng kết toàn khóa. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="../index.html#b10-recap" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 10 — Tổng kết toàn khóa</h1>
+    <p>15 câu trắc nghiệm tổng hợp cả khóa. Chọn đáp án để biết đúng/sai ngay và xem giải thích.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>🎓 Ôn tập Buổi 10 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 10,
+  shuffleOptions: true,
+  questions: [
+    { q: "Trong dự án 'Quản lý điểm', để hiện lại menu nhiều lần ta dùng?", options: [
+        "Vòng lặp while (lặp tới khi chọn Thoát)",
+        "Chỉ một lệnh printf",
+        "Một biến char" ],
+      answer: 0, explain: "Dùng while để lặp lại menu cho đến khi người dùng chọn Thoát." },
+
+    { q: "Vì sao nên chia chương trình lớn thành nhiều hàm?", options: [
+        "Dễ đọc, dễ sửa, tránh lặp code",
+        "Để file nặng hơn",
+        "Bắt buộc của trình biên dịch" ],
+      answer: 0, explain: "Chia hàm giúp chương trình rõ ràng và dễ bảo trì." },
+
+    { q: "Hàm <code>float trungBinh(float a[], int n)</code> nên trả về?", options: [
+        "Điểm trung bình (kiểu float)",
+        "Không trả gì",
+        "Một ký tự" ],
+      answer: 0, explain: "Tính trung bình → trả về float." },
+
+    { q: "Để lưu điểm của tối đa 30 sinh viên, ta dùng?", options: [
+        "Một mảng, vd <code>float a[30];</code>",
+        "30 biến float riêng lẻ",
+        "Một biến char" ],
+      answer: 0, explain: "Mảng giúp lưu nhiều giá trị cùng kiểu gọn gàng." },
+
+    { q: "Để đếm số sinh viên đạt (điểm ≥ 5) ta?", options: [
+        "Duyệt mảng, <code>if (a[i] >= 5) dem++;</code>",
+        "Cộng tất cả điểm",
+        "In ra mảng" ],
+      answer: 0, explain: "Duyệt và đếm các phần tử thỏa điều kiện." },
+
+    { q: "Ký hiệu định dạng nào cho số thực với 2 chữ số lẻ?", options: [
+        "<code>%.2f</code>", "<code>%d</code>", "<code>%c</code>" ],
+      answer: 0, explain: "<code>%.2f</code> in 2 chữ số sau dấu phẩy." },
+
+    { q: "Phần tử đầu của mảng <code>a</code> là?", options: [
+        "<code>a[0]</code>", "<code>a[1]</code>", "<code>a</code>" ],
+      answer: 0, explain: "Chỉ số bắt đầu từ 0." },
+
+    { q: "Để tránh chia cho 0 trong menu máy tính, ta?", options: [
+        "Kiểm tra <code>if (b == 0)</code> trước khi chia",
+        "Cứ chia bình thường",
+        "Bỏ qua phép chia" ],
+      answer: 0, explain: "Luôn kiểm tra mẫu khác 0." },
+
+    { q: "Chuỗi trong C kết thúc bằng ký tự?", options: [
+        "<code>'\\0'</code>", "<code>'\\n'</code>", "dấu cách" ],
+      answer: 0, explain: "Ký tự null <code>'\\0'</code>." },
+
+    { q: "Lệnh nào nhập được chuỗi có khoảng trắng?", options: [
+        "<code>fgets</code>", "<code>scanf(\"%s\")</code>", "<code>printf</code>" ],
+      answer: 0, explain: "fgets đọc cả dòng kể cả khoảng trắng." },
+
+    { q: "Sau khi học C, chủ đề nào là 'cốt lõi tiếp theo' nên học?", options: [
+        "Con trỏ (pointer)",
+        "Thiết kế web",
+        "Chỉnh sửa ảnh" ],
+      answer: 0, explain: "Con trỏ là nền tảng cốt lõi của C, học tiếp sau khóa này." },
+
+    { q: "Cấu trúc <code>struct</code> dùng để?", options: [
+        "Tự định nghĩa kiểu dữ liệu mới (gộp nhiều trường)",
+        "Tạo vòng lặp",
+        "Nhập dữ liệu" ],
+      answer: 0, explain: "struct gộp nhiều biến liên quan thành một kiểu mới." },
+
+    { q: "Để xử lý dữ liệu dạng bảng (hàng × cột) ta dùng?", options: [
+        "Mảng 2 chiều",
+        "Một biến int",
+        "Một chuỗi" ],
+      answer: 0, explain: "Mảng 2 chiều phù hợp dữ liệu dạng bảng/ma trận." },
+
+    { q: "Lỗi nào sau đây hay gặp nhất khi mới học?", options: [
+        "Quên dấu <code>;</code> hoặc nhầm <code>=</code> với <code>==</code>",
+        "Viết quá nhiều hàm",
+        "Đặt tên biến quá ngắn" ],
+      answer: 0, explain: "Quên <code>;</code>, nhầm <code>=</code>/<code>==</code>, quên <code>&amp;</code> trong scanf là các lỗi kinh điển." },
+
+    { q: "Cách học lập trình hiệu quả nhất là?", options: [
+        "Tự gõ code, làm bài tập đều đặn, đọc kỹ lỗi",
+        "Chỉ đọc lý thuyết",
+        "Học thuộc lòng không thực hành" ],
+      answer: 0, explain: "Thực hành nhiều + tự sửa lỗi là cách tiến bộ nhanh nhất." }
+  ]
+};
+</script>
+<script src="../assets/js/review.js"></script>
+</body>
+</html>

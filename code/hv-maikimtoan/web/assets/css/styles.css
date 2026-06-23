@@ -369,6 +369,8 @@ pre.code.mini { font-size: 12.8px; padding: 14px 16px; }
 .nav-rv:hover { color: #fff; }
 .nav-mid { color: var(--yellow); font-weight: 700; }
 .nav-mid:hover { color: #fff; }
+.nav-fin { color: var(--accent-3); font-weight: 700; }
+.nav-fin:hover { color: #fff; }
 
 /* ===== KHỐI THI GIỮA KỲ ===== */
 .midterm-card {
@@ -379,6 +381,16 @@ pre.code.mini { font-size: 12.8px; padding: 14px 16px; }
 }
 .midterm-card h3 { color: var(--yellow); }
 .midterm-card .cta { background: linear-gradient(120deg, var(--yellow), var(--accent-3)); color: #2a1a04; }
+
+/* ===== KHỐI THI CUỐI KỲ ===== */
+.final-card {
+  background:
+    radial-gradient(700px 240px at 100% 0%, rgba(244,114,182,.14), transparent 60%),
+    linear-gradient(180deg, #211633, #2a1330);
+  border: 1px solid rgba(244,114,182,.4);
+}
+.final-card h3 { color: var(--accent-3); }
+.final-card .cta { background: linear-gradient(120deg, var(--accent-3), var(--accent-2)); color: #2a0420; }
 
 /* ===== KHỐI DẪN SANG TRANG ÔN TẬP ===== */
 .review-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
