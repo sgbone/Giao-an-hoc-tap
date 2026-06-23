@@ -77,6 +77,13 @@
     <a href="#b7-process" class="nav-link">Xử lý mảng</a>
     <a href="#b7-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
 
+    <p class="nav-label">Buổi 8 — Chuỗi ký tự</p>
+    <a href="#b8-intro" class="nav-link">Chuỗi là gì?</a>
+    <a href="#b8-io" class="nav-link">Nhập / xuất chuỗi</a>
+    <a href="#b8-func" class="nav-link">Hàm chuỗi cơ bản</a>
+    <a href="#b8-practice" class="nav-link">Thực hành: đếm chữ hoa</a>
+    <a href="#b8-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
     <p class="nav-label">Ôn tập</p>
     <a href="ontap/giua-ky.html" class="nav-link nav-mid">🎯 Thi GIỮA KỲ (50 câu)</a>
     <a href="ontap/buoi-1.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 1</a>
@@ -86,6 +93,7 @@
     <a href="ontap/buoi-5.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 5</a>
     <a href="ontap/buoi-6.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 6</a>
     <a href="ontap/buoi-7.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 7</a>
+    <a href="ontap/buoi-8.html" class="nav-link nav-rv">🧠 Ôn tập Buổi 8</a>
   </nav>
 
   <div class="sidebar-footer">
@@ -1229,6 +1237,158 @@ So 3 xuat hien 3 lan</pre>
     </div>
   </section>
 
+  <!-- ================= BUỔI 8 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 8</span>
+    <h2>Chuỗi ký tự (String)</h2>
+  </div>
+
+  <!-- 1. chuỗi là gì -->
+  <section id="b8-intro" class="card reveal">
+    <h3><span class="num">1</span> Chuỗi là gì?</h3>
+    <p>Một chữ cái là <code>char</code>. Nhưng một <b>từ</b> hay một <b>câu</b> gồm nhiều ký tự —
+       đó chính là <b>chuỗi</b>. Trong C, chuỗi là một <b>mảng các ký tự</b> (đã học mảng ở Buổi 7!).</p>
+
+    <p>Ví dụ chuỗi <code>"Hi"</code> được lưu thành:</p>
+    <div class="boxes">
+      <div class="box-var"><div class="box-label">s[0]</div><div class="box-body">'H'</div></div>
+      <div class="box-var"><div class="box-label">s[1]</div><div class="box-body">'i'</div></div>
+      <div class="box-var"><div class="box-label">s[2]</div><div class="box-body">'\0'</div></div>
+    </div>
+
+    <div class="callout callout-info">
+      <b>Ký tự kết thúc <code>'\0'</code> (null):</b> C dùng nó để biết chuỗi <b>kết thúc ở đâu</b>.
+      Vì vậy khai báo <code>char s[100];</code> chỉ chứa được <b>99 ký tự thật</b> + 1 ô cho <code>'\0'</code>.
+    </div>
+  </section>
+
+  <!-- 2. nhập / xuất -->
+  <section id="b8-io" class="card reveal">
+    <h3><span class="num">2</span> Nhập và xuất chuỗi</h3>
+    <p>Khai báo <code>char s[100];</code>. In chuỗi dùng <code>%s</code>. Nhập thì nên dùng <code>fgets</code>:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 chao.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="strio"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="strio-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="strio-out" hidden>
+          <div class="console-bar">Console — gõ tên rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-warn">
+      <b>Vì sao dùng <code>fgets</code> mà không dùng <code>scanf("%s", s)</code>?</b><br />
+      <code>scanf("%s", s)</code> chỉ đọc đến khi gặp <b>khoảng trắng</b> → không nhập được "Nguyen Van A"
+      (chỉ lấy được "Nguyen"). <code>fgets</code> đọc cả dòng nên giữ được khoảng trắng.
+    </div>
+  </section>
+
+  <!-- 3. hàm chuỗi -->
+  <section id="b8-func" class="card reveal">
+    <h3><span class="num">3</span> Vài hàm chuỗi cơ bản</h3>
+    <p>Khai báo thêm <code>#include &lt;string.h&gt;</code> để dùng các hàm sau:</p>
+    <table class="fmt-table">
+      <thead><tr><th>Hàm</th><th>Công dụng</th></tr></thead>
+      <tbody>
+        <tr><td><code>strlen(s)</code></td><td>Trả về độ dài chuỗi (số ký tự)</td></tr>
+        <tr><td><code>strcpy(dest, src)</code></td><td>Sao chép chuỗi src sang dest</td></tr>
+        <tr><td><code>strcmp(s1, s2)</code></td><td>So sánh 2 chuỗi (trả 0 nếu bằng nhau)</td></tr>
+        <tr><td><code>strcat(a, b)</code></td><td>Nối chuỗi b vào sau chuỗi a</td></tr>
+      </tbody>
+    </table>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 noichuoi.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="strfunc"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="strfunc-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="strfunc-out" hidden>
+          <div class="console-bar">Console — Output</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. thực hành -->
+  <section id="b8-practice" class="card reveal">
+    <h3><span class="num">4</span> Thực hành: Đếm chữ hoa trong chuỗi</h3>
+    <p>Duyệt từng ký tự bằng vòng lặp (như duyệt mảng), kiểm tra ký tự có nằm trong khoảng <code>'A'..'Z'</code>:</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head">
+        <span class="code-file">📄 demhoa.c</span>
+        <button class="copy-btn">Copy</button>
+      </div>
+      <pre class="code" data-code="strcount"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="strcount-out">▶ Chạy thử (F11)</button>
+        <div class="console" id="strcount-out" hidden>
+          <div class="console-bar">Console — gõ chuỗi rồi bấm Enter</div>
+          <div class="console-body"></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted">💡 Mỗi ký tự là một <code>char</code>, có thể so sánh bằng <code>&gt;=</code>, <code>&lt;=</code> như số.</p>
+  </section>
+
+  <!-- ===== BÀI TẬP VỀ NHÀ — BUỔI 8 ===== -->
+  <section id="b8-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 8 — Chuỗi ký tự</h3>
+      <p class="muted">3 bài theo độ khó tăng dần. Dùng <code>fgets</code> để nhập chuỗi và duyệt bằng vòng lặp nhé!</p>
+    </div>
+    <div class="hw-grid">
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Siêu dễ</span></div>
+        <p class="hw-title">Đếm số ký tự</p>
+        <p class="hw-desc">Nhập một chuỗi rồi in ra độ dài (số ký tự) của chuỗi đó.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap chuoi: Lap trinh C
+Do dai: 11</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: dùng <code>strlen(s)</code> (nhớ <code>#include &lt;string.h&gt;</code>).</p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa (phải suy nghĩ)</span></div>
+        <p class="hw-title">Đếm khoảng trắng</p>
+        <p class="hw-desc">Nhập một chuỗi, đếm xem có bao nhiêu dấu khoảng trắng.</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap chuoi: Hoc lap trinh that vui
+So khoang trang: 4</pre>
+        </div>
+        <p class="hw-hint">💡 Gợi ý: duyệt chuỗi, <code>if (s[i] == ' ') dem++;</code></p>
+      </article>
+
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">In ngược chuỗi</p>
+        <p class="hw-desc">Nhập một chuỗi rồi in nó theo thứ tự ngược lại (ví dụ "abc" → "cba").</p>
+        <div class="hw-sample">
+          <div class="hw-sample-label">🖥️ Kết quả in ra mẫu</div>
+          <pre>Nhap chuoi: abcde
+Chuoi nguoc: edcba</pre>
+        </div>
+        <p class="hw-hint">💡 Sáng tạo: vòng lặp chạy từ <code>strlen(s)-1</code> về 0, in từng <code>s[i]</code>.</p>
+      </article>
+
+    </div>
+  </section>
+
   <!-- ===== CTA THI GIỮA KỲ ===== -->
   <section id="midterm-cta" class="card reveal midterm-card">
     <h3>🎯 Sẵn sàng cho bài kiểm tra GIỮA KỲ?</h3>
@@ -1277,17 +1437,22 @@ So 3 xuat hien 3 lan</pre>
         <span class="rl-text"><b>Ôn tập Buổi 7</b><small>15 câu · Mảng một chiều</small></span>
         <span class="rl-go">→</span>
       </a>
+      <a class="review-link" href="ontap/buoi-8.html">
+        <span class="rl-icon">📗</span>
+        <span class="rl-text"><b>Ôn tập Buổi 8</b><small>15 câu · Chuỗi ký tự</small></span>
+        <span class="rl-go">→</span>
+      </a>
     </div>
   </section>
 
   <footer class="footer">
-    <p>📘 Khóa học Lập trình C — Buổi 1 → 7</p>
+    <p>📘 Khóa học Lập trình C — Buổi 1 → 8</p>
     <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
   </footer>
 
 </main>
 
-<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else", "5 — Vong lap for, while", "6 — On tap tong hop", "7 — Mang mot chieu"];</script>
+<script>window.HERO_WORDS = ["1 — Hello World", "2 — Biến & kiểu dữ liệu", "3 — Nhap lieu & toan tu", "4 — Dieu kien if-else", "5 — Vong lap for, while", "6 — On tap tong hop", "7 — Mang mot chieu", "8 — Chuoi ky tu"];</script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

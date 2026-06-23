@@ -189,6 +189,46 @@ int main() {
     printf("Tong = %d\\n", tong);
     printf("Max = %d\\n", max);
     return 0;
+}`,
+
+  /* ----- Buổi 8 ----- */
+  strio: `#include <stdio.h>
+
+int main() {
+    char hoTen[100];
+    printf("Nhap ho ten: ");
+    fgets(hoTen, 100, stdin);
+    printf("Xin chao %s", hoTen);
+    return 0;
+}`,
+
+  strfunc: `#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char a[100] = "Hello, ";
+    char b[100] = "World!";
+    strcat(a, b);
+    printf("%s\\n", a);
+    printf("Do dai: %d\\n", strlen(a));
+    return 0;
+}`,
+
+  strcount: `#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[100];
+    int dem = 0;
+    printf("Nhap chuoi: ");
+    fgets(s, 100, stdin);
+    for (int i = 0; i < strlen(s); i++) {
+        if (s[i] >= 'A' && s[i] <= 'Z') {
+            dem++;
+        }
+    }
+    printf("So chu hoa: %d\\n", dem);
+    return 0;
 }`
 };
 
@@ -292,6 +332,27 @@ const OUTPUTS = {
     "Max = 9",
     "",
     "Process exited after 0.03s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "strio-out": [
+    "Nhap ho ten: Nguyen Van A",
+    "Xin chao Nguyen Van A",
+    "",
+    "Process exited after 3.40s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "strfunc-out": [
+    "Hello, World!",
+    "Do dai: 13",
+    "",
+    "Process exited after 0.02s with return value 0",
+    "Press any key to continue . . ."
+  ],
+  "strcount-out": [
+    "Nhap chuoi: Hoc Lap Trinh C",
+    "So chu hoa: 4",
+    "",
+    "Process exited after 2.80s with return value 0",
     "Press any key to continue . . ."
   ]
 };

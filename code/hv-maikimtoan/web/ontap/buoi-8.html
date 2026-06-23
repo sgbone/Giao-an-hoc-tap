@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ôn tập Buổi 8 · Lập trình C</title>
+<meta name="description" content="Ôn tập nhanh Buổi 8 — Chuỗi ký tự. Biên soạn: Trần Hoàng Đức Anh (Bò)." />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<main class="content content-narrow review-page">
+  <a href="../index.html#b8-intro" class="back-link">← Về bài học</a>
+
+  <header class="review-hero">
+    <span class="badge badge-green">🧠 Ôn tập nhanh</span>
+    <h1>Buổi 8 — Chuỗi ký tự</h1>
+    <p>15 câu trắc nghiệm. Chọn đáp án để biết đúng/sai ngay và xem giải thích. Cuối bài có điểm tổng kết.</p>
+  </header>
+
+  <div class="score-card" id="score-card">
+    <div class="score-num"><span id="score-num">0</span><small>/<span id="score-total">0</span> đúng</small></div>
+    <div class="score-track"><div class="score-fill" id="score-fill"></div></div>
+    <div class="score-msg" id="score-msg">Bắt đầu làm nào!</div>
+  </div>
+
+  <div id="quiz-root"></div>
+
+  <footer class="footer">
+    <p>📗 Ôn tập Buổi 8 — Lập trình C</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+</main>
+
+<script>
+window.QUIZ = {
+  lesson: 8,
+  shuffleOptions: true,
+  questions: [
+    { q: "Chuỗi ký tự (string) trong C thực chất là gì?", options: [
+        "Một mảng các ký tự (char)",
+        "Một số nguyên",
+        "Một biến float" ],
+      answer: 0, explain: "Chuỗi = mảng các ký tự xếp liền nhau." },
+
+    { q: "Chuỗi trong C kết thúc bằng ký tự đặc biệt nào?", options: [
+        "<code>'\\0'</code> (ký tự null)",
+        "<code>'\\n'</code>",
+        "Dấu cách" ],
+      answer: 0, explain: "Ký tự kết thúc chuỗi là <code>'\\0'</code> (null)." },
+
+    { q: "Khai báo <code>char s[100];</code> chứa được tối đa bao nhiêu ký tự?", options: [
+        "99 ký tự (+ 1 ô cho '\\0')",
+        "100 ký tự",
+        "101 ký tự" ],
+      answer: 0, explain: "1 ô dành cho ký tự kết thúc '\\0', nên còn 99 ký tự thật." },
+
+    { q: "Lệnh nào nên dùng để nhập chuỗi CÓ khoảng trắng (vd họ tên)?", options: [
+        "<code>fgets</code>",
+        "<code>scanf(\"%s\", ...)</code>",
+        "<code>printf</code>" ],
+      answer: 0, explain: "<code>fgets</code> đọc cả dòng kể cả khoảng trắng." },
+
+    { q: "Vì sao <code>scanf(\"%s\", s)</code> không đọc được \"Nguyen Van A\"?", options: [
+        "Nó dừng khi gặp khoảng trắng",
+        "Nó chỉ đọc số",
+        "Nó đọc ngược" ],
+      answer: 0, explain: "<code>%s</code> dừng ở khoảng trắng đầu tiên → chỉ lấy \"Nguyen\"." },
+
+    { q: "Để dùng các hàm xử lý chuỗi, cần khai báo thư viện nào?", options: [
+        "<code>#include &lt;string.h&gt;</code>",
+        "<code>#include &lt;math.h&gt;</code>",
+        "<code>#include &lt;stdlib.h&gt;</code>" ],
+      answer: 0, explain: "Các hàm strlen, strcpy… nằm trong <code>string.h</code>." },
+
+    { q: "Hàm <code>strlen(s)</code> trả về gì?", options: [
+        "Độ dài chuỗi (số ký tự)",
+        "Ký tự đầu tiên",
+        "Bản sao chuỗi" ],
+      answer: 0, explain: "<code>strlen</code> = string length → độ dài chuỗi." },
+
+    { q: "Hàm <code>strcpy(dest, src)</code> làm gì?", options: [
+        "Sao chép chuỗi src sang dest",
+        "Nối hai chuỗi",
+        "So sánh hai chuỗi" ],
+      answer: 0, explain: "<code>strcpy</code> = string copy (chép src vào dest)." },
+
+    { q: "Hàm <code>strcat(a, b)</code> làm gì?", options: [
+        "Nối chuỗi b vào sau chuỗi a",
+        "Xóa chuỗi b",
+        "Đếm ký tự" ],
+      answer: 0, explain: "<code>strcat</code> = concatenate (nối b vào cuối a)." },
+
+    { q: "Hàm <code>strcmp(s1, s2)</code> trả về 0 khi nào?", options: [
+        "Khi hai chuỗi GIỐNG hệt nhau",
+        "Khi hai chuỗi khác nhau",
+        "Luôn trả 0" ],
+      answer: 0, explain: "<code>strcmp</code> trả 0 nếu hai chuỗi bằng nhau." },
+
+    { q: "Sau <code>char a[100]=\"Hello, \"; strcat(a, \"World!\");</code> thì <code>a</code> là?", options: [
+        "Hello, World!",
+        "World!Hello, ",
+        "Hello,World!" ],
+      answer: 0, explain: "strcat nối \"World!\" vào sau \"Hello, \"." },
+
+    { q: "Để duyệt từng ký tự của chuỗi <code>s</code>, vòng lặp thường dùng?", options: [
+        "<code>for (i = 0; i < strlen(s); i++)</code>",
+        "<code>for (i = 1; i <= strlen(s); i++)</code>",
+        "<code>for (i = 0; i <= 100; i++)</code>" ],
+      answer: 0, explain: "Duyệt từ 0 đến độ dài chuỗi − 1." },
+
+    { q: "Truy cập ký tự thứ i của chuỗi <code>s</code> viết là?", options: [
+        "<code>s[i]</code>",
+        "<code>s(i)</code>",
+        "<code>s.i</code>" ],
+      answer: 0, explain: "Chuỗi là mảng nên dùng <code>s[i]</code>." },
+
+    { q: "Điều kiện nhận biết một ký tự <code>c</code> là CHỮ HOA?", options: [
+        "<code>c >= 'A' && c <= 'Z'</code>",
+        "<code>c >= 'a' && c <= 'z'</code>",
+        "<code>c >= '0' && c <= '9'</code>" ],
+      answer: 0, explain: "Chữ hoa nằm trong khoảng 'A'…'Z'." },
+
+    { q: "Để đếm số khoảng trắng trong chuỗi, ta kiểm tra?", options: [
+        "<code>if (s[i] == ' ') dem++;</code>",
+        "<code>if (s[i] == '\\0') dem++;</code>",
+        "<code>if (s[i] == 0) dem++;</code>" ],
+      answer: 0, explain: "So sánh ký tự với dấu cách <code>' '</code>." }
+  ]
+};
+</script>
+<script src="../assets/js/review.js"></script>
+</body>
+</html>
