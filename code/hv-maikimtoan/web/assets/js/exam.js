@@ -16,6 +16,8 @@
   let started = false, submitted = false;
   let violations = 0;
   let startTime = 0, durationSec = 0, timerId = null;
+  let graceUntil = 0;     // thời gian "ân hạn" — bỏ qua vi phạm thoáng qua
+  let everFs = false;     // đã từng vào toàn màn hình thật chưa
 
   /* ---------- tiện ích ---------- */
   function shuffle(a) {
@@ -47,6 +49,7 @@
     } catch (e) {
       if (!confirm("Trình duyệt không vào được toàn màn hình. Vẫn tiếp tục làm bài?")) return;
     }
+    everFs = !!document.fullscreenElement;
 
     $("btn-start").disabled = true;
     $("btn-start").textContent = "Đang tải đề...";
@@ -72,6 +75,7 @@
     started = true;
     startTime = Date.now();
     durationSec = (exam.durationMin || 30) * 60;
+    graceUntil = Date.now() + 2000;   // 2s đầu bỏ qua dao động fullscreen
     tickTimer();
     timerId = setInterval(tickTimer, 1000);
     attachGuards();
@@ -131,14 +135,16 @@
 
   /* ---------- chống gian lận ---------- */
   function onFsChange() {
-    if (started && !submitted && !document.fullscreenElement) {
-      raiseViolation("Bạn đã thoát chế độ toàn màn hình.");
-    }
+    if (document.fullscreenElement) { everFs = true; return; }  // vừa VÀO fullscreen
+    if (!started || submitted) return;
+    if (!everFs) return;                  // chưa từng vào FS thật (vd trong khung preview) → bỏ qua
+    if (Date.now() < graceUntil) return;  // đang trong thời gian ân hạn
+    raiseViolation("Bạn đã thoát chế độ toàn màn hình.");
   }
   function onVisibility() {
-    if (started && !submitted && document.hidden) {
-      raiseViolation("Bạn đã rời khỏi tab hoặc thu nhỏ cửa sổ.");
-    }
+    if (!started || submitted) return;
+    if (Date.now() < graceUntil) return;
+    if (document.hidden) raiseViolation("Bạn đã rời khỏi tab hoặc thu nhỏ cửa sổ.");
   }
   function blockEvent(e) { e.preventDefault(); return false; }
   function onKey(e) {
@@ -199,7 +205,8 @@
 
   // nút "Vào lại toàn màn hình" trên overlay cảnh báo
   $("warn-resume").addEventListener("click", async () => {
-    try { await document.documentElement.requestFullscreen(); } catch (e) {}
+    try { await document.documentElement.requestFullscreen(); everFs = true; } catch (e) {}
+    graceUntil = Date.now() + 1500;   // tránh báo lại ngay khi vừa vào lại
     warn.hidden = true;
   });
 
