@@ -65,8 +65,8 @@ module.exports = async (req, res) => {
       const wrong = detail.filter((d) => !d.ok);
       const wrongText = wrong.length
         ? wrong
-            .map((d) => `#${d.i + 1} (chọn ${d.chosen == null ? "—" : LETTERS[d.chosen]}, đúng ${LETTERS[d.correct]})`)
-            .join(", ")
+            .map((d) => `• Câu ${d.i + 1}: chọn ${d.chosen == null ? "—" : LETTERS[d.chosen]}, đúng ${LETTERS[d.correct]}`)
+            .join("\n")
         : "🎉 Đúng tất cả!";
 
       const vKeys = Object.keys(vdetail);
@@ -77,7 +77,7 @@ module.exports = async (req, res) => {
       let desc =
         `**🚨 Chi tiết vi phạm:**\n${vText}\n\n` +
         `**Lưới đáp án:**\n${grid}\n\n` +
-        `**Câu sai:** ${wrongText}`;
+        `**❌ Câu sai (${wrong.length}):**\n${wrongText}`;
       if (desc.length > 4000) desc = desc.slice(0, 3990) + "…";
 
       const embed = {
