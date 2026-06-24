@@ -75,7 +75,7 @@
     started = true;
     startTime = Date.now();
     durationSec = (exam.durationMin || 30) * 60;
-    graceUntil = Date.now() + 2000;   // 2s đầu bỏ qua dao động fullscreen
+    graceUntil = Date.now() + 3000;   // 3s đầu bỏ qua dao động fullscreen
     tickTimer();
     timerId = setInterval(tickTimer, 1000);
     attachGuards();
@@ -186,6 +186,8 @@
 
   function raiseViolation(reason) {
     if (submitted) return;
+    if (!started || examEl.hidden) return;   // chưa vào màn hình làm bài thì không tính
+    if (Date.now() < graceUntil) return;     // còn trong thời gian ân hạn
     violations++;
     if (violations >= MAX_VIOLATIONS) {
       $("warn-text").innerHTML =
