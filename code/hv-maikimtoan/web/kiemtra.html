@@ -57,14 +57,21 @@
         <span class="eb-progress">✅ <span id="q-done">0</span>/<span id="q-total">0</span></span>
         <span class="eb-timer" id="timer">--:--</span>
       </div>
-      <button id="btn-submit" class="eb-submit">Nộp bài</button>
     </div>
 
-    <div id="questions"></div>
+    <div id="questions" class="exam-paged"></div>
 
-    <button id="btn-submit-bottom" class="cta" style="width:100%;text-align:center;margin-top:8px">
-      ✅ Nộp bài &amp; kết thúc
-    </button>
+    <div class="exam-nav">
+      <button id="btn-prev" class="enav">◀ Câu trước</button>
+      <span class="enav-pos">Câu <span id="q-cur">1</span>/<span id="q-total2">40</span></span>
+      <button id="btn-next" class="enav">Câu sau ▶</button>
+      <button id="btn-submit" class="eb-submit">✅ Nộp bài</button>
+    </div>
+
+    <div class="exam-hint">
+      ⌨️ <b>A B C D</b> (hoặc 1 2 3 4) = chọn đáp án &nbsp;·&nbsp; <b>← →</b> = chuyển câu &nbsp;·&nbsp; <b>Enter</b> = câu kế tiếp
+      <br><span class="muted">Chuột không dùng để chọn đáp án — hãy dùng bàn phím.</span>
+    </div>
   </div>
 
   <!-- ============ KẾT QUẢ ============ -->

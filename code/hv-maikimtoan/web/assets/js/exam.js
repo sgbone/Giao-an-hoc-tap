@@ -18,6 +18,7 @@
   let startTime = 0, durationSec = 0, timerId = null;
   let graceUntil = 0;     // thời gian "ân hạn" — bỏ qua vi phạm thoáng qua
   let everFs = false;     // đã từng vào toàn màn hình thật chưa
+  let currentIndex = 0;   // câu đang hiển thị (chế độ 1 câu/màn)
 
   /* ---------- tiện ích ---------- */
   function shuffle(a) {
@@ -106,17 +107,47 @@
         btn.type = "button";
         btn.className = "q-opt";
         btn.innerHTML = `<span class="q-letter">${LETTERS[oi]}</span><span>${opt}</span>`;
-        btn.addEventListener("click", () => {
-          answers[origIdx] = oi;
-          card.querySelectorAll(".q-opt").forEach((o) => o.classList.remove("selected"));
-          btn.classList.add("selected");
-          updateProgress();
-        });
+        // chuột không chọn (pointer-events:none qua CSS); vẫn giữ click làm fallback
+        btn.addEventListener("click", () => applySelect(card, origIdx, oi));
         card.appendChild(btn);
       });
       root.appendChild(card);
     });
+    currentIndex = 0;
+    $("q-total2").textContent = exam.total;
+    showQuestion(0);
     updateProgress();
+  }
+
+  function applySelect(card, origIdx, oi) {
+    answers[origIdx] = oi;
+    card.querySelectorAll(".q-opt").forEach((o) => o.classList.remove("selected"));
+    const opts = card.querySelectorAll(".q-opt");
+    if (opts[oi]) opts[oi].classList.add("selected");
+    updateProgress();
+  }
+
+  function cards() { return $("questions").children; }
+
+  function showQuestion(i) {
+    const list = cards();
+    if (!list.length) return;
+    currentIndex = Math.max(0, Math.min(i, list.length - 1));
+    for (let k = 0; k < list.length; k++) list[k].classList.toggle("active", k === currentIndex);
+    $("q-cur").textContent = currentIndex + 1;
+    $("btn-prev").disabled = currentIndex === 0;
+    $("btn-next").disabled = currentIndex === list.length - 1;
+    window.scrollTo(0, 0);
+  }
+  function goNext() { if (currentIndex < cards().length - 1) showQuestion(currentIndex + 1); }
+  function goPrev() { if (currentIndex > 0) showQuestion(currentIndex - 1); }
+
+  // chọn đáp án cho câu đang hiển thị bằng bàn phím
+  function selectCurrent(oi) {
+    const card = cards()[currentIndex];
+    if (!card) return;
+    const origIdx = Number(card.dataset.id);
+    if (oi < exam.questions[origIdx].options.length) applySelect(card, origIdx, oi);
   }
 
   function updateProgress() {
@@ -157,6 +188,27 @@
     ) {
       e.preventDefault();
       return false;
+    }
+    // điều khiển làm bài bằng bàn phím
+    if (!started || submitted || examEl.hidden) return;
+    if (e.ctrlKey || e.altKey || e.metaKey) return;
+
+    const up = k.toUpperCase();
+    if (["A", "B", "C", "D", "E"].includes(up)) {
+      e.preventDefault();
+      selectCurrent(LETTERS.indexOf(up));
+    } else if (["1", "2", "3", "4", "5"].includes(k)) {
+      e.preventDefault();
+      selectCurrent(parseInt(k, 10) - 1);
+    } else if (k === "ArrowRight") {
+      e.preventDefault();
+      if (currentIndex === cards().length - 1) confirmSubmit(); else goNext();
+    } else if (k === "ArrowLeft") {
+      e.preventDefault();
+      goPrev();
+    } else if (k === "Enter") {
+      e.preventDefault();
+      if (currentIndex === cards().length - 1) confirmSubmit(); else goNext();
     }
   }
   function onBeforeUnload(e) {
@@ -212,9 +264,10 @@
     warn.hidden = true;
   });
 
-  /* ---------- nộp bài ---------- */
+  /* ---------- điều hướng & nộp bài ---------- */
+  $("btn-prev").addEventListener("click", goPrev);
+  $("btn-next").addEventListener("click", goNext);
   $("btn-submit").addEventListener("click", () => confirmSubmit());
-  $("btn-submit-bottom").addEventListener("click", () => confirmSubmit());
 
   function confirmSubmit() {
     const left = exam.total - Object.keys(answers).length;
