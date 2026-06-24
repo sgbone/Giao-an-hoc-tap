@@ -449,11 +449,13 @@ select.exam-input { cursor: pointer; }
 .q-opt.selected { background: rgba(94,234,212,.16); border-color: var(--accent); color: #d7fff4; }
 .q-opt.selected .q-letter { background: var(--accent); color: #04241f; border-color: var(--accent); }
 
-/* lớp cảnh báo vi phạm */
+/* lớp cảnh báo vi phạm — chỉ hiện khi KHÔNG có thuộc tính hidden */
 .warn-overlay {
-  position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 24px;
+  position: fixed; inset: 0; z-index: 300; place-items: center; padding: 24px;
   background: rgba(120,10,20,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
+.warn-overlay[hidden] { display: none !important; }
+.warn-overlay:not([hidden]) { display: grid; }
 .warn-card {
   max-width: 440px; text-align: center; padding: 30px 26px; border-radius: 18px;
   background: linear-gradient(180deg, #1c1020, #251018);
