@@ -189,6 +189,16 @@
     }
     return false;
   }
+  // CHẶN MỌI THAO TÁC CHUỘT khi đang thi (chỉ cho phép nút điều hướng & overlay cảnh báo)
+  function onMouse(e) {
+    if (!started || submitted) return;
+    const t = e.target;
+    if (t && t.closest && (t.closest(".exam-nav") || t.closest("#warn"))) return; // cho phép
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "click" && examActive()) logViol("Dùng chuột thao tác (đã bị chặn)");
+    return false;
+  }
   function onKey(e) {
     const k = e.key;
     // chặn devtools & copy/paste/print
@@ -235,6 +245,9 @@
     document.addEventListener("cut", blockEvent);
     document.addEventListener("paste", blockEvent);
     document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onMouse, true);
+    document.addEventListener("click", onMouse, true);
+    document.addEventListener("dblclick", onMouse, true);
     window.addEventListener("beforeunload", onBeforeUnload);
   }
   function detachGuards() {
@@ -245,6 +258,9 @@
     document.removeEventListener("cut", blockEvent);
     document.removeEventListener("paste", blockEvent);
     document.removeEventListener("keydown", onKey);
+    document.removeEventListener("mousedown", onMouse, true);
+    document.removeEventListener("click", onMouse, true);
+    document.removeEventListener("dblclick", onMouse, true);
     window.removeEventListener("beforeunload", onBeforeUnload);
   }
 
