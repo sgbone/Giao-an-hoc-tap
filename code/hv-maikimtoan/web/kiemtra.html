@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phòng kiểm tra · Toàn Học Lập Trình C</title>
+<meta name="description" content="Phòng kiểm tra trực tuyến — Toàn Học Lập Trình C" />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="assets/banner.png" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<main class="content content-narrow">
+
+  <!-- ============ MÀN HÌNH GIỚI THIỆU ============ -->
+  <section id="intro" class="card">
+    <div style="text-align:center">
+      <img src="assets/banner.png" alt="" onerror="this.style.display='none'"
+           style="width:120px;border-radius:18px;margin-bottom:14px" />
+      <h1 style="font-size:30px;margin:0 0 4px">📝 Phòng kiểm tra</h1>
+      <p class="muted">Toàn Học Lập Trình C — Kiểm tra nghiêm ngặt, chấm tự động</p>
+    </div>
+
+    <h4 class="sub">Chọn bài kiểm tra</h4>
+    <select id="exam-select" class="exam-input">
+      <option value="buoi-1-2">Kiểm tra Buổi 1–2 · 40 câu · 50 phút</option>
+    </select>
+
+    <h4 class="sub">Họ và tên của em</h4>
+    <input id="name" class="exam-input" type="text" placeholder="VD: Trần Hoàng Đức Anh" maxlength="80" />
+
+    <div class="callout callout-warn" style="margin-top:18px">
+      <b>⚠️ NỘI QUY PHÒNG THI — đọc kỹ:</b>
+      <ul style="margin:8px 0 0 18px;line-height:1.9">
+        <li>Bài thi chạy ở chế độ <b>toàn màn hình</b>. Không thoát ra giữa chừng.</li>
+        <li><b>Không</b> chuyển tab, thu nhỏ cửa sổ, mở phần mềm khác.</li>
+        <li><b>Không</b> copy, dán, chuột phải, mở công cụ developer.</li>
+        <li>Vi phạm <b>quá 4 lần</b> → hệ thống <b>tự động nộp bài</b>.</li>
+        <li>Hết <b>50 phút</b> bài sẽ tự nộp. Kết quả gửi thẳng cho giáo viên.</li>
+      </ul>
+    </div>
+
+    <button id="btn-start" class="cta" style="margin-top:18px;width:100%;text-align:center">
+      🚀 Bắt đầu làm bài
+    </button>
+    <p class="muted" style="text-align:center;margin-top:12px">
+      <a href="index.html" style="color:var(--muted)">← Về trang bài học</a>
+    </p>
+  </section>
+
+  <!-- ============ MÀN HÌNH LÀM BÀI ============ -->
+  <div id="exam" hidden>
+    <div class="exam-bar">
+      <div class="eb-title" id="exam-title">Kiểm tra</div>
+      <div class="eb-meta">
+        <span class="eb-progress">✅ <span id="q-done">0</span>/<span id="q-total">0</span></span>
+        <span class="eb-timer" id="timer">--:--</span>
+      </div>
+      <button id="btn-submit" class="eb-submit">Nộp bài</button>
+    </div>
+
+    <div id="questions"></div>
+
+    <button id="btn-submit-bottom" class="cta" style="width:100%;text-align:center;margin-top:8px">
+      ✅ Nộp bài &amp; kết thúc
+    </button>
+  </div>
+
+  <!-- ============ KẾT QUẢ ============ -->
+  <section id="result" class="card" hidden></section>
+
+</main>
+
+<!-- ============ LỚP CẢNH BÁO ============ -->
+<div id="warn" class="warn-overlay" hidden>
+  <div class="warn-card">
+    <div class="warn-icon">🚨</div>
+    <div id="warn-text" class="warn-msg"></div>
+    <div id="warn-count" class="warn-count"></div>
+    <div id="warn-actions">
+      <button id="warn-resume" class="cta">↩️ Vào lại toàn màn hình &amp; tiếp tục</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/exam.js"></script>
+</body>
+</html>

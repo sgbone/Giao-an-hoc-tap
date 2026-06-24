@@ -404,6 +404,75 @@ pre.code.mini { font-size: 12.8px; padding: 14px 16px; }
 .final-card h3 { color: var(--accent-3); }
 .final-card .cta { background: linear-gradient(120deg, var(--accent-3), var(--accent-2)); color: #2a0420; }
 
+/* ===================== PHÒNG KIỂM TRA ===================== */
+body.exam-mode { user-select: none; -webkit-user-select: none; }
+.content-narrow .card + #exam { margin-top: 0; }
+
+.exam-input {
+  width: 100%; padding: 12px 16px; border-radius: 12px; font-size: 15px; font-family: var(--font);
+  background: var(--code-bg); color: var(--text); border: 1px solid var(--line); margin-top: 4px;
+}
+.exam-input:focus { outline: none; border-color: var(--accent); }
+select.exam-input { cursor: pointer; }
+
+/* thanh trên cùng khi làm bài */
+.exam-bar {
+  position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 14px;
+  padding: 12px 16px; margin-bottom: 18px; border-radius: 14px;
+  background: rgba(13,20,38,.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.eb-title { font-weight: 800; font-size: 15px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.eb-meta { display: flex; align-items: center; gap: 14px; }
+.eb-progress { font-size: 13.5px; color: var(--muted); font-weight: 600; }
+.eb-timer {
+  font-family: var(--mono); font-size: 18px; font-weight: 800; color: var(--accent);
+  padding: 4px 12px; border-radius: 10px; background: #0a1122; border: 1px solid var(--line);
+}
+.eb-timer.danger { color: #fff; background: var(--red); border-color: var(--red); animation: blink 1s steps(2) infinite; }
+.eb-submit {
+  font-size: 13.5px; font-weight: 700; padding: 9px 16px; border-radius: 10px; cursor: pointer; border: none;
+  color: #04241f; background: linear-gradient(120deg, var(--green), var(--accent));
+}
+.eb-submit:hover { filter: brightness(1.05); }
+
+/* code trong câu hỏi đọc-đoán-output */
+.q-code {
+  margin: 10px 0 0; padding: 12px 14px; border-radius: 10px;
+  background: var(--code-bg); border: 1px solid var(--line);
+  font-family: var(--mono); font-size: 13.5px; line-height: 1.6; color: #c7d2fe;
+  white-space: pre; overflow-x: auto;
+}
+.q-text { display: block; }
+
+/* lựa chọn được chọn (chưa lộ đúng/sai) */
+.q-opt.selected { background: rgba(94,234,212,.16); border-color: var(--accent); color: #d7fff4; }
+.q-opt.selected .q-letter { background: var(--accent); color: #04241f; border-color: var(--accent); }
+
+/* lớp cảnh báo vi phạm */
+.warn-overlay {
+  position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 24px;
+  background: rgba(120,10,20,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.warn-card {
+  max-width: 440px; text-align: center; padding: 30px 26px; border-radius: 18px;
+  background: linear-gradient(180deg, #1c1020, #251018);
+  border: 1px solid rgba(248,113,113,.5); box-shadow: var(--shadow);
+}
+.warn-icon { font-size: 50px; }
+.warn-msg { font-size: 17px; margin: 12px 0 8px; line-height: 1.6; }
+.warn-count { color: var(--muted); font-size: 13.5px; margin-bottom: 18px; }
+
+/* kết quả */
+.res-meta { display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: center; margin: 18px 0; font-size: 14px; color: var(--muted); }
+.res-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.rg {
+  width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px;
+  font-family: var(--mono); font-size: 12.5px; font-weight: 700; border: 1px solid var(--line);
+}
+.rg.ok { background: rgba(74,222,128,.16); color: var(--green); border-color: rgba(74,222,128,.5); }
+.rg.no { background: rgba(248,113,113,.14); color: var(--red); border-color: rgba(248,113,113,.5); }
+
 /* ===== KHỐI DẪN SANG TRANG ÔN TẬP ===== */
 .review-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
 .review-link {
