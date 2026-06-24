@@ -19,6 +19,9 @@
   let graceUntil = 0;     // thời gian "ân hạn" — bỏ qua vi phạm thoáng qua
   let everFs = false;     // đã từng vào toàn màn hình thật chưa
   let currentIndex = 0;   // câu đang hiển thị (chế độ 1 câu/màn)
+  const vlog = {};        // thống kê vi phạm theo loại { "Thoát toàn màn hình": 2, ... }
+  function logViol(type) { vlog[type] = (vlog[type] || 0) + 1; }
+  function examActive() { return started && !submitted && !examEl.hidden && Date.now() >= graceUntil; }
 
   /* ---------- tiện ích ---------- */
   function shuffle(a) {
@@ -170,14 +173,22 @@
     if (!started || submitted) return;
     if (!everFs) return;                  // chưa từng vào FS thật (vd trong khung preview) → bỏ qua
     if (Date.now() < graceUntil) return;  // đang trong thời gian ân hạn
-    raiseViolation("Bạn đã thoát chế độ toàn màn hình.");
+    raiseViolation("Bạn đã thoát chế độ toàn màn hình.", "Thoát toàn màn hình");
   }
   function onVisibility() {
     if (!started || submitted) return;
     if (Date.now() < graceUntil) return;
-    if (document.hidden) raiseViolation("Bạn đã rời khỏi tab hoặc thu nhỏ cửa sổ.");
+    if (document.hidden) raiseViolation("Bạn đã rời khỏi tab hoặc thu nhỏ cửa sổ.", "Chuyển tab / thu nhỏ cửa sổ");
   }
-  function blockEvent(e) { e.preventDefault(); return false; }
+  // chặn hành vi chuột/copy; ghi nhận loại vi phạm (không tính vào ngưỡng tự nộp)
+  function blockEvent(e) {
+    e.preventDefault();
+    if (examActive()) {
+      const map = { contextmenu: "Bấm chuột phải", copy: "Thử copy", cut: "Thử cắt (cut)", paste: "Thử dán (paste)" };
+      logViol(map[e.type] || "Hành vi bị chặn");
+    }
+    return false;
+  }
   function onKey(e) {
     const k = e.key;
     // chặn devtools & copy/paste/print
@@ -187,6 +198,7 @@
       (e.ctrlKey && ["c", "v", "x", "u", "s", "p", "a"].includes(k.toLowerCase()))
     ) {
       e.preventDefault();
+      if (examActive()) logViol("Dùng phím tắt bị chặn (devtools/copy)");
       return false;
     }
     // điều khiển làm bài bằng bàn phím
@@ -236,10 +248,11 @@
     window.removeEventListener("beforeunload", onBeforeUnload);
   }
 
-  function raiseViolation(reason) {
+  function raiseViolation(reason, type) {
     if (submitted) return;
     if (!started || examEl.hidden) return;   // chưa vào màn hình làm bài thì không tính
     if (Date.now() < graceUntil) return;     // còn trong thời gian ân hạn
+    if (type) logViol(type);
     violations++;
     if (violations >= MAX_VIOLATIONS) {
       $("warn-text").innerHTML =
@@ -299,7 +312,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           examId: exam.id, name: exam.name, answers,
-          durationSec: elapsed, violations, autoSubmit: !!auto
+          durationSec: elapsed, violations, violationDetails: vlog, autoSubmit: !!auto
         })
       });
       res = await r.json();
@@ -321,6 +334,13 @@
       .map((ok, i) => `<span class="rg ${ok ? "ok" : "no"}">${i + 1}</span>`)
       .join("");
 
+    const vKeys = Object.keys(vlog);
+    const vBlock = vKeys.length
+      ? `<h4 class="sub">🚨 Vi phạm đã ghi nhận:</h4><ul class="explain">${
+          vKeys.map((t) => `<li>${escapeHtml(t)}: <b>${vlog[t]}</b> lần</li>`).join("")
+        }</ul>`
+      : "";
+
     resultEl.innerHTML = `
       <div style="text-align:center">
         <div style="font-size:54px">${emoji}</div>
@@ -333,6 +353,7 @@
         <span>🚨 Vi phạm: ${violations}${auto ? " (tự nộp)" : ""}</span>
         <span>${res.sent ? "✅ Đã gửi kết quả về Discord" : "⚠️ Chưa gửi được Discord"}</span>
       </div>
+      ${vBlock}
       <h4 class="sub">Lưới đúng/sai (theo thứ tự câu khi làm):</h4>
       <div class="res-grid">${grid}</div>
       <p class="muted" style="margin-top:16px">Kết quả chi tiết đã được gửi cho giáo viên. Em có thể đóng trang này.</p>

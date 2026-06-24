@@ -38,6 +38,7 @@ module.exports = async (req, res) => {
   const durationSec = Number(body.durationSec) || 0;
   const violations = Number(body.violations) || 0;
   const autoSubmit = !!body.autoSubmit;
+  const vdetail = body.violationDetails && typeof body.violationDetails === "object" ? body.violationDetails : {};
 
   // ----- chấm điểm -----
   let correct = 0;
@@ -68,7 +69,15 @@ module.exports = async (req, res) => {
             .join(", ")
         : "🎉 Đúng tất cả!";
 
-      let desc = `**Lưới đáp án:**\n${grid}\n\n**Câu sai:** ${wrongText}`;
+      const vKeys = Object.keys(vdetail);
+      const vText = vKeys.length
+        ? vKeys.map((t) => `• ${t}: ${vdetail[t]} lần`).join("\n")
+        : "✅ Không có vi phạm nào";
+
+      let desc =
+        `**🚨 Chi tiết vi phạm:**\n${vText}\n\n` +
+        `**Lưới đáp án:**\n${grid}\n\n` +
+        `**Câu sai:** ${wrongText}`;
       if (desc.length > 4000) desc = desc.slice(0, 3990) + "…";
 
       const embed = {
