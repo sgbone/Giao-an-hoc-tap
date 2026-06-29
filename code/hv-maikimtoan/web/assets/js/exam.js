@@ -105,13 +105,15 @@
       head.innerHTML = `<span class="q-no">Câu ${pos + 1}</span><span class="q-text">${item.q}</span>`;
       card.appendChild(head);
 
-      item.options.forEach((opt, oi) => {
+      const opts = item.options;
+      const perm = shuffle([...opts.keys()]);  // xáo vị trí đáp án mỗi câu
+      card._perm = perm;
+      perm.forEach((origOptIdx, d) => {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "q-opt";
-        btn.innerHTML = `<span class="q-letter">${LETTERS[oi]}</span><span>${opt}</span>`;
-        // chuột không chọn (pointer-events:none qua CSS); vẫn giữ click làm fallback
-        btn.addEventListener("click", () => applySelect(card, origIdx, oi));
+        btn.innerHTML = `<span class="q-letter">${LETTERS[d]}</span><span>${opts[origOptIdx]}</span>`;
+        btn.addEventListener("click", () => applySelect(card, origIdx, d));
         card.appendChild(btn);
       });
       root.appendChild(card);
@@ -122,11 +124,11 @@
     updateProgress();
   }
 
-  function applySelect(card, origIdx, oi) {
-    answers[origIdx] = oi;
+  function applySelect(card, origIdx, displayPos) {
+    answers[origIdx] = card._perm[displayPos];   // lưu chỉ số đáp án GỐC (để server chấm đúng)
     card.querySelectorAll(".q-opt").forEach((o) => o.classList.remove("selected"));
     const opts = card.querySelectorAll(".q-opt");
-    if (opts[oi]) opts[oi].classList.add("selected");
+    if (opts[displayPos]) opts[displayPos].classList.add("selected");
     updateProgress();
   }
 
@@ -150,7 +152,7 @@
     const card = cards()[currentIndex];
     if (!card) return;
     const origIdx = Number(card.dataset.id);
-    if (oi < exam.questions[origIdx].options.length) applySelect(card, origIdx, oi);
+    if (oi < card._perm.length) applySelect(card, origIdx, oi);
   }
 
   function updateProgress() {
