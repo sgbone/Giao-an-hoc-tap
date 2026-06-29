@@ -1,6 +1,7 @@
 /* Ngân hàng ĐỀ KIỂM TRA (server-side, CÓ đáp án).
    File bắt đầu bằng "_" nên Vercel KHÔNG expose thành route.
-   Client không bao giờ nhận được trường "answer". */
+   Client không bao giờ nhận được trường "answer".
+   Câu có "answer" là MẢNG = câu chọn nhiều đáp án. */
 
 const EXAMS = {
   "buoi-1-2": {
@@ -1136,58 +1137,85 @@ const EXAMS = {
         "answer": 0
       },
       {
-        "q": "Tổng các số chia hết cho 3 hoặc 5, điều kiện?",
+        "q": "Những kiểu dữ liệu CƠ BẢN đã học là? <i>(chọn nhiều)</i>",
         "options": [
-          "i % 3 == 0 || i % 5 == 0",
-          "i % 3 == 0 && i % 5 == 0",
-          "i % 15 == 0"
+          "int",
+          "float",
+          "char",
+          "string"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
       {
-        "q": "🔎 In ra gì?<pre class=\"q-code\">for (int i = 1; i <= 3; i++) {\n    for (int j = 1; j <= i; j++)\n        printf(\"*\");\n    printf(\"\\n\");\n}</pre>",
+        "q": "Toán tử nào là toán tử LOGIC? <i>(chọn nhiều)</i>",
         "options": [
-          "*, **, *** (3 dòng tăng dần)",
-          "*** , **, * (giảm dần)",
-          "9 dấu sao 1 dòng"
+          "&&",
+          "||",
+          "!",
+          "%"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
       {
-        "q": "🔎 Đếm bao nhiêu số chia hết 3 từ 1..10?",
+        "q": "Lệnh nào tạo VÒNG LẶP? <i>(chọn nhiều)</i>",
         "options": [
-          "3",
-          "4",
-          "2"
+          "for",
+          "while",
+          "if",
+          "printf"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1
+        ]
       },
       {
-        "q": "Lỗi kinh điển khi mới học là?",
+        "q": "Câu nào ĐÚNG về định dạng in? <i>(chọn nhiều)</i>",
         "options": [
-          "Quên ; và nhầm = với ==",
-          "Viết quá nhiều hàm",
-          "Tên biến quá dài"
+          "%d cho int",
+          "%f cho float",
+          "%c cho char",
+          "%d cho float"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
       {
-        "q": "Cách học hiệu quả nhất?",
+        "q": "Lỗi nào khiến chương trình KHÔNG biên dịch được? <i>(chọn nhiều)</i>",
         "options": [
-          "Tự gõ code + làm bài tập đều",
-          "Chỉ đọc lý thuyết",
-          "Học thuộc lòng"
+          "Thiếu dấu ;",
+          "Thiếu dấu } đóng hàm",
+          "Quên \\n khi in"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1
+        ]
       },
       {
-        "q": "🔎 <b>Đọc code</b> — In ra gì?<pre class=\"q-code\">printf(\"%d\", 10 - 4 * 2);</pre>",
+        "q": "Toán tử nào là toán tử SO SÁNH? <i>(chọn nhiều)</i>",
         "options": [
-          "2",
-          "12",
-          "8"
+          "==",
+          "!=",
+          ">=",
+          "="
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       }
     ]
   },
@@ -2690,58 +2718,84 @@ const EXAMS = {
         "answer": 0
       },
       {
-        "q": "<code>void</code> nghĩa là?",
+        "q": "Hàm nào thuộc thư viện <code>string.h</code>? <i>(chọn nhiều)</i>",
         "options": [
-          "Không trả giá trị",
-          "Trả 0",
-          "Trả chuỗi"
+          "strlen",
+          "strcpy",
+          "strcat",
+          "printf"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
       {
-        "q": "🔎 <code>cong(3,5)</code> với hàm trả a+b?",
+        "q": "Phát biểu nào ĐÚNG về mảng? <i>(chọn nhiều)</i>",
         "options": [
-          "8",
-          "35",
-          "2"
+          "Chỉ số bắt đầu từ 0",
+          "Các phần tử cùng kiểu",
+          "Mảng a[5] có ô a[5]"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1
+        ]
       },
       {
-        "q": "🔎 <code>giaiThua(5)</code> (5!) = ?",
+        "q": "Phát biểu nào ĐÚNG về hàm? <i>(chọn nhiều)</i>",
         "options": [
-          "120",
-          "25",
-          "15"
+          "return trả về giá trị",
+          "void không trả giá trị",
+          "tham số là dữ liệu đầu vào",
+          "hàm chỉ gọi được 1 lần"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
       {
-        "q": "Cấu trúc <code>struct</code> dùng để?",
+        "q": "Những kiểu dữ liệu CƠ BẢN là? <i>(chọn nhiều)</i>",
         "options": [
-          "Tự định nghĩa kiểu dữ liệu mới",
-          "Tạo vòng lặp",
-          "Nhập dữ liệu"
+          "int",
+          "float",
+          "char",
+          "string"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
       {
-        "q": "Sau khi học C nên học cốt lõi tiếp?",
+        "q": "Toán tử nào là toán tử LOGIC? <i>(chọn nhiều)</i>",
         "options": [
-          "Con trỏ (pointer)",
-          "Thiết kế web",
-          "Chỉnh ảnh"
+          "&&",
+          "||",
+          "!",
+          "+"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1,
+          2
+        ]
       },
       {
-        "q": "Lưu điểm 30 sinh viên dùng?",
+        "q": "Cách nhập dữ liệu nào ĐÚNG? <i>(chọn nhiều)</i>",
         "options": [
-          "Mảng float a[30]",
-          "30 biến riêng",
-          "1 biến char"
+          "scanf(\"%d\", &n) cho int",
+          "fgets cho chuỗi có khoảng trắng",
+          "scanf(\"%s\") đọc được cả khoảng trắng"
         ],
-        "answer": 0
+        "answer": [
+          0,
+          1
+        ]
       }
     ]
   }

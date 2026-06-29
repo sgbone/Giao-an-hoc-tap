@@ -444,6 +444,11 @@ select.exam-input { cursor: pointer; }
   white-space: pre; overflow-x: auto;
 }
 .q-text { display: block; }
+.multi-tag {
+  display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 700;
+  color: #2a1a04; background: linear-gradient(120deg, var(--yellow), var(--accent-3));
+  padding: 2px 9px; border-radius: 999px; vertical-align: middle;
+}
 
 /* lựa chọn được chọn (chưa lộ đúng/sai) */
 .q-opt.selected { background: rgba(94,234,212,.16); border-color: var(--accent); color: #d7fff4; }

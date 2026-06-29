@@ -45,11 +45,20 @@ module.exports = async (req, res) => {
   const results = [];      // cho client: chỉ true/false
   const detail = [];       // cho Discord: có đáp án đúng
   ex.questions.forEach((q, i) => {
-    const chosen = (i in answers) ? Number(answers[i]) : null;
-    const ok = chosen === q.answer;
+    const raw = (i in answers) ? answers[i] : null;
+    let ok, chosen;
+    if (Array.isArray(q.answer)) {
+      // câu chọn nhiều: so khớp đúng TẬP đáp án
+      const want = [...q.answer].map(Number).sort((a, b) => a - b);
+      chosen = Array.isArray(raw) ? [...new Set(raw.map(Number))].sort((a, b) => a - b) : [];
+      ok = want.length === chosen.length && want.every((v, k) => v === chosen[k]);
+    } else {
+      chosen = raw == null ? null : Number(raw);
+      ok = chosen === q.answer;
+    }
     if (ok) correct++;
     results.push(ok);
-    detail.push({ i, chosen, correct: q.answer, ok });
+    detail.push({ i, chosen, correct: q.answer, ok, multi: Array.isArray(q.answer) });
   });
   const total = ex.questions.length;
   const pct = Math.round((correct / total) * 100);
@@ -62,10 +71,15 @@ module.exports = async (req, res) => {
       const grid = detail
         .map((d) => `${d.i + 1}${d.ok ? "✅" : "❌"}`)
         .join("  ");
+      const fmtChoice = (v) => {
+        if (v == null) return "—";
+        if (Array.isArray(v)) return v.length ? v.map((i) => LETTERS[i]).join("+") : "—";
+        return LETTERS[v];
+      };
       const wrong = detail.filter((d) => !d.ok);
       const wrongText = wrong.length
         ? wrong
-            .map((d) => `• Câu ${d.i + 1}: chọn ${d.chosen == null ? "—" : LETTERS[d.chosen]}, đúng ${LETTERS[d.correct]}`)
+            .map((d) => `• Câu ${d.i + 1}: chọn ${fmtChoice(d.chosen)}, đúng ${fmtChoice(d.correct)}`)
             .join("\n")
         : "🎉 Đúng tất cả!";
 

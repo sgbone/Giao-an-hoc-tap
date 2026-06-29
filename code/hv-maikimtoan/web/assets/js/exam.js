@@ -100,9 +100,12 @@
       card.className = "q-card";
       card.dataset.id = origIdx;
 
+      card.dataset.multi = item.multi ? "1" : "";
+
       const head = document.createElement("div");
       head.className = "q-head";
-      head.innerHTML = `<span class="q-no">Câu ${pos + 1}</span><span class="q-text">${item.q}</span>`;
+      const tag = item.multi ? ` <span class="multi-tag">Chọn nhiều đáp án</span>` : "";
+      head.innerHTML = `<span class="q-no">Câu ${pos + 1}</span><span class="q-text">${item.q}${tag}</span>`;
       card.appendChild(head);
 
       const opts = item.options;
@@ -125,10 +128,21 @@
   }
 
   function applySelect(card, origIdx, displayPos) {
-    answers[origIdx] = card._perm[displayPos];   // lưu chỉ số đáp án GỐC (để server chấm đúng)
-    card.querySelectorAll(".q-opt").forEach((o) => o.classList.remove("selected"));
+    const origOptIdx = card._perm[displayPos];   // chỉ số đáp án GỐC
     const opts = card.querySelectorAll(".q-opt");
-    if (opts[displayPos]) opts[displayPos].classList.add("selected");
+    if (card.dataset.multi === "1") {
+      // chọn nhiều: bật/tắt từng đáp án
+      let arr = Array.isArray(answers[origIdx]) ? answers[origIdx] : [];
+      const pos = arr.indexOf(origOptIdx);
+      if (pos >= 0) { arr.splice(pos, 1); if (opts[displayPos]) opts[displayPos].classList.remove("selected"); }
+      else { arr.push(origOptIdx); if (opts[displayPos]) opts[displayPos].classList.add("selected"); }
+      if (arr.length) answers[origIdx] = arr; else delete answers[origIdx];
+    } else {
+      // chọn một: thay thế lựa chọn
+      answers[origIdx] = origOptIdx;
+      opts.forEach((o) => o.classList.remove("selected"));
+      if (opts[displayPos]) opts[displayPos].classList.add("selected");
+    }
     updateProgress();
   }
 

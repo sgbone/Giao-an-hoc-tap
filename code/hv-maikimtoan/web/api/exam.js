@@ -15,6 +15,10 @@ module.exports = (req, res) => {
     title: ex.title,
     durationMin: ex.durationMin,
     total: ex.questions.length,
-    questions: ex.questions.map((q) => ({ q: q.q, options: q.options }))
+    questions: ex.questions.map((q) => ({
+      q: q.q,
+      options: q.options,
+      multi: Array.isArray(q.answer)   // câu chọn nhiều đáp án
+    }))
   });
 };
