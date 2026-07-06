@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Toàn Học Lập Trình C++ · 1 kèm 1</title>
+<meta name="description" content="Khóa C++ 1 kèm 1 (rút gọn 1 tháng) — Tài liệu lý thuyết + Bài tập của Toàn Học Lập Trình C." />
+<meta property="og:title" content="Toàn Học Lập Trình C++ · 1 kèm 1" />
+<meta property="og:image" content="../assets/banner.png" />
+<link rel="icon" href="../assets/banner.png" />
+<link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="progress-bar"></div>
+
+<!-- ============ SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-logo">C++</div>
+    <div class="brand-text">
+      <strong>Toàn Học Lập Trình C++</strong>
+      <span>1 kèm 1 · 23 buổi</span>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <p class="nav-label">Buổi 0 — Hàm trong C</p>
+    <a href="#c0-why" class="nav-link">Vì sao cần hàm?</a>
+    <a href="#c0-struct" class="nav-link">Cấu trúc một hàm</a>
+    <a href="#c0-value" class="nav-link">Truyền theo giá trị</a>
+    <a href="#c0-scope" class="nav-link">Biến cục bộ / toàn cục</a>
+    <a href="#c0-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 1 — Từ C sang C++</p>
+    <a href="#c1-io" class="nav-link">cin / cout</a>
+    <a href="#c1-types" class="nav-link">bool &amp; string</a>
+    <a href="#c1-practice" class="nav-link">Thực hành đổi C→C++</a>
+    <a href="#c1-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 2 — Con trỏ cơ bản</p>
+    <a href="#c2-what" class="nav-link">Con trỏ là gì?</a>
+    <a href="#c2-ops" class="nav-link">Toán tử &amp; và *</a>
+    <a href="#c2-null" class="nav-link">Con trỏ NULL / wild</a>
+    <a href="#c2-practice" class="nav-link">Thực hành: swap</a>
+    <a href="#c2-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 3 — Con trỏ nâng cao</p>
+    <a href="#c3-arr" class="nav-link">Mảng &amp; con trỏ</a>
+    <a href="#c3-double" class="nav-link">Con trỏ đôi</a>
+    <a href="#c3-practice" class="nav-link">Thực hành</a>
+    <a href="#c3-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Khóa khác</p>
+    <a href="../index.html" class="nav-link">← Khóa C căn bản (10 buổi)</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    ✍️ Trần Hoàng Đức Anh <span>(Bò)</span>
+  </div>
+</aside>
+
+<button id="menu-toggle" aria-label="Mở menu" aria-expanded="false" aria-controls="sidebar">
+  <span class="mt-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+  <span class="mt-label">Menu</span>
+</button>
+<div id="sidebar-backdrop"></div>
+
+<!-- ============ MAIN ============ -->
+<main class="content">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badges">
+      <span class="badge badge-green">● Khóa nâng cao · C++</span>
+      <span class="badge">1 kèm 1 · 23 buổi</span>
+      <span class="badge">PRG1006</span>
+    </div>
+    <h1 class="hero-title">
+      Học Lập Trình <span class="grad">C++</span><br />
+      <span class="type-wrap">Buổi <span id="typed"></span><span class="cursor">|</span></span>
+    </h1>
+    <p class="hero-sub">
+      Lộ trình rút gọn 1 tháng: bù <b>Hàm</b>, bắc cầu <b>C → C++</b>, làm chủ <b>con trỏ &amp; bộ nhớ động</b>,
+      rồi toàn bộ <b>OOP</b>. Mỗi khái niệm có ví dụ chạy thật và bài tập 3 mức.
+    </p>
+
+    <div class="terminal hero-term">
+      <div class="term-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="term-title">main.cpp — Dev-C++ / VS Code</span>
+      </div>
+      <pre class="term-body"><code id="hero-code" data-snippet="hellocpp"></code></pre>
+    </div>
+
+    <a href="#c0-why" class="cta">Bắt đầu Buổi 0 ↓</a>
+  </header>
+
+  <!-- ================= BUỔI 0 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 0</span>
+    <h2>Bù kiến thức C: Hàm (Functions)</h2>
+  </div>
+
+  <section id="c0-why" class="card reveal">
+    <h3><span class="num">1</span> Vì sao cần hàm?</h3>
+    <p>Khi chương trình lớn dần, viết hết trong <code>main</code> sẽ rối và lặp lại. <b>Hàm</b> giúp:</p>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-icon">♻️</div><b>Tái sử dụng</b><small>Viết 1 lần, gọi nhiều lần</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-icon">🧩</div><b>Chia nhỏ</b><small>Bài toán lớn → phần dễ quản lý</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="flow-icon">🔧</div><b>Dễ sửa</b><small>Sửa 1 chỗ, tác dụng mọi nơi gọi</small></div>
+    </div>
+    <div class="callout callout-info">
+      Buổi này học <b>Hàm trong C</b> làm nền — Buổi 6 sẽ mở rộng sang C++ (tham chiếu). Nắm chắc ở đây thì về sau không hụt.
+    </div>
+  </section>
+
+  <section id="c0-struct" class="card reveal">
+    <h3><span class="num">2</span> Cấu trúc một hàm</h3>
+    <ul class="explain">
+      <li><b>Kiểu trả về</b> · <b>tên hàm</b> · <b>danh sách tham số</b> · <b>thân hàm</b>.</li>
+      <li><b>Prototype</b> (nguyên mẫu) khai báo trước <code>main</code>, định nghĩa đầy đủ sau — hoặc viết hàm trên <code>main</code> luôn nếu chương trình nhỏ.</li>
+      <li><b>Tham số hình thức</b> (trong định nghĩa) vs <b>tham số thực</b> (khi gọi).</li>
+      <li><code>return</code> trả về 1 giá trị, hoặc <code>void</code> nếu không trả gì.</li>
+    </ul>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head"><span class="code-file">📄 giaithua.c</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="fac0"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="fac0-out">▶ Chạy thử</button>
+        <div class="console" id="fac0-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c0-value" class="card reveal">
+    <h3><span class="num">3</span> Truyền theo giá trị — "hạt giống" cho Buổi 2 &amp; 6</h3>
+    <p>Khi truyền tham số <b>theo giá trị</b>, hàm làm việc trên <b>bản sao</b> — sửa bên trong hàm <b>KHÔNG</b> ảnh hưởng biến gốc. Cùng xem hàm <code>swap</code> "thất bại có kiểm soát":</p>
+
+    <div class="code-block" data-lang="C">
+      <div class="code-head"><span class="code-file">📄 swap_value.c</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="swapfail"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="swapfail-out">▶ Chạy thử</button>
+        <div class="console" id="swapfail-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div>
+      </div>
+    </div>
+    <div class="callout callout-warn">
+      Thấy chưa? <code>x</code>, <code>y</code> <b>không đổi</b>. Hãy nhớ câu hỏi "làm sao để hàm sửa được biến gốc?" — <b>Buổi 2 (con trỏ)</b> và <b>Buổi 6 (tham chiếu)</b> sẽ trả lời.
+    </div>
+  </section>
+
+  <section id="c0-scope" class="card reveal">
+    <h3><span class="num">4</span> Biến cục bộ &amp; biến toàn cục (scope)</h3>
+    <ul class="explain">
+      <li><b>Biến cục bộ (local):</b> khai báo trong hàm, chỉ tồn tại khi hàm chạy, hủy khi hàm kết thúc.</li>
+      <li><b>Biến toàn cục (global):</b> khai báo ngoài mọi hàm, mọi hàm đều thấy — nhưng dùng nhiều dễ rối, hạn chế.</li>
+    </ul>
+    <p class="muted">💡 Ưu tiên biến cục bộ + truyền qua tham số/return, thay vì lạm dụng biến toàn cục.</p>
+  </section>
+
+  <section id="c0-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 0 — Hàm trong C</h3>
+      <p class="muted">3 bài theo độ khó tăng dần. Viết hàm rồi gọi trong <code>main</code>, in kết quả giống mẫu.</p>
+    </div>
+    <div class="hw-grid">
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Hàm tổng 1 → n</p>
+        <p class="hw-desc">Viết hàm <code>tong(int n)</code> trả về tổng các số từ 1 đến n.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>tong(5) = 15</pre></div>
+        <p class="hw-hint">💡 Dùng vòng lặp cộng dồn rồi <code>return</code>.</p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Trung bình cộng mảng</p>
+        <p class="hw-desc">Viết hàm <code>float trungBinh(int a[], int n)</code> trả về trung bình cộng các phần tử.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>Mang: 4 6 8 2
+Trung binh = 5.00</pre></div>
+        <p class="hw-hint">💡 Tổng là int, chia dùng ép kiểu <code>(float)tong / n</code>.</p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Số chính phương</p>
+        <p class="hw-desc">Viết hàm <code>int laChinhPhuong(int n)</code> trả về 1 nếu n là số chính phương (vd 1,4,9,16…), ngược lại 0. Thử với vài số.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>16 -> la so chinh phuong
+10 -> khong</pre></div>
+        <p class="hw-hint">💡 Gợi ý: tìm <code>i</code> sao cho <code>i*i == n</code> (i chạy tới khi i*i ≥ n).</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 1 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 1</span>
+    <h2>Từ C sang C++ — làm quen cú pháp mới</h2>
+  </div>
+
+  <section id="c1-io" class="card reveal">
+    <h3><span class="num">1</span> Nhập / xuất kiểu C++: <code>cin</code> &amp; <code>cout</code></h3>
+    <p>C++ = C + thêm tính năng. Cái mới đầu tiên là cách nhập/xuất — thay <code>printf/scanf</code> bằng <code>cout</code>/<code>cin</code>:</p>
+
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 hello.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="hellocpp"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="hellocpp-out">▶ Chạy thử</button>
+        <div class="console" id="hellocpp-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div>
+      </div>
+    </div>
+    <ul class="explain">
+      <li><code>#include &lt;iostream&gt;</code> — thư viện nhập/xuất của C++.</li>
+      <li><code>using namespace std;</code> — để viết <code>cout</code> thay vì <code>std::cout</code>.</li>
+      <li><code>cout &lt;&lt; ...</code> in ra; <code>cin &gt;&gt; ...</code> nhập vào; <code>endl</code> xuống dòng.</li>
+      <li><b>Lỗi hay gặp:</b> quên <code>using namespace std;</code> → báo lỗi <code>cout was not declared</code>.</li>
+    </ul>
+  </section>
+
+  <section id="c1-types" class="card reveal">
+    <h3><span class="num">2</span> Kiểu <code>bool</code> &amp; <code>string</code></h3>
+    <ul class="explain">
+      <li><code>bool</code>: chỉ nhận <code>true</code> / <code>false</code> — rõ nghĩa hơn dùng <code>int</code> 0/1 như C.</li>
+      <li><code>string</code>: chuỗi "xịn" của C++, không cần mảng <code>char</code> + <code>'\0'</code>; khai báo <code>string ten;</code> và nhập bằng <code>cin</code>.</li>
+      <li>C++ cho khai báo biến <b>ở bất kỳ đâu</b>, không cần dồn lên đầu hàm.</li>
+    </ul>
+    <div class="callout callout-info">
+      <b>Yên tâm:</b> con trỏ, hàm, mảng, vòng lặp, if/else — <b>y hệt C</b>. Hôm nay chỉ đổi cách nhập/xuất và thêm vài kiểu.
+    </div>
+  </section>
+
+  <section id="c1-practice" class="card reveal">
+    <h3><span class="num">3</span> Thực hành: nhập tên &amp; tuổi</h3>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 chao.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="cppio"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="cppio-out">▶ Chạy thử</button>
+        <div class="console" id="cppio-out" hidden><div class="console-bar">Console — gõ dữ liệu rồi Enter</div><div class="console-body"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c1-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 1 — Từ C sang C++</h3>
+      <p class="muted">Chuyển tư duy sang <code>cin</code>/<code>cout</code>. Làm 3 bài, in ra giống mẫu.</p>
+    </div>
+    <div class="hw-grid">
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Lời chào</p>
+        <p class="hw-desc">Nhập tên (string), in ra "Xin chao &lt;ten&gt;!" bằng <code>cout</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>Nhap ten: Bo
+Xin chao Bo!</pre></div>
+        <p class="hw-hint">💡 <code>string ten; cin &gt;&gt; ten;</code></p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Máy tính 2 số</p>
+        <p class="hw-desc">Nhập 2 số thực, in tổng, hiệu, tích, thương bằng <code>cout</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>a = 6, b = 4
+Tong = 10  Hieu = 2
+Tich = 24  Thuong = 1.5</pre></div>
+        <p class="hw-hint">💡 Dùng <code>double</code> cho phép chia ra số lẻ.</p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Bảng cửu chương C++</p>
+        <p class="hw-desc">Nhập số n (1–9), in bảng cửu chương của n bằng <code>cout</code> (chuyển từ code C sang C++).</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>Nhap n: 3
+3 x 1 = 3
+...
+3 x 10 = 30</pre></div>
+        <p class="hw-hint">💡 Vòng lặp <code>for</code> giống C, chỉ đổi phần in sang <code>cout</code>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 2 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 2</span>
+    <h2>Con trỏ cơ bản</h2>
+  </div>
+
+  <section id="c2-what" class="card reveal">
+    <h3><span class="num">1</span> Con trỏ là gì?</h3>
+    <p>Mỗi biến là một <b>ô nhớ</b> có <b>địa chỉ</b>. <b>Con trỏ</b> là biến chứa <b>địa chỉ</b> của một biến khác.</p>
+    <div class="boxes">
+      <div class="box-var"><div class="box-label">a (giá trị)</div><div class="box-body">10</div><div class="box-type">tại địa chỉ 0x100</div></div>
+      <div class="box-var"><div class="box-label">p (con trỏ)</div><div class="box-body">0x100</div><div class="box-type">trỏ tới a →</div></div>
+    </div>
+    <div class="callout callout-tip">
+      ✏️ <b>Luôn vẽ hình:</b> ô nhớ — địa chỉ — mũi tên. Con trỏ là chủ đề phải "nhìn thấy" mới hiểu.
+    </div>
+  </section>
+
+  <section id="c2-ops" class="card reveal">
+    <h3><span class="num">2</span> Toán tử <code>&amp;</code> (địa chỉ) và <code>*</code> (truy xuất)</h3>
+    <ul class="explain">
+      <li><code>&amp;a</code> — lấy <b>địa chỉ</b> của biến a.</li>
+      <li><code>int *p = &amp;a;</code> — khai báo con trỏ p trỏ tới a.</li>
+      <li><code>*p</code> — <b>truy xuất giá trị</b> mà p đang trỏ tới (đọc hoặc ghi).</li>
+      <li>⚠️ Dấu <code>*</code> có 2 nghĩa: lúc khai báo (<code>int *p</code>) và lúc dùng (<code>*p</code>) — chỗ hay lú nhất!</li>
+    </ul>
+
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 contro.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="ptr1"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="ptr1-out">▶ Chạy thử</button>
+        <div class="console" id="ptr1-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c2-null" class="card reveal">
+    <h3><span class="num">3</span> Con trỏ NULL &amp; con trỏ "hoang" (wild)</h3>
+    <ul class="explain">
+      <li><b>Con trỏ chưa khởi tạo</b> chứa địa chỉ rác → truy xuất <code>*p</code> gây crash. Rất nguy hiểm!</li>
+      <li>Thói quen tốt: khởi tạo <code>int *p = NULL;</code> (hoặc <code>nullptr</code>) khi chưa trỏ tới đâu.</li>
+    </ul>
+  </section>
+
+  <section id="c2-practice" class="card reveal">
+    <h3><span class="num">4</span> Thực hành: <code>swap</code> bằng con trỏ (giải bài toán Buổi 0!)</h3>
+    <p>Nhớ hàm <code>swap</code> theo giá trị thất bại ở Buổi 0 chứ? Giờ dùng con trỏ để hàm sửa được biến gốc:</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 swap_ptr.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="swapptr"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="swapptr-out">▶ Chạy thử</button>
+        <div class="console" id="swapptr-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div>
+      </div>
+    </div>
+    <div class="callout callout-tip">
+      So sánh trực tiếp: bản <b>giá trị</b> (Buổi 0) không đổi được x, y — bản <b>con trỏ</b> đổi thành công. Đó là sức mạnh của con trỏ.
+    </div>
+  </section>
+
+  <section id="c2-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 2 — Con trỏ cơ bản</h3>
+      <p class="muted">Vẽ sơ đồ bộ nhớ ra giấy trước khi code. Làm 3 bài.</p>
+    </div>
+    <div class="hw-grid">
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Đọc qua con trỏ</p>
+        <p class="hw-desc">Khai báo <code>int a = 25;</code>, cho con trỏ <code>p</code> trỏ tới a, in giá trị a qua <code>*p</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>Gia tri qua con tro: 25</pre></div>
+        <p class="hw-hint">💡 <code>int *p = &amp;a; cout &lt;&lt; *p;</code></p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Ghi qua con trỏ</p>
+        <p class="hw-desc">Dùng con trỏ để đổi giá trị của biến a, in a trước và sau khi đổi.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>Truoc: a = 25
+Sau:   a = 99</pre></div>
+        <p class="hw-hint">💡 <code>*p = 99;</code> sẽ sửa chính biến a.</p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Hàm swap + sơ đồ bộ nhớ</p>
+        <p class="hw-desc">Viết hàm <code>swap(int *a, int *b)</code> hoán đổi 2 biến. <b>Vẽ tay</b> sơ đồ ô nhớ (địa chỉ + mũi tên) mô tả trước/sau khi swap.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>Truoc: x = 3, y = 7
+Sau:   x = 7, y = 3</pre></div>
+        <p class="hw-hint">💡 Gọi hàm bằng <code>swap(&amp;x, &amp;y);</code> — nhớ dấu <code>&amp;</code>.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 3 ================= -->
+  <div class="lesson-divider reveal">
+    <span>BUỔI 3</span>
+    <h2>Con trỏ nâng cao + luyện tập</h2>
+  </div>
+
+  <section id="c3-arr" class="card reveal">
+    <h3><span class="num">1</span> Quan hệ mảng — con trỏ</h3>
+    <p>Tên mảng thực chất là <b>địa chỉ phần tử đầu</b>. Vì vậy:</p>
+    <div class="callout callout-info">
+      <code>a[i]</code> &nbsp;⟺&nbsp; <code>*(a + i)</code> — hai cách viết cho <b>cùng một thứ</b>.
+    </div>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 duyet_contro.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="ptrarr"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="ptrarr-out">▶ Chạy thử</button>
+        <div class="console" id="ptrarr-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c3-double" class="card reveal">
+    <h3><span class="num">2</span> Con trỏ đôi (<code>int **p</code>)</h3>
+    <p>Con trỏ cũng là biến → có địa chỉ → có thể có con trỏ trỏ tới nó. Vẽ 3 tầng ô nhớ:</p>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-icon">📦</div><b>a</b><small>giá trị: 5</small></div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step"><div class="flow-icon">👉</div><b>p</b><small>trỏ tới a</small></div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step"><div class="flow-icon">👉👉</div><b>pp</b><small>trỏ tới p</small></div>
+    </div>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 contro_doi.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="ptrptr"></pre>
+      <div class="code-run">
+        <button class="run-btn" data-output="ptrptr-out">▶ Chạy thử</button>
+        <div class="console" id="ptrptr-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div>
+      </div>
+    </div>
+    <p class="muted">💡 <code>*pp</code> ra con trỏ p; <code>**pp</code> ra giá trị a. Con trỏ đôi sẽ dùng ở Buổi 6 khi hàm cần <b>sửa chính con trỏ</b> được truyền vào.</p>
+  </section>
+
+  <section id="c3-practice" class="card reveal">
+    <h3><span class="num">3</span> Thực hành nhanh</h3>
+    <div class="task-list">
+      <div class="task"><span class="task-no">①</span> Duyệt mảng bằng con trỏ thay vì chỉ số, in từng phần tử.</div>
+      <div class="task"><span class="task-no">②</span> In địa chỉ từng phần tử (<code>&amp;a[i]</code>) để thấy bước nhảy đúng bằng <code>sizeof(int)</code>.</div>
+    </div>
+  </section>
+
+  <section id="c3-homework" class="homework-section reveal">
+    <div class="hw-head">
+      <span class="hw-badge">🏠 Bài tập về nhà</span>
+      <h3>Buổi 3 — Con trỏ nâng cao</h3>
+      <p class="muted">Làm 3 bài. Bài khó chuẩn bị cho Buổi 6 (con trỏ đôi trong hàm).</p>
+    </div>
+    <div class="hw-grid">
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Duyệt mảng bằng con trỏ</p>
+        <p class="hw-desc">Cho mảng <code>{5, 10, 15, 20}</code>, dùng con trỏ và <code>*(p + i)</code> in các phần tử.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>5 10 15 20</pre></div>
+        <p class="hw-hint">💡 <code>int *p = a;</code> rồi lặp in <code>*(p + i)</code>.</p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">In địa chỉ phần tử</p>
+        <p class="hw-desc">In địa chỉ từng phần tử của mảng int để thấy chúng cách nhau đúng 4 byte.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu (địa chỉ minh họa)</div><pre>a[0] tai 0x100
+a[1] tai 0x104
+a[2] tai 0x108</pre></div>
+        <p class="hw-hint">💡 In <code>&amp;a[i]</code> (hoặc <code>a + i</code>).</p>
+      </article>
+      <article class="hw-card">
+        <div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó (sáng tạo)</span></div>
+        <p class="hw-title">Con trỏ đôi trong hàm</p>
+        <p class="hw-desc">Viết hàm dùng <b>con trỏ đôi</b> (<code>int **pp</code>) để thay đổi giá trị mà một con trỏ ở hàm gọi đang trỏ tới.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Kết quả mẫu</div><pre>Truoc: *p = 5
+Sau:   *p = 100</pre></div>
+        <p class="hw-hint">💡 Truyền <code>&amp;p</code> vào hàm; bên trong dùng <code>**pp = 100;</code></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="coming" class="card reveal">
+    <h3>🚧 Đang cập nhật</h3>
+    <p>Buổi <b>4 → 22</b> (Cấp phát động, Checkpoint, Hàm &amp; tham chiếu, Đệ quy, toàn bộ OOP, Linked List, Nạp chồng toán tử, Ngoại lệ, Dự án tổng hợp) sẽ được soạn tiếp theo lộ trình 23 buổi. Cứ vững Buổi 0–3 trước nhé!</p>
+    <a href="../index.html" class="cta" style="background:linear-gradient(120deg,var(--accent-2),var(--accent-3))">← Quay lại khóa C căn bản</a>
+  </section>
+
+  <footer class="footer">
+    <p>📘 Khóa C++ 1 kèm 1 — Buổi 0 → 3 (đang cập nhật)</p>
+    <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
+  </footer>
+
+</main>
+
+<script>
+window.HERO_WORDS = ["0 — Ham trong C", "1 — Tu C sang C++", "2 — Con tro co ban", "3 — Con tro nang cao"];
+window.EXTRA_SNIPPETS = {
+  fac0: `#include <stdio.h>
+
+int giaiThua(int n) {
+    int kq = 1;
+    for (int i = 1; i <= n; i++)
+        kq = kq * i;
+    return kq;
+}
+
+int main() {
+    printf("5! = %d\\n", giaiThua(5));
+    return 0;
+}`,
+  swapfail: `#include <stdio.h>
+
+void swap(int a, int b) {  // truyen theo GIA TRI
+    int t = a; a = b; b = t;
+}
+
+int main() {
+    int x = 3, y = 7;
+    swap(x, y);
+    printf("x = %d, y = %d\\n", x, y);  // KHONG doi!
+    return 0;
+}`,
+  hellocpp: `#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, C++!" << endl;
+    return 0;
+}`,
+  cppio: `#include <iostream>
+using namespace std;
+
+int main() {
+    string ten;
+    int tuoi;
+    cout << "Nhap ten: ";
+    cin >> ten;
+    cout << "Nhap tuoi: ";
+    cin >> tuoi;
+    cout << "Chao " << ten << ", " << tuoi << " tuoi!" << endl;
+    return 0;
+}`,
+  ptr1: `#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10;
+    int *p = &a;          // p tro toi a
+    cout << "Gia tri a = " << *p << endl;
+    *p = 20;              // sua a qua con tro
+    cout << "a bay gio = " << a << endl;
+    return 0;
+}`,
+  swapptr: `#include <iostream>
+using namespace std;
+
+void swap(int *a, int *b) {   // truyen DIA CHI
+    int t = *a; *a = *b; *b = t;
+}
+
+int main() {
+    int x = 3, y = 7;
+    swap(&x, &y);
+    cout << "x = " << x << ", y = " << y << endl;  // da doi!
+    return 0;
+}`,
+  ptrarr: `#include <iostream>
+using namespace std;
+
+int main() {
+    int a[3] = {10, 20, 30};
+    int *p = a;               // ten mang = dia chi phan tu dau
+    for (int i = 0; i < 3; i++)
+        cout << *(p + i) << " ";   // giong a[i]
+    cout << endl;
+    return 0;
+}`,
+  ptrptr: `#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 5;
+    int *p = &a;      // p tro toi a
+    int **pp = &p;    // pp tro toi p
+    cout << **pp << endl;   // = a = 5
+    return 0;
+}`
+};
+window.EXTRA_OUTPUTS = {
+  "fac0-out": ["5! = 120", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "swapfail-out": ["x = 3, y = 7", "", ">> Truyen theo gia tri: x, y KHONG doi!", "", "Process exited after 0.02s with return value 0"],
+  "hellocpp-out": ["Hello, C++!", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "cppio-out": ["Nhap ten: Bo", "Nhap tuoi: 15", "Chao Bo, 15 tuoi!", "", "Process exited after 3.10s with return value 0"],
+  "ptr1-out": ["Gia tri a = 10", "a bay gio = 20", "", "Process exited after 0.02s with return value 0"],
+  "swapptr-out": ["x = 7, y = 3", "", ">> Truyen dia chi: x, y DA doi cho nhau!", "", "Process exited after 0.02s with return value 0"],
+  "ptrarr-out": ["10 20 30 ", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "ptrptr-out": ["5", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."]
+};
+</script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

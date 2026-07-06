@@ -461,9 +461,14 @@ const OUTPUTS = {
   ]
 };
 
-/* ---------- Bộ tô màu cú pháp C đơn giản ---------- */
+/* ---------- Cho phép trang nạp thêm snippet/output (vd khóa C++) ---------- */
+if (window.EXTRA_SNIPPETS) Object.assign(SNIPPETS, window.EXTRA_SNIPPETS);
+if (window.EXTRA_OUTPUTS) Object.assign(OUTPUTS, window.EXTRA_OUTPUTS);
+
+/* ---------- Bộ tô màu cú pháp C / C++ ---------- */
 const C_KEYWORDS = ["int","float","char","double","void","return","if","else",
-  "for","while","do","switch","case","break","continue","struct","const","long","short","unsigned"];
+  "for","while","do","switch","case","break","continue","struct","const","long","short","unsigned",
+  "bool","class","new","delete","namespace","using","public","private","protected","virtual","true","false","string"];
 
 function escapeHtml(s){
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
