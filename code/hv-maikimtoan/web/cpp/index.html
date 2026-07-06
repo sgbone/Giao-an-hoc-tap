@@ -86,6 +86,54 @@
     <a href="#c10-class" class="nav-link">Class đầu tiên</a>
     <a href="#c10-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
 
+    <p class="nav-label">Buổi 11 — Class hoàn chỉnh</p>
+    <a href="#c11-main" class="nav-link">Định nghĩa ngoài class (::)</a>
+    <a href="#c11-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 12 — Constructor</p>
+    <a href="#c12-main" class="nav-link">Hàm khởi tạo</a>
+    <a href="#c12-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 13 — Destructor</p>
+    <a href="#c13-main" class="nav-link">Vòng đời &amp; shallow copy</a>
+    <a href="#c13-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 14 — Kế thừa</p>
+    <a href="#c14-main" class="nav-link">Inheritance (is-a)</a>
+    <a href="#c14-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 15 — Đa hình &amp; Trừu tượng</p>
+    <a href="#c15-main" class="nav-link">virtual &amp; abstract</a>
+    <a href="#c15-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 16 — Checkpoint OOP 🏁</p>
+    <a href="#c16-main" class="nav-link">Tổng hợp 4 tính chất</a>
+    <a href="#c16-homework" class="nav-link nav-hw">📝 Bài kiểm tra</a>
+
+    <p class="nav-label">Buổi 17 — Linked List (1)</p>
+    <a href="#c17-main" class="nav-link">Khởi tạo &amp; duyệt</a>
+    <a href="#c17-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 18 — Linked List (2)</p>
+    <a href="#c18-main" class="nav-link">Thêm &amp; xóa</a>
+    <a href="#c18-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 19 — this &amp; Copy Ctor</p>
+    <a href="#c19-main" class="nav-link">Copy constructor &amp; friend</a>
+    <a href="#c19-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 20 — Nạp chồng toán tử</p>
+    <a href="#c20-main" class="nav-link">operator+ , operator&lt;&lt;</a>
+    <a href="#c20-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 21 — Ngoại lệ</p>
+    <a href="#c21-main" class="nav-link">try / catch / throw</a>
+    <a href="#c21-homework" class="nav-link nav-hw">📝 Bài tập về nhà</a>
+
+    <p class="nav-label">Buổi 22 — Ôn tập &amp; Dự án 🎓</p>
+    <a href="#c22-main" class="nav-link">Dự án tổng hợp</a>
+    <a href="#c22-homework" class="nav-link nav-hw">🎓 Đề dự án</a>
+
     <p class="nav-label">Khóa khác</p>
     <a href="../index.html" class="nav-link">← Khóa C căn bản (10 buổi)</a>
   </nav>
@@ -956,21 +1004,445 @@ Bo  - 16 - 9.0 - Gioi</pre></div>
     </div>
   </section>
 
+  <!-- ================= BUỔI 11 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 11</span><h2>Thực hành xây class hoàn chỉnh</h2></div>
+  <section id="c11-main" class="card reveal">
+    <h3><span class="num">1</span> Định nghĩa phương thức bên ngoài class</h3>
+    <p>Khi class lớn, ta khai báo phương thức trong class và <b>định nghĩa bên ngoài</b> bằng toán tử phạm vi <code>::</code> — giúp phần khai báo gọn, dễ đọc (cũng là bước đệm tách file <code>.h</code>/<code>.cpp</code>).</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 CHinhChuNhat.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c11"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c11-out">▶ Chạy thử</button>
+        <div class="console" id="c11-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <p class="muted">💡 Cú pháp: <code>KieuTraVe TenClass::tenPhuongThuc(...) { ... }</code>. Thuộc tính luôn <code>private</code> trừ khi có lý do rõ ràng.</p>
+  </section>
+  <section id="c11-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 11 — Class hoàn chỉnh</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">CHinhChuNhat đầy đủ</p><p class="hw-desc">get/set, <code>dienTich()</code>, <code>chuVi()</code>. Định nghĩa phương thức ngoài class bằng <code>::</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>DT = 24, CV = 20</pre></div>
+        <p class="hw-hint">💡 CV = (dài + rộng) × 2.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">CTaiKhoanNganHang</p><p class="hw-desc">Số dư + chủ TK (private); <code>napTien</code>, <code>rutTien</code> (chặn rút quá số dư), <code>xemSoDu</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Nap 500 -> So du: 500
+Rut 800 -> Khong du tien!</pre></div>
+        <p class="hw-hint">💡 <code>rutTien</code> kiểm tra <code>if (tien &gt; soDu)</code>.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Nhiều tài khoản</p><p class="hw-desc">Hoàn thiện, viết <code>main</code> tạo 2–3 tài khoản, thử nạp/rút và in số dư từng cái.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>An: 300
+Bo: 1200</pre></div>
+        <p class="hw-hint">💡 Mỗi object là một tài khoản độc lập.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 12 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 12</span><h2>Constructor</h2></div>
+  <section id="c12-main" class="card reveal">
+    <h3><span class="num">1</span> Hàm khởi tạo (Constructor)</h3>
+    <p>Object mới tạo có thuộc tính chưa khởi tạo (rác). <b>Constructor</b> là hàm đặc biệt <b>trùng tên class</b>, tự động chạy khi tạo object — dùng để gán giá trị ban đầu.</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 constructor.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c12"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c12-out">▶ Chạy thử</button>
+        <div class="console" id="c12-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <ul class="explain">
+      <li><b>Default constructor</b> (không tham số) &amp; <b>constructor có tham số</b>.</li>
+      <li><b>Nạp chồng constructor</b>: nhiều constructor khác tham số (như overload hàm Buổi 7).</li>
+      <li>Có thể dùng <b>đối số mặc định</b> (Buổi 7) trong constructor.</li>
+    </ul>
+  </section>
+  <section id="c12-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 12 — Constructor</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">2 constructor cho CHocSinh</p><p class="hw-desc">Thêm default constructor (gán rỗng/0) và constructor đầy đủ tham số.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>N/A - 0
+Bo - 16</pre></div>
+        <p class="hw-hint">💡 Hai constructor trùng tên, khác tham số.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">CDiem3D</p><p class="hw-desc">Class điểm 3 chiều (x, y, z) với 2 constructor (mặc định &amp; đầy đủ), hàm in.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>(0, 0, 0)
+(1, 2, 3)</pre></div>
+        <p class="hw-hint">💡 Constructor mặc định gán tất cả = 0.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Constructor + đối số mặc định</p><p class="hw-desc">Viết class có 1 constructor dùng đối số mặc định để thay cho nhiều constructor.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>CSanPham("Sua") -> gia mac dinh 0
+CSanPham("Banh", 15000)</pre></div>
+        <p class="hw-hint">💡 <code>CSanPham(string ten, int gia = 0)</code>.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 13 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 13</span><h2>Destructor &amp; cảnh báo shallow copy</h2></div>
+  <section id="c13-main" class="card reveal">
+    <h3><span class="num">1</span> Destructor &amp; vòng đời object</h3>
+    <p><b>Destructor</b> <code>~TenClass()</code> tự chạy khi object hết phạm vi hoặc bị <code>delete</code>. Nếu class có <code>new</code> bên trong → <b>bắt buộc</b> viết destructor để <code>delete</code> (liên hệ Buổi 4–5).</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 CMangDong.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c13"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c13-out">▶ Chạy thử</button>
+        <div class="console" id="c13-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <div class="callout callout-warn">
+      <b>Cảnh báo trước (sẽ sửa ở Buổi 19):</b> nếu <code>CMangDong b = a;</code> rồi <code>delete</code> — mặc định C++ copy "từng byte" kể cả địa chỉ con trỏ → 2 object trỏ chung 1 vùng nhớ (<b>shallow copy</b>) → dễ crash. Cách sửa đúng (deep copy) học ở Buổi 19.
+    </div>
+  </section>
+  <section id="c13-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 13 — Destructor</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">In vòng đời object</p><p class="hw-desc">Class có <code>cout</code> trong constructor và destructor để "nhìn thấy" lúc tạo/hủy.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Tao object
+Huy object</pre></div>
+        <p class="hw-hint">💡 Destructor: <code>~Ten() { cout &lt;&lt; ...; }</code></p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Quan sát destructor tự chạy</p><p class="hw-desc">Tạo vài object trong khối <code>{ }</code>, quan sát destructor chạy khi ra khỏi khối.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Tao A
+Tao B
+Huy B
+Huy A</pre></div>
+        <p class="hw-hint">💡 Object hủy theo thứ tự ngược lúc tạo.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Tái hiện shallow copy</p><p class="hw-desc">Với <code>CMangDong</code>, copy 1 object rồi <code>delete</code>, truy cập cái còn lại để <b>thấy lỗi</b>. Ghi lại vì sao (chưa cần sửa — để Buổi 19).</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Yêu cầu</div><pre>- Giai thich 2 object tro chung vung nho</pre></div>
+        <p class="hw-hint">💡 Đây là "hạt giống" cho copy constructor.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 14 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 14</span><h2>Kế thừa (Inheritance)</h2></div>
+  <section id="c14-main" class="card reveal">
+    <h3><span class="num">1</span> Quan hệ "là một loại của" (is-a)</h3>
+    <p>Nhiều class chung thuộc tính/phương thức (vd <code>CHocSinh</code>, <code>CGiaoVien</code> đều có tên, tuổi). <b>Kế thừa</b> giúp tái sử dụng: class con thừa hưởng của class cha.</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 ke_thua.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c14"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c14-out">▶ Chạy thử</button>
+        <div class="console" id="c14-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <ul class="explain">
+      <li>Cú pháp: <code>class CHocSinh : public CNguoi { ... }</code>.</li>
+      <li><code>protected</code>: class con thấy được, bên ngoài thì không.</li>
+      <li><b>Điểm hay lỗi:</b> constructor con phải gọi constructor cha — <code>CHocSinh(...) : CNguoi(ten) { ... }</code>.</li>
+    </ul>
+  </section>
+  <section id="c14-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 14 — Kế thừa</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Class CNguoi</p><p class="hw-desc">Tên, tuổi (protected) + <code>gioiThieu()</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Toi la Bo, 16 tuoi</pre></div>
+        <p class="hw-hint">💡 Đây là class cha dùng lại ở các bài sau.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">CHocSinh kế thừa</p><p class="hw-desc"><code>CHocSinh : public CNguoi</code> thêm điểm TB + phương thức riêng, constructor gọi cha.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Toi la An, 15 tuoi
+Diem TB: 8.0</pre></div>
+        <p class="hw-hint">💡 <code>: CNguoi(ten, tuoi)</code>.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">CGiaoVien</p><p class="hw-desc">Thêm <code>CGiaoVien : public CNguoi</code> với môn dạy, constructor gọi đúng constructor cha.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Toi la Cô Lan, day Toan</pre></div>
+        <p class="hw-hint">💡 Cùng một cha, hai class con khác nhau.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 15 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 15</span><h2>Đa hình &amp; Trừu tượng</h2></div>
+  <section id="c15-main" class="card reveal">
+    <h3><span class="num">1</span> Hàm ảo (<code>virtual</code>) &amp; lớp trừu tượng</h3>
+    <p>Con trỏ cha trỏ tới object con, gọi phương thức trùng tên → mặc định gọi bản của <b>cha</b> (sai ý muốn). Thêm <code>virtual</code> → C++ gọi đúng bản của object <b>thực sự</b> đang được trỏ tới. Đó là <b>đa hình</b>.</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 da_hinh.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c15"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c15-out">▶ Chạy thử</button>
+        <div class="console" id="c15-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <ul class="explain">
+      <li><b>Hàm ảo thuần túy</b> <code>virtual void ve() = 0;</code> → <b>lớp trừu tượng (abstract)</b> không tạo object trực tiếp được, chỉ làm cha.</li>
+      <li>Đó là tính chất <b>Trừu tượng</b>: định nghĩa "hợp đồng" chung, lớp con bắt buộc hiện thực.</li>
+    </ul>
+  </section>
+  <section id="c15-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 15 — Đa hình &amp; Trừu tượng</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Thêm virtual</p><p class="hw-desc">Từ CNguoi/CHocSinh, thêm <code>virtual gioiThieu()</code> và override ở con.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Toi la hoc sinh</pre></div>
+        <p class="hw-hint">💡 Bỏ <code>virtual</code> thử xem output sai thế nào.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Mảng con trỏ cha</p><p class="hw-desc">Tạo mảng <code>CNguoi*</code> chứa cả CHocSinh &amp; CGiaoVien, duyệt gọi <code>gioiThieu()</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Toi la hoc sinh
+Toi la giao vien</pre></div>
+        <p class="hw-hint">💡 Đây là "đa hình" thực tế.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Lớp trừu tượng CHinh</p><p class="hw-desc"><code>CHinh</code> abstract với <code>tinhDienTich()=0</code>; <code>CHinhTron</code>, <code>CHinhVuong</code> hiện thực riêng; tính tổng diện tích qua mảng con trỏ.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Tong dien tich = 78.5</pre></div>
+        <p class="hw-hint">💡 Không tạo được object của CHinh trực tiếp.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 16 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 16 · 🏁 CHECKPOINT</span><h2>Tổng hợp 4 tính chất OOP</h2></div>
+  <section id="c16-main" class="card reveal final-card">
+    <h3>🏁 Mốc quan trọng NHẤT toàn khóa</h3>
+    <p>Xác nhận nắm vững cả 4 tính chất: <b>Đóng gói · Kế thừa · Đa hình · Trừu tượng</b>. Nếu chưa vững, chèn buổi phụ đạo trước khi sang Giai đoạn 2 — đây là chỗ đáng "hy sinh" tiến độ nhất.</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 quan_ly_nhan_vien.cpp (demo)</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c16"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c16-out">▶ Chạy thử</button>
+        <div class="console" id="c16-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <div class="callout callout-tip"><b>Tiêu chí qua buổi:</b> tự chỉ ra &amp; giải thích đúng cả 4 tính chất trong code của chính mình, không cần gợi ý thuật ngữ.</div>
+  </section>
+  <section id="c16-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🎯 Bài kiểm tra</span><h3>Buổi 16 — Checkpoint OOP</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Mức 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Lớp cha trừu tượng + 2 con</p><p class="hw-desc">Thiết kế <code>CNhanVien</code> trừu tượng với <code>tinhLuong()=0</code>, 2 class con hiện thực khác nhau.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Chinh thuc: 10000000
+Thoi vu: 5000000</pre></div>
+        <p class="hw-hint">💡 Đủ: trừu tượng + kế thừa.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Mức 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Đa hình qua mảng con trỏ</p><p class="hw-desc">Dùng mảng <code>CNhanVien*</code> quản lý, gọi <code>tinhLuong()</code> đa hình, cộng tổng lương.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Tong luong = 15000000</pre></div>
+        <p class="hw-hint">💡 Đủ: đa hình + đóng gói (thuộc tính private).</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Mức 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Tự giải thích 4 tính chất</p><p class="hw-desc">Hoàn thiện hệ thống (constructor/destructor hợp lý) và <b>tự viết</b> 4 câu chỉ ra mỗi tính chất nằm ở đâu trong code.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Yêu cầu</div><pre>- Dong goi: ...
+- Ke thua: ...
+- Da hinh: ...
+- Truu tuong: ...</pre></div>
+        <p class="hw-hint">💡 Đây là mục tiêu cốt lõi của cả khóa!</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 17 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 17</span><h2>Linked List — khởi tạo &amp; duyệt</h2></div>
+  <section id="c17-main" class="card reveal">
+    <h3><span class="num">1</span> Node dạng class + duyệt danh sách</h3>
+    <p>Mảng có kích thước cố định; <b>danh sách liên kết</b> nối các <b>Node</b> (dữ liệu + con trỏ <code>pNext</code>) bằng con trỏ — kết hợp con trỏ (Giai đoạn 1) + class (Buổi 10–16).</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 linked_list.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c17"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c17-out">▶ Chạy thử</button>
+        <div class="console" id="c17-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <p class="muted">💡 <b>Node có constructor</b> tự gán <code>pNext = NULL</code> — áp dụng lại Constructor (Buổi 12) vào bài toán mới. Duyệt: <code>while (p != NULL) { ...; p = p-&gt;pNext; }</code>.</p>
+  </section>
+  <section id="c17-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 17 — Linked List (khởi tạo)</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Nối tay &amp; in</p><p class="hw-desc">Xây class Node, tạo 3–4 Node nối tay, viết <code>inDanhSach()</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>10 -> 20 -> 30 -> NULL</pre></div>
+        <p class="hw-hint">💡 Node constructor gán <code>pNext = NULL</code>.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">themCuoi()</p><p class="hw-desc">Viết hàm <code>themCuoi(x)</code> tổng quát để thêm phần tử vào cuối danh sách.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Sau them 40: 10 20 30 40</pre></div>
+        <p class="hw-hint">💡 Đi tới Node cuối (pNext == NULL) rồi nối.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Đếm &amp; tìm kiếm</p><p class="hw-desc">Viết hàm đếm số phần tử và hàm kiểm tra một giá trị có tồn tại không. Áp dụng: danh sách tên 5 học sinh.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>So phan tu: 5
+Tim 'An': co</pre></div>
+        <p class="hw-hint">💡 Duyệt danh sách, đếm/so sánh.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 18 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 18</span><h2>Linked List — thêm &amp; xóa</h2></div>
+  <section id="c18-main" class="card reveal">
+    <h3><span class="num">1</span> Thêm đầu, xóa Node</h3>
+    <p>Phần khó nhất vì nhiều trường hợp đặc biệt. <b>Thứ tự các dòng lệnh</b> rất quan trọng — đổi <code>pStart</code> trước sẽ mất liên kết!</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 them_dau.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c18"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c18-out">▶ Chạy thử</button>
+        <div class="console" id="c18-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <ul class="explain">
+      <li><b>Thêm đầu:</b> nối <code>node-&gt;pNext = pStart;</code> <b>trước</b>, rồi mới <code>pStart = node;</code></li>
+      <li><b>Xóa Node:</b> xét các trường hợp — đầu / giữa / cuối / danh sách rỗng. Nhớ <code>delete</code> Node bị gỡ (liên hệ Buổi 4–5).</li>
+    </ul>
+  </section>
+  <section id="c18-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 18 — Linked List (thêm/xóa)</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">themDau()</p><p class="hw-desc">Cài đặt <code>themDau(x)</code> đúng thứ tự, test bằng cách thêm 1,2,3.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>1 2 3</pre></div>
+        <p class="hw-hint">💡 Nối pNext trước, cập nhật pStart sau.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">xoaDau &amp; xoaTheoGiaTri</p><p class="hw-desc">Cài <code>xoaDau()</code> và <code>xoaTheoGiaTri(x)</code>, nhớ <code>delete</code> Node bị gỡ.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Sau xoa 2: 1 3</pre></div>
+        <p class="hw-hint">💡 Cần con trỏ "trước" điểm xóa.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">xoaToanBo + quản lý SV</p><p class="hw-desc"><code>xoaToanBo()</code> giải phóng hết Node; áp dụng quản lý danh sách sinh viên (thêm/xóa theo tên/in/TB).</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Da giai phong toan bo
+</pre></div>
+        <p class="hw-hint">💡 Duyệt và <code>delete</code> từng Node.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 19 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 19</span><h2>this + Copy Constructor &amp; Friend</h2></div>
+  <section id="c19-main" class="card reveal">
+    <h3><span class="num">1</span> <code>this</code> &amp; Copy Constructor (deep copy)</h3>
+    <p>Con trỏ <code>this</code> trỏ tới chính object đang gọi — dùng để phân biệt tham số trùng tên thuộc tính. <b>Copy Constructor</b> sửa triệt để cạm bẫy shallow copy (Buổi 13): cấp phát vùng nhớ MỚI thay vì dùng chung.</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 copy_ctor.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c19"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c19-out">▶ Chạy thử</button>
+        <div class="console" id="c19-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <ul class="explain">
+      <li><code>this-&gt;n = n;</code> — <code>this</code> phân biệt thuộc tính với tham số cùng tên.</li>
+      <li>Copy constructor chạy khi: <code>CMang b = a;</code>, truyền/trả object theo giá trị.</li>
+      <li><b>Friend function:</b> hàm không phải thành viên nhưng được class cho phép truy cập <code>private</code>.</li>
+    </ul>
+  </section>
+  <section id="c19-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 19 — this &amp; Copy Constructor</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Dùng this-></p><p class="hw-desc">Viết constructor có tham số trùng tên thuộc tính, dùng <code>this-&gt;</code> để phân biệt.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>ten = Bo, tuoi = 16</pre></div>
+        <p class="hw-hint">💡 <code>this-&gt;ten = ten;</code></p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Copy constructor deep copy</p><p class="hw-desc">Cho một class có con trỏ thành viên, viết copy constructor cấp phát vùng nhớ mới.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>a: 0 1 2
+b (copy): 0 1 2  (vung nho rieng)</pre></div>
+        <p class="hw-hint">💡 <code>a = new int[n];</code> rồi copy từng phần tử.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Friend function</p><p class="hw-desc">Viết hàm <code>friend</code> <code>soSanh(a, b)</code> so sánh 2 object <code>CHocSinh</code> theo điểm (truy cập private).</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>An (8.0) < Bo (9.0)</pre></div>
+        <p class="hw-hint">💡 Khai báo <code>friend</code> bên trong class.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 20 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 20</span><h2>Nạp chồng toán tử</h2></div>
+  <section id="c20-main" class="card reveal">
+    <h3><span class="num">1</span> Overload cho toán tử (<code>+</code>, <code>&lt;&lt;</code>)</h3>
+    <p>Overload không chỉ cho hàm (Buổi 7) mà cả <b>toán tử</b>: cho phép viết <code>a + b</code>, <code>cout &lt;&lt; a</code> với object của mình.</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 CPhanSo.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c20"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c20-out">▶ Chạy thử</button>
+        <div class="console" id="c20-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <ul class="explain">
+      <li><code>const CPhanSo &amp;</code>: dùng tham chiếu để khỏi copy, <code>const</code> để không lỡ sửa.</li>
+      <li><b>Giới hạn:</b> <code>cout &lt;&lt; a</code> có toán hạng trái là <code>ostream</code> → phải overload <code>&lt;&lt;</code> dạng <b>friend</b> (không phải thành viên). Dùng lại friend từ Buổi 19.</li>
+    </ul>
+  </section>
+  <section id="c20-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 20 — Nạp chồng toán tử</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">operator+ cho CPhanSo</p><p class="hw-desc">Overload <code>+</code> để cộng 2 phân số.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>1/2 + 1/3 = 5/6</pre></div>
+        <p class="hw-hint">💡 <code>tu*b.mau + b.tu*mau</code> / <code>mau*b.mau</code>.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">operator- và operator==</p><p class="hw-desc">Thêm phép trừ và so sánh bằng cho CPhanSo.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>1/2 == 2/4 -> dung</pre></div>
+        <p class="hw-hint">💡 So sánh bằng cách nhân chéo.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">operator&lt;&lt; bằng friend</p><p class="hw-desc">Overload <code>&lt;&lt;</code> (in dạng "tử/mẫu") bằng friend, hoàn thiện <code>+ - * == &lt;&lt;</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>cout << a; -> 5/6</pre></div>
+        <p class="hw-hint">💡 <code>friend ostream&amp; operator&lt;&lt;(ostream&amp;, const CPhanSo&amp;)</code>.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 21 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 21</span><h2>Xử lý ngoại lệ (Exception)</h2></div>
+  <section id="c21-main" class="card reveal">
+    <h3><span class="num">1</span> <code>try</code> / <code>catch</code> / <code>throw</code></h3>
+    <p>Lỗi runtime (chia 0, ngoài mảng, cấp phát thất bại) nếu không xử lý sẽ crash. C++ cho phép <b>ném lỗi</b> (<code>throw</code>) và <b>bắt lỗi</b> (<code>try/catch</code>) có kiểm soát:</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 exception.cpp</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c21"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c21-out">▶ Chạy thử</button>
+        <div class="console" id="c21-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <ul class="explain">
+      <li>Nhiều khối <code>catch</code> cho nhiều kiểu lỗi; <code>catch(...)</code> bắt tất cả.</li>
+      <li><b>Custom Exception:</b> class kế thừa <code>exception</code>, override <code>what()</code> — bắt bằng <code>catch(exception &amp;e)</code> nhờ <b>đa hình</b> (Buổi 15). Đây chính là ứng dụng thực tế của <code>virtual</code>!</li>
+    </ul>
+  </section>
+  <section id="c21-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🏠 Bài tập về nhà</span><h3>Buổi 21 — Ngoại lệ</h3></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Chia có kiểm soát</p><p class="hw-desc">Hàm <code>chia(a, b)</code> <code>throw</code> khi <code>b == 0</code>, bắt bằng try/catch.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>10/2 = 5
+5/0 -> Loi: chia cho 0</pre></div>
+        <p class="hw-hint">💡 <code>throw "..."</code> rồi <code>catch(const char*)</code>.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Nhiều catch</p><p class="hw-desc">Chương trình có nhiều khối <code>catch</code> khác kiểu + <code>catch(...)</code>.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Bat duoc loi so
+Bat duoc loi khac</pre></div>
+        <p class="hw-hint">💡 Thứ tự catch từ cụ thể → tổng quát.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Bài 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Custom Exception</p><p class="hw-desc"><code>NgoaiLeChiaCho0 : public exception</code> override <code>what()</code>; áp dụng cho máy tính / rút quá số dư (CTaiKhoanNganHang).</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Loi: Rut qua so du!</pre></div>
+        <p class="hw-hint">💡 Bắt bằng <code>catch(exception &amp;e) { e.what(); }</code>.</p></article>
+    </div>
+  </section>
+
+  <!-- ================= BUỔI 22 ================= -->
+  <div class="lesson-divider reveal"><span>BUỔI 22 · 🎓</span><h2>Ôn tập toàn khóa + Dự án tổng hợp</h2></div>
+  <section id="c22-main" class="card reveal final-card">
+    <h3>🎓 Sản phẩm hoàn chỉnh — chuẩn bị thi &amp; đồ án</h3>
+    <p>Tổng hợp tất cả thành 1 dự án nhỏ. Ví dụ "Quản lý thư viện": <code>TaiLieu</code> trừu tượng, con là <code>Sach</code>/<code>TapChi</code>, danh sách bằng linked list, overload <code>&lt;&lt;</code>, exception khi mượn sách hết.</p>
+    <div class="code-block" data-lang="C++">
+      <div class="code-head"><span class="code-file">📄 du_an_min.cpp (khung)</span><button class="copy-btn">Copy</button></div>
+      <pre class="code" data-code="c22"></pre>
+      <div class="code-run"><button class="run-btn" data-output="c22-out">▶ Chạy thử</button>
+        <div class="console" id="c22-out" hidden><div class="console-bar">Console — Output</div><div class="console-body"></div></div></div>
+    </div>
+    <div class="callout callout-info">
+      <b>Ưu tiên dùng đề đồ án thật của trường</b> nếu đã có. Nhìn lại toàn bộ 23 buổi, chỉ ra mạnh/yếu ở đâu, luyện đề mẫu của trường.
+    </div>
+  </section>
+  <section id="c22-homework" class="homework-section reveal">
+    <div class="hw-head"><span class="hw-badge">🎓 Đề dự án cuối khóa</span><h3>Buổi 22 — Dự án tổng hợp</h3>
+      <p class="muted">Bắt buộc dùng tối thiểu: 1 class cha trừu tượng + 2 con, constructor/destructor hợp lý, ≥ 1 toán tử overload, xử lý ≥ 1 ngoại lệ.</p></div>
+    <div class="hw-grid">
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Mức 1</span><span class="hw-tag t-easy">🟢 Dễ</span></div>
+        <p class="hw-title">Khung OOP</p><p class="hw-desc">Class cha trừu tượng + 2 class con override, đầy đủ constructor/destructor.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Sach: Lap trinh C++
+Tap chi: Khoa hoc</pre></div>
+        <p class="hw-hint">💡 Nền tảng: trừu tượng + kế thừa + đa hình.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Mức 2</span><span class="hw-tag t-mid">🟡 Vừa</span></div>
+        <p class="hw-title">Danh sách + overload</p><p class="hw-desc">Quản lý các đối tượng bằng linked list (hoặc mảng con trỏ), thêm 1 toán tử overload (vd <code>&lt;&lt;</code>).</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>[Danh sach tai lieu]
+1. Sach: ...
+2. Tap chi: ...</pre></div>
+        <p class="hw-hint">💡 Kết hợp Buổi 17–18 + Buổi 20.</p></article>
+      <article class="hw-card"><div class="hw-card-top"><span class="hw-no">Mức 3</span><span class="hw-tag t-hard">🔴 Khó</span></div>
+        <p class="hw-title">Hoàn chỉnh + exception</p><p class="hw-desc">Thêm xử lý ngoại lệ (vd mượn tài liệu đã hết), menu tương tác, hoàn thiện thành sản phẩm nộp được.</p>
+        <div class="hw-sample"><div class="hw-sample-label">🖥️ Mẫu</div><pre>Muon 'Sach X' -> Loi: Da het!</pre></div>
+        <p class="hw-hint">💡 Đây là "bản demo" cho đồ án PRG1006 thật.</p></article>
+    </div>
+  </section>
+
   <section id="coming" class="card reveal">
-    <h3>🚧 Đang cập nhật</h3>
-    <p>Đã có Buổi <b>0 → 10</b> (Hàm, C++, Con trỏ, Cấp phát động, Checkpoint, Tham chiếu, Overload, Đệ quy, static, Class). Buổi <b>11 → 22</b> (Constructor/Destructor, Kế thừa, Đa hình, Checkpoint OOP, Linked List, <code>this</code> &amp; Copy Constructor, Nạp chồng toán tử, Ngoại lệ, Dự án tổng hợp) sẽ soạn tiếp.</p>
+    <h3>🎉 Trọn bộ 23 buổi</h3>
+    <p>Đã đủ Buổi <b>0 → 22</b>: Hàm, C++, Con trỏ, Cấp phát động, Tham chiếu, Overload, Đệ quy, static, Class, Constructor/Destructor, Kế thừa, Đa hình, Linked List, <code>this</code> &amp; Copy Constructor, Nạp chồng toán tử, Ngoại lệ và Dự án tổng hợp. Chúc con học tốt! 🚀</p>
     <a href="../index.html" class="cta" style="background:linear-gradient(120deg,var(--accent-2),var(--accent-3))">← Quay lại khóa C căn bản</a>
   </section>
 
   <footer class="footer">
-    <p>📘 Khóa C++ 1 kèm 1 — Buổi 0 → 10 (đang cập nhật)</p>
+    <p>📘 Khóa C++ 1 kèm 1 — Trọn bộ Buổi 0 → 22</p>
     <p class="footer-author">Biên soạn bởi <b>Trần Hoàng Đức Anh (Bò)</b></p>
   </footer>
 
 </main>
 
 <script>
-window.HERO_WORDS = ["0 — Ham trong C", "1 — Tu C sang C++", "2 — Con tro co ban", "3 — Con tro nang cao", "4 — Cap phat dong", "5 — Checkpoint", "6 — Ham & tham chieu", "7 — Overload ham", "8 — De quy", "9 — Bien static", "10 — Lop & Doi tuong"];
+window.HERO_WORDS = ["0 — Ham trong C", "1 — Tu C sang C++", "2 — Con tro co ban", "3 — Con tro nang cao", "4 — Cap phat dong", "6 — Ham & tham chieu", "7 — Overload ham", "8 — De quy", "9 — Bien static", "10 — Lop & Doi tuong", "11 — Constructor", "12 — Nap chong ham dung", "13 — Destructor", "14 — Ke thua", "15 — Da hinh virtual", "16 — Lop truu tuong", "17 — Linked List", "18 — Them dau danh sach", "19 — this & Copy ctor", "20 — Nap chong toan tu", "21 — Xu ly ngoai le", "22 — Du an tong hop"];
 window.EXTRA_SNIPPETS = {
   fac0: `#include <stdio.h>
 
@@ -1209,6 +1681,319 @@ int main() {
     d.setXY(3, 5);
     d.inToaDo();
     return 0;
+}`,
+  c11: `#include <iostream>
+using namespace std;
+
+class CHinhChuNhat {
+private:
+    int dai, rong;
+public:
+    // Constructor co tham so
+    CHinhChuNhat(int d, int r) {
+        dai = d;
+        rong = r;
+    }
+    int dienTich();  // khai bao trong lop
+};
+
+// Dinh nghia ham ngoai lop bang ::
+int CHinhChuNhat::dienTich() {
+    return dai * rong;
+}
+
+int main() {
+    CHinhChuNhat hcn(6, 4);   // goi constructor
+    cout << "Dien tich = " << hcn.dienTich() << endl;
+    return 0;
+}`,
+  c12: `#include <iostream>
+#include <string>
+using namespace std;
+
+class CHocSinh {
+private:
+    string ten;
+    int tuoi;
+public:
+    // Constructor mac dinh
+    CHocSinh() {
+        ten = "N/A";
+        tuoi = 0;
+    }
+    // Constructor co tham so (nap chong)
+    CHocSinh(string t, int a) {
+        ten = t;
+        tuoi = a;
+    }
+    void inTT() {
+        cout << ten << " - " << tuoi << endl;
+    }
+};
+
+int main() {
+    CHocSinh a;              // goi ctor mac dinh
+    CHocSinh b("Bo", 16);    // goi ctor co tham so
+    a.inTT();
+    b.inTT();
+    return 0;
+}`,
+  c13: `#include <iostream>
+using namespace std;
+
+class CMang {
+private:
+    int* data;
+public:
+    CMang(int n) {
+        data = new int[n];               // cap phat trong ctor
+        cout << "Tao mang " << n << " phan tu" << endl;
+    }
+    ~CMang() {                            // destructor
+        delete[] data;
+        cout << "Huy mang" << endl;
+    }
+};
+
+int main() {
+    {
+        CMang m(5);   // ctor chay
+    }                 // het khoi {} -> destructor tu chay
+    cout << "Da ra khoi khoi lenh" << endl;
+    return 0;
+}`,
+  c14: `#include <iostream>
+#include <string>
+using namespace std;
+
+class CNguoi {
+protected:
+    string ten;
+public:
+    CNguoi(string t) { ten = t; }
+    void chao() { cout << "Toi la " << ten << endl; }
+};
+
+// CHocSinh KE THUA tu CNguoi
+class CHocSinh : public CNguoi {
+private:
+    float diem;
+public:
+    CHocSinh(string t, float d) : CNguoi(t) {   // goi ctor cha
+        diem = d;
+    }
+    void hoc() {
+        cout << ten << " dang hoc, diem " << diem << endl;
+    }
+};
+
+int main() {
+    CHocSinh hs("Bo", 8.5);
+    hs.chao();   // ham thua ke tu cha
+    hs.hoc();    // ham rieng
+    return 0;
+}`,
+  c15: `#include <iostream>
+using namespace std;
+
+class CNguoi {
+public:
+    virtual void gioiThieu() {          // ham ao
+        cout << "Toi la nguoi" << endl;
+    }
+};
+
+class CHocSinh : public CNguoi {
+public:
+    void gioiThieu() override {         // ghi de
+        cout << "Toi la hoc sinh" << endl;
+    }
+};
+
+int main() {
+    CNguoi* p = new CHocSinh();   // con tro cha tro toi con
+    p->gioiThieu();               // goi ban cua CHocSinh (da hinh)
+    delete p;
+    return 0;
+}`,
+  c16: `#include <iostream>
+using namespace std;
+
+// Lop truu tuong (co ham thuan ao)
+class CNhanVien {
+public:
+    virtual long luong() = 0;   // ham thuan ao -> khong the tao doi tuong
+};
+
+class CFullTime : public CNhanVien {
+public:
+    long luong() override { return 10000000; }
+};
+
+class CPartTime : public CNhanVien {
+public:
+    long luong() override { return 5000000; }
+};
+
+int main() {
+    CNhanVien* ds[2];
+    ds[0] = new CFullTime();
+    ds[1] = new CPartTime();
+    for (int i = 0; i < 2; i++)
+        cout << ds[i]->luong() << endl;
+    return 0;
+}`,
+  c17: `#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+int main() {
+    // Tao thu cong danh sach: 10 -> 20 -> 30
+    Node* a = new Node{10, NULL};
+    Node* b = new Node{20, NULL};
+    Node* c = new Node{30, NULL};
+    a->next = b;
+    b->next = c;
+
+    // Duyet danh sach
+    Node* p = a;
+    while (p != NULL) {
+        cout << p->data << " ";
+        p = p->next;
+    }
+    cout << endl;
+    return 0;
+}`,
+  c18: `#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* head = NULL;
+
+// Them phan tu vao DAU danh sach
+void themDau(int x) {
+    Node* nut = new Node{x, head};
+    head = nut;
+}
+
+int main() {
+    themDau(3);
+    themDau(2);
+    themDau(1);   // 1 -> 2 -> 3
+    for (Node* p = head; p != NULL; p = p->next)
+        cout << p->data << " ";
+    cout << endl;
+    return 0;
+}`,
+  c19: `#include <iostream>
+using namespace std;
+
+class CDem {
+private:
+    int so;
+public:
+    CDem(int s) { so = s; }
+    // Copy constructor
+    CDem(const CDem& other) {
+        this->so = other.so;   // dung this
+    }
+    void tang() { this->so++; }
+    void in() { cout << so << " "; }
+};
+
+int main() {
+    CDem a(0);
+    CDem b = a;    // goi copy constructor
+    b.tang();
+    CDem c = b;    // copy tiep
+    c.tang();
+    a.in(); b.in(); c.in();   // 0 1 2
+    cout << endl;
+    return 0;
+}`,
+  c20: `#include <iostream>
+using namespace std;
+
+class CPhanSo {
+public:
+    int tu, mau;
+    CPhanSo(int t, int m) { tu = t; mau = m; }
+    // Nap chong toan tu +
+    CPhanSo operator+(CPhanSo b) {
+        return CPhanSo(tu * b.mau + b.tu * mau, mau * b.mau);
+    }
+    // Nap chong <<
+    friend ostream& operator<<(ostream& os, CPhanSo p) {
+        os << p.tu << "/" << p.mau;
+        return os;
+    }
+};
+
+int main() {
+    CPhanSo a(1, 2), b(1, 3);
+    CPhanSo c = a + b;   // 1/2 + 1/3 = 5/6
+    cout << c << endl;
+    return 0;
+}`,
+  c21: `#include <iostream>
+using namespace std;
+
+int chia(int a, int b) {
+    if (b == 0)
+        throw "Khong the chia cho 0!";   // nem ngoai le
+    return a / b;
+}
+
+int main() {
+    try {
+        cout << chia(10, 2) << endl;   // OK -> 5
+        cout << chia(7, 0) << endl;    // nem loi
+    }
+    catch (const char* loi) {          // bat ngoai le
+        cout << "Loi: " << loi << endl;
+    }
+    return 0;
+}`,
+  c22: `#include <iostream>
+#include <string>
+using namespace std;
+
+// Lop cha truu tuong cho DU AN quan ly tai lieu
+class TaiLieu {
+protected:
+    string ten;
+public:
+    TaiLieu(string t) { ten = t; }
+    virtual void hienThi() = 0;   // moi loai tu mo ta
+};
+
+class Sach : public TaiLieu {
+public:
+    Sach(string t) : TaiLieu(t) {}
+    void hienThi() override { cout << "Sach: " << ten << endl; }
+};
+
+class TapChi : public TaiLieu {
+public:
+    TapChi(string t) : TaiLieu(t) {}
+    void hienThi() override { cout << "Tap chi: " << ten << endl; }
+};
+
+int main() {
+    TaiLieu* kho[2];
+    kho[0] = new Sach("Lap trinh C++");
+    kho[1] = new TapChi("Khoa hoc");
+    for (int i = 0; i < 2; i++)
+        kho[i]->hienThi();
+    return 0;
 }`
 };
 window.EXTRA_OUTPUTS = {
@@ -1229,7 +2014,19 @@ window.EXTRA_OUTPUTS = {
   "recfac-out": ["5! = 120", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
   "recfib-out": ["0 1 1 2 3 5 8 13 ", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
   "staticcount-out": ["Lan goi thu 1", "Lan goi thu 2", "Lan goi thu 3", "", "Process exited after 0.02s with return value 0"],
-  "classdiem-out": ["(3, 5)", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."]
+  "classdiem-out": ["(3, 5)", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c11-out": ["Dien tich = 24", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c12-out": ["N/A - 0", "Bo - 16", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c13-out": ["Tao mang 5 phan tu", "Huy mang", "Da ra khoi khoi lenh", "", "Process exited after 0.02s with return value 0"],
+  "c14-out": ["Toi la Bo", "Bo dang hoc, diem 8.5", "", "Process exited after 0.02s with return value 0"],
+  "c15-out": ["Toi la hoc sinh", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c16-out": ["10000000", "5000000", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c17-out": ["10 20 30 ", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c18-out": ["1 2 3 ", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c19-out": ["0 1 2 ", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c20-out": ["5/6", "", "Process exited after 0.02s with return value 0", "Press any key to continue . . ."],
+  "c21-out": ["5", "Loi: Khong the chia cho 0!", "", "Process exited after 0.02s with return value 0"],
+  "c22-out": ["Sach: Lap trinh C++", "Tap chi: Khoa hoc", "", "Process exited after 0.02s with return value 0"]
 };
 </script>
 <script src="../assets/js/main.js"></script>

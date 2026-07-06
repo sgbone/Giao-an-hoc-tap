@@ -468,7 +468,8 @@ if (window.EXTRA_OUTPUTS) Object.assign(OUTPUTS, window.EXTRA_OUTPUTS);
 /* ---------- Bộ tô màu cú pháp C / C++ ---------- */
 const C_KEYWORDS = ["int","float","char","double","void","return","if","else",
   "for","while","do","switch","case","break","continue","struct","const","long","short","unsigned",
-  "bool","class","new","delete","namespace","using","public","private","protected","virtual","true","false","string","static"];
+  "bool","class","new","delete","namespace","using","public","private","protected","virtual","true","false","string","static",
+  "friend","try","catch","throw","operator","nullptr","this"];
 
 function escapeHtml(s){
   return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
